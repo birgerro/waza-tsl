@@ -36,6 +36,14 @@ class TSLFile:
         json.dump(filedata,open(filename,'w'),separators=(',',':') )
 
 
+# Amp types:
+ACOUSTIC = "ACOUSTIC"
+CLEAN    = "CLEAN"
+CRUNCH   = "CRUNCH"
+LEAD     = "LEAD"
+BROWN    = "BROWN"
+
+
 class Patch:
     def __init__(self,name="New patch"):
         self.data = json.load(open(CLEAR_PATCH,'r'))
@@ -53,11 +61,38 @@ class Patch:
     def __setitem__(self,index,value):
         if value is None:
             value = CLEAR_DATA[index]
+        if index in KNOWN_INDEXES:
+            name,case,limits = KNOWN_INDEXES[index]
+        else:
+            name = "UNKNOWN PARAMETER"
+            case = "minmax"
+            limits = [0,255] # any byte value
+        if case == "listed" and value not in limits:
+            raise ValueError(f"Value for {name} must be one of: {limits}")
+        elif case == "minmax":
+            low,high = limits
+            value = min(max(low,value),high)
+        elif case == "scaled":
+            base,slope,low,high = limits
+            value = min(max(low,round(base+slope*value)),high)
         self.data["paramSet"]["User%Patch"][index] = value
 
     def set_amp(self,amp_type,gain=None,presence=None,volume=None,
                               bass=None,middle=None,treble=None):
-        raise NotImplementedError
+        self[81] = self.amp_types.get(amp_type)
+        self[82] = gain
+        self[84] = bass
+        self[85] = middle
+        self[86] = treble
+        self[87] = presence
+        self[88] = volume
+    amp_types = {
+        ACOUSTIC :  1,
+        CLEAN    :  8,
+        CRUNCH   : 11,
+        BROWN    : 23,
+        LEAD     : 24,
+        }
 
     def set_bst(self,bst_type,**kw):
         raise NotImplementedError
@@ -76,3 +111,15 @@ class Patch:
 
     def set_delay2(self,delay_type,**kw):
         raise NotImplementedError
+
+
+KNOWN_INDEXES = {
+    # AMP:
+    81 : ["AMP:TYPE",     "listed", [1,8,11,23,24]],
+    82 : ["AMP:GAIN",     "scaled", [20,0.8,20,100]],
+    84 : ["AMP:BASS",     "minmax", [0,100]],
+    85 : ["AMP:MIDDLE",   "minmax", [0,100]],
+    86 : ["AMP:TREBLE",   "minmax", [0,100]],
+    87 : ["AMP:PRESENCE", "minmax", [0,100]],
+    88 : ["AMP:VOLUME",   "minmax", [0,100]],
+}
