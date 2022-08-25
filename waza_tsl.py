@@ -7,6 +7,7 @@ Created: 2022-08-19
 
 import json
 from copy import deepcopy
+from enum import Enum
 
 # Clear patch is the default setting after CLEAR from the app's WRITE menu
 CLEAR_PATCH = "clear_patch.json" # Patch with binary data as ints
@@ -36,12 +37,12 @@ class TSLFile:
         json.dump(filedata,open(filename,'w'),separators=(',',':') )
 
 
-# Amp types:
-ACOUSTIC = "ACOUSTIC"
-CLEAN    = "CLEAN"
-CRUNCH   = "CRUNCH"
-LEAD     = "LEAD"
-BROWN    = "BROWN"
+class AMP_type(Enum):
+    ACOUSTIC =  1
+    CLEAN    =  8
+    CRUNCH   = 11
+    BROWN    = 23
+    LEAD     = 24
 
 
 class Patch:
@@ -79,20 +80,16 @@ class Patch:
 
     def set_amp(self,amp_type,gain=None,presence=None,volume=None,
                               bass=None,middle=None,treble=None):
-        self[81] = self.amp_types.get(amp_type)
+        if isinstance(amp_type, AMP_type):
+            self[81] = amp_type.value
+        else:
+            raise TypeError(f"amp_type must be an AMP_type, not '{type(amp_type)}'")
         self[82] = gain
         self[84] = bass
         self[85] = middle
         self[86] = treble
         self[87] = presence
         self[88] = volume
-    amp_types = {
-        ACOUSTIC :  1,
-        CLEAN    :  8,
-        CRUNCH   : 11,
-        BROWN    : 23,
-        LEAD     : 24,
-        }
 
     def set_bst(self,bst_type,**kw):
         raise NotImplementedError
