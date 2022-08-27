@@ -75,6 +75,7 @@ class MOD_type(Enum):
     T_WAH         =  0 # T.WAH
     AUTO_WAH      =  1
     PEDAL_WAH     =  2
+    COMP          =  3
 
 FX_type = MOD_type # alternate name
 
@@ -85,6 +86,15 @@ class PEDAL_type(IntEnum):
     LIGHT_WAH = 3
     SEVEN_WAH = 4 # 7STRING WAH
     RESO_WAH  = 5
+
+class COMP_type(IntEnum):
+    BOSS_COMP = 0
+    HI_BAND   = 1 # HI-BAND
+    LIGHT     = 2
+    D_COMP    = 3 # D-COMP
+    ORANGE    = 4
+    FAT       = 5
+    MILD      = 6
 
 
 class Patch:
@@ -247,6 +257,12 @@ KNOWN_INDEXES = {
     223 : ["MOD:PEDAL WAH:PEDAL MAX",      "minmax",[0,100]],
     224 : ["MOD:PEDAL WAH:EFFECT LEVEL",   "minmax",[0,100]],
     225 : ["MOD:PEDAL WAH:DIRECT MIX",     "minmax",[0,100]],
+    # MOD:COMP:
+    227 : ["MOD:COMP:TYPE",    "listed", [0,1,2,3,4,5,6]],
+    228 : ["MOD:COMP:SUSTAIN", "minmax", [0,100]],
+    229 : ["MOD:COMP:ATTACK",  "minmax", [0,100]],
+    230 : ["MOD:COMP:TONE",    "scaled", [50,1,0,100]], # Input: -50 -- +50
+    231 : ["MOD:COMP:LEVEL",   "minmax", [0,100]],
 
     2326 : ["DELAY OR FX",    "listed", [0,1]], # 0=DELAY, 1=FX
     # FX:
@@ -280,6 +296,12 @@ KNOWN_INDEXES = {
     491 : ["FX:PEDAL WAH:PEDAL MAX",      "minmax",[0,100]],
     492 : ["FX:PEDAL WAH:EFFECT LEVEL",   "minmax",[0,100]],
     493 : ["FX:PEDAL WAH:DIRECT MIX",     "minmax",[0,100]],
+    # FX:COMP:
+    495 : ["FX:COMP:TYPE",    "listed", [0,1,2,3,4,5,6]],
+    496 : ["FX:COMP:SUSTAIN", "minmax", [0,100]],
+    497 : ["FX:COMP:ATTACK",  "minmax", [0,100]],
+    498 : ["FX:COMP:TONE",    "scaled", [50,1,0,100]], # Input: -50 -- +50
+    499 : ["FX:COMP:LEVEL",   "minmax", [0,100]],
 }
 
 # Make a mapping of parameter names to indexes, grouped by subsystem

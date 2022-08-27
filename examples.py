@@ -113,3 +113,37 @@ def make_mod_fx_pedal_wah():
               pedal_position=24,pedal_max=34,effect_level=64,direct_mix=84)
     f.append(p4)
     f.save()
+
+def make_mod_fx_comp():
+    from waza_tsl import TSLFile, Patch, Color, MOD_type, FX_type, COMP_type
+    f = TSLFile("File with comp types")
+    p1 = Patch("G MOD BOSS COMP")
+    p1.set_mod(MOD_type.COMP,Color.GREEN,type=COMP_type.BOSS_COMP,
+               sustain=11,attack=31,level=61,tone=-45)
+    f.append(p1)
+    p2 = Patch("R MOD HI-BAND COMP")
+    p2.set_mod(MOD_type.COMP,Color.RED,type=COMP_type.HI_BAND,
+               sustain=12,attack=32,level=62,tone=-25)
+    f.append(p2)
+    p3 = Patch("Y MOD LIGHT COMP")
+    p3.set_mod(MOD_type.COMP,Color.YELLOW,type=COMP_type.LIGHT,
+               sustain=13,attack=33,level=63,tone=-5)
+    f.append(p3)
+    p4 = Patch("G FX D-COMP")
+    p4.set_fx(FX_type.COMP,Color.GREEN,type=COMP_type.D_COMP,
+               sustain=14,attack=34,level=64,tone=+15)
+    f.append(p4)
+    p5 = Patch("R FX ORANGE COMP")
+    p5.set_fx(FX_type.COMP,Color.RED,type=COMP_type.ORANGE,
+               sustain=15,attack=35,level=65,tone=+25)
+    f.append(p5)
+    p6 = Patch("Y FX FAT COMP")
+    p6.set_fx(FX_type.COMP,Color.YELLOW,type=COMP_type.FAT,
+               sustain=16,attack=36,level=66,tone=+35)
+    f.append(p6)
+    p7 = Patch("G FX MILD COMP")
+    p7.set_fx(FX_type.COMP,Color.GREEN,type=COMP_type.MILD,
+               sustain=17,attack=37,level=67,tone=+45)
+    f.append(p7)
+    f.save()
+
