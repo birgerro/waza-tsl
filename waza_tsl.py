@@ -76,6 +76,7 @@ class MOD_type(Enum):
     AUTO_WAH      =  1
     PEDAL_WAH     =  2
     COMP          =  3
+    LIMITER       =  4
 
 FX_type = MOD_type # alternate name
 
@@ -95,6 +96,31 @@ class COMP_type(IntEnum):
     ORANGE    = 4
     FAT       = 5
     MILD      = 6
+
+class LIMITER_type(IntEnum):
+    BOSS_LIMITER = 0
+    RACK_160D    = 1
+    VTG_RACK_U   = 2
+
+class RATIO_type(IntEnum): # at least LIMITER:RATIO
+    R1to1   =  0 # 1:1
+    R1p2to1 =  1 # 1.2:1
+    R1p4to1 =  2 # 1.4:1
+    R1p6to1 =  3 # 1.6:1
+    R1p8to1 =  4 # 1.8:1
+    R2to1   =  5 # 2:1
+    R2p3to1 =  6 # 2.3:1
+    R2p6to1 =  7 # 2.6:1
+    R3to1   =  8 # 3:1
+    R3p5to1 =  9 # 3.5:1
+    R4to1   = 10 # 4:1
+    R5to1   = 11 # 5:1
+    R6to1   = 12 # 6:1
+    R8to1   = 13 # 8:1
+    R10to1  = 14 # 10:1
+    R12to1  = 15 # 12:1
+    R20to1  = 16 # 20:1
+    Rinfto1 = 17 # inf:1
 
 
 class Patch:
@@ -263,6 +289,13 @@ KNOWN_INDEXES = {
     229 : ["MOD:COMP:ATTACK",  "minmax", [0,100]],
     230 : ["MOD:COMP:TONE",    "scaled", [50,1,0,100]], # Input: -50 -- +50
     231 : ["MOD:COMP:LEVEL",   "minmax", [0,100]],
+    # MOD:LIMITER:
+    233 : ["MOD:LIMITER:TYPE",      "listed", [0,1,2]],
+    234 : ["MOD:LIMITER:ATTACK",    "minmax", [0,100]],
+    235 : ["MOD:LIMITER:THRESHOLD", "minmax", [0,100]],
+    236 : ["MOD:LIMITER:RATIO",     "listed", [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]],
+    237 : ["MOD:LIMITER:RELEASE",   "minmax", [0,100]],
+    238 : ["MOD:LIMITER:LEVEL",     "minmax", [0,100]],
 
     2326 : ["DELAY OR FX",    "listed", [0,1]], # 0=DELAY, 1=FX
     # FX:
@@ -302,6 +335,13 @@ KNOWN_INDEXES = {
     497 : ["FX:COMP:ATTACK",  "minmax", [0,100]],
     498 : ["FX:COMP:TONE",    "scaled", [50,1,0,100]], # Input: -50 -- +50
     499 : ["FX:COMP:LEVEL",   "minmax", [0,100]],
+    # FX:LIMITER:
+    501 : ["FX:LIMITER:TYPE",      "listed", [0,1,2]],
+    502 : ["FX:LIMITER:ATTACK",    "minmax", [0,100]],
+    503 : ["FX:LIMITER:THRESHOLD", "minmax", [0,100]],
+    504 : ["FX:LIMITER:RATIO",     "listed", [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]],
+    505 : ["FX:LIMITER:RELEASE",   "minmax", [0,100]],
+    506 : ["FX:LIMITER:LEVEL",     "minmax", [0,100]],
 }
 
 # Make a mapping of parameter names to indexes, grouped by subsystem

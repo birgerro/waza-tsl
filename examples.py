@@ -147,3 +147,31 @@ def make_mod_fx_comp():
     f.append(p7)
     f.save()
 
+def make_mod_fx_limiter():
+    from waza_tsl import TSLFile, Patch, Color, MOD_type, FX_type, LIMITER_type, RATIO_type
+    f = TSLFile("File with limiter types")
+    p1 = Patch("G MOD BOSS LIMITER")
+    p1.set_mod(MOD_type.LIMITER,Color.GREEN,type=LIMITER_type.BOSS_LIMITER,
+               threshold=11,attack=31,release=51,level=81,ratio=RATIO_type.R10to1)
+    f.append(p1)
+    p2 = Patch("R MOD RACK 160D LIMITER")
+    p2.set_mod(MOD_type.LIMITER,Color.RED,type=LIMITER_type.RACK_160D,
+               threshold=12,attack=32,release=52,level=82,ratio=RATIO_type.Rinfto1)
+    f.append(p2)
+    p3 = Patch("Y MOD VTG RACK U LIMITER")
+    p3.set_mod(MOD_type.LIMITER,Color.YELLOW,type=LIMITER_type.VTG_RACK_U,
+               threshold=13,attack=33,release=53,level=83,ratio=RATIO_type.R1p4to1)
+    f.append(p3)
+    p4 = Patch("G FX VTG RACK U LIMITER")
+    p4.set_fx(FX_type.LIMITER,Color.GREEN,type=LIMITER_type.VTG_RACK_U,
+               threshold=14,attack=34,release=54,level=84,ratio=RATIO_type.R2p6to1)
+    f.append(p4)
+    p5 = Patch("R FX BOSS LIMITER")
+    p5.set_fx(FX_type.LIMITER,Color.RED,type=LIMITER_type.BOSS_LIMITER,
+               threshold=15,attack=35,release=55,level=85,ratio=RATIO_type.R3p5to1)
+    f.append(p5)
+    p6 = Patch("Y FX RACK 160D LIMITER")
+    p6.set_fx(FX_type.LIMITER,Color.YELLOW,type=LIMITER_type.RACK_160D,
+               threshold=16,attack=36,release=56,level=86,ratio=RATIO_type.R6to1)
+    f.append(p6)
+    f.save()
