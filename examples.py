@@ -92,3 +92,24 @@ def make_fx_types():
                frequency=22,peak=11,effect_level=100,direct_mix=0)
     f.append(p2)
     f.save()
+
+def make_mod_fx_pedal_wah():
+    from waza_tsl import TSLFile, Patch, Color, MOD_type, FX_type, PEDAL_type
+    f = TSLFile("File with pedal wah")
+    p1 = Patch("G MOD VO VAH")
+    p1.set_mod(MOD_type.PEDAL_WAH,Color.GREEN,type=PEDAL_type.VO_WAH,pedal_min=11,
+              pedal_position=21,pedal_max=31,effect_level=61,direct_mix=81)
+    f.append(p1)
+    p2 = Patch("R MOD LIGHT WAH")
+    p2.set_mod(MOD_type.PEDAL_WAH,Color.RED,type=PEDAL_type.LIGHT_WAH,pedal_min=12,
+              pedal_position=22,pedal_max=32,effect_level=62,direct_mix=82)
+    f.append(p2)
+    p3 = Patch("Y FX 7STRING WAH")
+    p3.set_fx(FX_type.PEDAL_WAH,Color.YELLOW,type=PEDAL_type.SEVEN_WAH,pedal_min=13,
+              pedal_position=23,pedal_max=33,effect_level=63,direct_mix=83)
+    f.append(p3)
+    p4 = Patch("R FX RESO WAH")
+    p4.set_fx(FX_type.PEDAL_WAH,Color.RED,type=PEDAL_type.RESO_WAH,pedal_min=14,
+              pedal_position=24,pedal_max=34,effect_level=64,direct_mix=84)
+    f.append(p4)
+    f.save()

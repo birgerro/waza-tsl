@@ -7,7 +7,7 @@ Created: 2022-08-19
 
 import json
 from copy import deepcopy
-from enum import Enum
+from enum import Enum, IntEnum
 
 # Clear patch is the default setting after CLEAR from the app's WRITE menu
 CLEAR_PATCH = "clear_patch.json" # Patch with binary data as ints
@@ -74,8 +74,17 @@ class BST_type(Enum):
 class MOD_type(Enum):
     T_WAH         =  0 # T.WAH
     AUTO_WAH      =  1
+    PEDAL_WAH     =  2
 
 FX_type = MOD_type # alternate name
+
+class PEDAL_type(IntEnum):
+    CRY_WAH   = 0
+    VO_WAH    = 1
+    FAT_WAH   = 2
+    LIGHT_WAH = 3
+    SEVEN_WAH = 4 # 7STRING WAH
+    RESO_WAH  = 5
 
 
 class Patch:
@@ -231,6 +240,13 @@ KNOWN_INDEXES = {
     216  : ["MOD:AUTO WAH:DEPTH",        "minmax", [0,100]],
     217  : ["MOD:AUTO WAH:DIRECT MIX",   "minmax", [0,100]],
     218  : ["MOD:AUTO WAH:EFFECT LEVEL", "minmax", [0,100]],
+    # MOD:PEDAL WAH:
+    220 : ["MOD:PEDAL WAH:TYPE",           "listed",[0,1,2,3,4,5]],
+    221 : ["MOD:PEDAL WAH:PEDAL POSITION", "minmax",[0,100]],
+    222 : ["MOD:PEDAL WAH:PEDAL MIN",      "minmax",[0,100]],
+    223 : ["MOD:PEDAL WAH:PEDAL MAX",      "minmax",[0,100]],
+    224 : ["MOD:PEDAL WAH:EFFECT LEVEL",   "minmax",[0,100]],
+    225 : ["MOD:PEDAL WAH:DIRECT MIX",     "minmax",[0,100]],
 
     2326 : ["DELAY OR FX",    "listed", [0,1]], # 0=DELAY, 1=FX
     # FX:
@@ -257,6 +273,13 @@ KNOWN_INDEXES = {
     484  : ["FX:AUTO WAH:DEPTH",        "minmax", [0,100]],
     485  : ["FX:AUTO WAH:DIRECT MIX",   "minmax", [0,100]],
     486  : ["FX:AUTO WAH:EFFECT LEVEL", "minmax", [0,100]],
+    # FX:PEDAL WAH:
+    488 : ["FX:PEDAL WAH:TYPE",           "listed",[0,1,2,3,4,5]],
+    489 : ["FX:PEDAL WAH:PEDAL POSITION", "minmax",[0,100]],
+    490 : ["FX:PEDAL WAH:PEDAL MIN",      "minmax",[0,100]],
+    491 : ["FX:PEDAL WAH:PEDAL MAX",      "minmax",[0,100]],
+    492 : ["FX:PEDAL WAH:EFFECT LEVEL",   "minmax",[0,100]],
+    493 : ["FX:PEDAL WAH:DIRECT MIX",     "minmax",[0,100]],
 }
 
 # Make a mapping of parameter names to indexes, grouped by subsystem
