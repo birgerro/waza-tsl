@@ -79,3 +79,16 @@ def make_mod_types():
                frequency=33,peak=44,effect_level=55,direct_mix=66)
     f.append(p2)
     f.save()
+
+def make_fx_types():
+    from waza_tsl import TSLFile, Patch, Color, FX_type
+    f = TSLFile("File with fx types")
+    p1 = Patch("T.WAH")
+    p1.set_fx(FX_type.T_WAH,Color.RED,mode=0,polarity=1,sens=99,
+               frequency=88,peak=77,effect_level=66,direct_mix=55)
+    f.append(p1)
+    p2 = Patch("AUTO WAH")
+    p2.set_fx(FX_type.AUTO_WAH,Color.GREEN,mode=1,rate=44,depth=33,
+               frequency=22,peak=11,effect_level=100,direct_mix=0)
+    f.append(p2)
+    f.save()

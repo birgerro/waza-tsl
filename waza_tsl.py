@@ -75,6 +75,8 @@ class MOD_type(Enum):
     T_WAH         =  0 # T.WAH
     AUTO_WAH      =  1
 
+FX_type = MOD_type # alternate name
+
 
 class Patch:
     def __init__(self,name="New patch"):
@@ -159,8 +161,20 @@ class Patch:
     def set_delay(self,delay_type,**kw):
         raise NotImplementedError
 
-    def set_fx(self,fx_type,**kw):
-        raise NotImplementedError
+    def set_fx(self,fx_type,color,**kw):
+        if isinstance(fx_type, FX_type):
+            self[461] = fx_type.value
+        else:
+            raise TypeError(f"fx_type must be an FX_type, not '{type(fx_type)}'")
+        params = PARAMETERS["FX"][fx_type.name]
+        for param,index in params.items():
+            value = kw.get(param) # params not listed in kw get set to default (value=None)
+            self[index] = value
+        self[460] = 1 # FX on
+        index = 2314 + color.value
+        self[index] = fx_type.value
+        self[2323] = color.value
+        self[2326] = 1 # FX, not DELAY1
 
     def set_reverb(self,reverb_type,**kw):
         raise NotImplementedError
@@ -217,6 +231,32 @@ KNOWN_INDEXES = {
     216  : ["MOD:AUTO WAH:DEPTH",        "minmax", [0,100]],
     217  : ["MOD:AUTO WAH:DIRECT MIX",   "minmax", [0,100]],
     218  : ["MOD:AUTO WAH:EFFECT LEVEL", "minmax", [0,100]],
+
+    2326 : ["DELAY OR FX",    "listed", [0,1]], # 0=DELAY, 1=FX
+    # FX:
+    2314 : ["FX:GREEN TYPE",  "listed", [0,1,2,3,4,6,7,9,10,12,14,15,16,18,19,20,21,22,23,25,26,27,28,29,31,35,36]],
+    2315 : ["FX:RED TYPE",    "listed", [0,1,2,3,4,6,7,9,10,12,14,15,16,18,19,20,21,22,23,25,26,27,28,29,31,35,36]],
+    2316 : ["FX:YELLOW TYPE", "listed", [0,1,2,3,4,6,7,9,10,12,14,15,16,18,19,20,21,22,23,25,26,27,28,29,31,35,36]],
+    2323 : ["FX:COLOR",       "listed", [0,1,2]],
+    460  : ["FX:ON/OFF",      "listed", [0,1]],
+    461  : ["FX:TYPE",        "listed", [0,1,2,3,4,6,7,9,10,12,14,15,16,18,19,20,21,22,23,25,26,27,28,29,31,35,36]],
+    # 2326 "DELAY OR FX" is located under DELAY
+    # FX:T.WAH:
+    472  : ["FX:T.WAH:MODE",         "listed", [0,1]], # 0=LPF, 1=BPF
+    473  : ["FX:T.WAH:POLARITY",     "listed", [0,1]], # 0=DOWN, 1=UP
+    474  : ["FX:T.WAH:SENS",         "minmax", [0,100]],
+    475  : ["FX:T.WAH:FREQUENCY",    "minmax", [0,100]],
+    476  : ["FX:T.WAH:PEAK",         "minmax", [0,100]],
+    477  : ["FX:T.WAH:DIRECT MIX",   "minmax", [0,100]],
+    478  : ["FX:T.WAH:EFFECT LEVEL", "minmax", [0,100]],
+    # FX:AUTO WAH:
+    480  : ["FX:AUTO WAH:MODE",         "listed", [0,1]], # 0=LPF, 1=BPF
+    481  : ["FX:AUTO WAH:FREQUENCY",    "minmax", [0,100]],
+    482  : ["FX:AUTO WAH:PEAK",         "minmax", [0,100]],
+    483  : ["FX:AUTO WAH:RATE",         "minmax", [0,100]],
+    484  : ["FX:AUTO WAH:DEPTH",        "minmax", [0,100]],
+    485  : ["FX:AUTO WAH:DIRECT MIX",   "minmax", [0,100]],
+    486  : ["FX:AUTO WAH:EFFECT LEVEL", "minmax", [0,100]],
 }
 
 # Make a mapping of parameter names to indexes, grouped by subsystem
