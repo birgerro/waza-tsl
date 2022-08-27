@@ -66,3 +66,16 @@ def make_bst_types():
                solo_sw=1,solo_level=94,effect_level=96,direct_mix=98)
     f.append(p6)
     f.save()
+
+def make_mod_types():
+    from waza_tsl import TSLFile, Patch, Color, MOD_type
+    f = TSLFile("File with mod types")
+    p1 = Patch("T.WAH")
+    p1.set_mod(MOD_type.T_WAH,Color.GREEN,mode=1,polarity=0,sens=33,
+               frequency=55,peak=66,effect_level=78,direct_mix=94)
+    f.append(p1)
+    p2 = Patch("AUTO WAH")
+    p2.set_mod(MOD_type.AUTO_WAH,Color.YELLOW,mode=0,rate=11,depth=22,
+               frequency=33,peak=44,effect_level=55,direct_mix=66)
+    f.append(p2)
+    f.save()

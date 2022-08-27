@@ -71,6 +71,10 @@ class BST_type(Enum):
     SIXTIES_FUZZ = 19 # '60s FUZZ
     MUFF_FUZZ    = 20
 
+class MOD_type(Enum):
+    T_WAH         =  0 # T.WAH
+    AUTO_WAH      =  1
+
 
 class Patch:
     def __init__(self,name="New patch"):
@@ -137,8 +141,20 @@ class Patch:
         self[2320] = color.value
         self[2325] = 0 # BST, not MOD
 
-    def set_mod(self,mod_type,**kw):
-        raise NotImplementedError
+    def set_mod(self,mod_type,color,**kw):
+        if isinstance(mod_type, MOD_type):
+            self[193] = mod_type.value
+        else:
+            raise TypeError(f"mod_type must be an MOD_type, not '{type(mod_type)}'")
+        params = PARAMETERS["MOD"][mod_type.name]
+        for param,index in params.items():
+            value = kw.get(param) # params not listed in kw get set to default (value=None)
+            self[index] = value
+        self[192] = 1 # MOD on
+        index = 2308 + color.value
+        self[index] = mod_type.value
+        self[2321] = color.value
+        self[2325] = 1 # MOD, not BST
 
     def set_delay(self,delay_type,**kw):
         raise NotImplementedError
@@ -177,4 +193,44 @@ KNOWN_INDEXES = {
     54   : ["BST:SOLO LEVEL",   "minmax", [0,100]],
     55   : ["BST:EFFECT LEVEL", "minmax", [0,100]],
     56   : ["BST:DIRECT MIX",   "minmax", [0,100]],
+    # MOD:
+    2308 : ["MOD:GREEN TYPE",  "listed", [0,1,2,3,4,6,7,9,10,12,14,15,16,18,19,20,21,22,23,25,26,27,28,29,31,35,36]],
+    2309 : ["MOD:RED TYPE",    "listed", [0,1,2,3,4,6,7,9,10,12,14,15,16,18,19,20,21,22,23,25,26,27,28,29,31,35,36]],
+    2310 : ["MOD:YELLOW TYPE", "listed", [0,1,2,3,4,6,7,9,10,12,14,15,16,18,19,20,21,22,23,25,26,27,28,29,31,35,36]],
+    2321 : ["MOD:COLOR",       "listed", [0,1,2]],
+    192  : ["MOD:ON/OFF",      "listed", [0,1]],
+    193  : ["MOD:TYPE",        "listed", [0,1,2,3,4,6,7,9,10,12,14,15,16,18,19,20,21,22,23,25,26,27,28,29,31,35,36]],
+    # 2325 "BST OR MOD" is located under BST
+    # MOD:T.WAH:
+    204  : ["MOD:T.WAH:MODE",         "listed", [0,1]], # 0=LPF, 1=BPF
+    205  : ["MOD:T.WAH:POLARITY",     "listed", [0,1]], # 0=DOWN, 1=UP
+    206  : ["MOD:T.WAH:SENS",         "minmax", [0,100]],
+    207  : ["MOD:T.WAH:FREQUENCY",    "minmax", [0,100]],
+    208  : ["MOD:T.WAH:PEAK",         "minmax", [0,100]],
+    209  : ["MOD:T.WAH:DIRECT MIX",   "minmax", [0,100]],
+    210  : ["MOD:T.WAH:EFFECT LEVEL", "minmax", [0,100]],
+    # MOD:AUTO WAH:
+    212  : ["MOD:AUTO WAH:MODE",         "listed", [0,1]], # 0=LPF, 1=BPF
+    213  : ["MOD:AUTO WAH:FREQUENCY",    "minmax", [0,100]],
+    214  : ["MOD:AUTO WAH:PEAK",         "minmax", [0,100]],
+    215  : ["MOD:AUTO WAH:RATE",         "minmax", [0,100]],
+    216  : ["MOD:AUTO WAH:DEPTH",        "minmax", [0,100]],
+    217  : ["MOD:AUTO WAH:DIRECT MIX",   "minmax", [0,100]],
+    218  : ["MOD:AUTO WAH:EFFECT LEVEL", "minmax", [0,100]],
 }
+
+# Make a mapping of parameter names to indexes, grouped by subsystem
+# translate space (' '), dash ('-'), dot ('.') and '/' to underscore ('_')
+as_identifier = str.maketrans({' ':'_','-':'_','.':'_','/':'_'})
+PARAMETERS = dict()
+for index,(subsystems,_,_) in KNOWN_INDEXES.items():
+    subsystems = subsystems.split(':')
+    current = PARAMETERS
+    for subsystem in subsystems[:-1]:
+        name = subsystem.translate(as_identifier)
+        if name not in current:
+            current[name] = dict()
+        current = current[name]
+    # convert the actual parameter names to lower case:
+    param = subsystems[-1].lower().translate(as_identifier)
+    current[param] = index
