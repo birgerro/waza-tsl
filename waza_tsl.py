@@ -77,6 +77,7 @@ class MOD_type(Enum):
     PEDAL_WAH     =  2
     COMP          =  3
     LIMITER       =  4
+    GRAPHIC_EQ    =  6
 
 FX_type = MOD_type # alternate name
 
@@ -277,12 +278,12 @@ KNOWN_INDEXES = {
     217  : ["MOD:AUTO WAH:DIRECT MIX",   "minmax", [0,100]],
     218  : ["MOD:AUTO WAH:EFFECT LEVEL", "minmax", [0,100]],
     # MOD:PEDAL WAH:
-    220 : ["MOD:PEDAL WAH:TYPE",           "listed",[0,1,2,3,4,5]],
-    221 : ["MOD:PEDAL WAH:PEDAL POSITION", "minmax",[0,100]],
-    222 : ["MOD:PEDAL WAH:PEDAL MIN",      "minmax",[0,100]],
-    223 : ["MOD:PEDAL WAH:PEDAL MAX",      "minmax",[0,100]],
-    224 : ["MOD:PEDAL WAH:EFFECT LEVEL",   "minmax",[0,100]],
-    225 : ["MOD:PEDAL WAH:DIRECT MIX",     "minmax",[0,100]],
+    220 : ["MOD:PEDAL WAH:TYPE",           "listed", [0,1,2,3,4,5]],
+    221 : ["MOD:PEDAL WAH:PEDAL POSITION", "minmax", [0,100]],
+    222 : ["MOD:PEDAL WAH:PEDAL MIN",      "minmax", [0,100]],
+    223 : ["MOD:PEDAL WAH:PEDAL MAX",      "minmax", [0,100]],
+    224 : ["MOD:PEDAL WAH:EFFECT LEVEL",   "minmax", [0,100]],
+    225 : ["MOD:PEDAL WAH:DIRECT MIX",     "minmax", [0,100]],
     # MOD:COMP:
     227 : ["MOD:COMP:TYPE",    "listed", [0,1,2,3,4,5,6]],
     228 : ["MOD:COMP:SUSTAIN", "minmax", [0,100]],
@@ -296,6 +297,18 @@ KNOWN_INDEXES = {
     236 : ["MOD:LIMITER:RATIO",     "listed", [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]],
     237 : ["MOD:LIMITER:RELEASE",   "minmax", [0,100]],
     238 : ["MOD:LIMITER:LEVEL",     "minmax", [0,100]],
+    # MOD:GRAPHIC EQ:
+    240 : ["MOD:GRAPHIC EQ:G31Hz",  "scaled", [20,1,0,40]], # Input: -20 -- +20
+    241 : ["MOD:GRAPHIC EQ:G62Hz",  "scaled", [20,1,0,40]], # Input: -20 -- +20
+    242 : ["MOD:GRAPHIC EQ:G125Hz", "scaled", [20,1,0,40]], # Input: -20 -- +20
+    243 : ["MOD:GRAPHIC EQ:G250Hz", "scaled", [20,1,0,40]], # Input: -20 -- +20
+    244 : ["MOD:GRAPHIC EQ:G500Hz", "scaled", [20,1,0,40]], # Input: -20 -- +20
+    245 : ["MOD:GRAPHIC EQ:G1kHz",  "scaled", [20,1,0,40]], # Input: -20 -- +20
+    246 : ["MOD:GRAPHIC EQ:G2kHz",  "scaled", [20,1,0,40]], # Input: -20 -- +20
+    247 : ["MOD:GRAPHIC EQ:G4kHz",  "scaled", [20,1,0,40]], # Input: -20 -- +20
+    248 : ["MOD:GRAPHIC EQ:G8kHz",  "scaled", [20,1,0,40]], # Input: -20 -- +20
+    249 : ["MOD:GRAPHIC EQ:G16kHz", "scaled", [20,1,0,40]], # Input: -20 -- +20
+    250 : ["MOD:GRAPHIC EQ:LEVEL",  "scaled", [20,1,0,40]], # Input: -20 -- +20
 
     2326 : ["DELAY OR FX",    "listed", [0,1]], # 0=DELAY, 1=FX
     # FX:
@@ -323,12 +336,12 @@ KNOWN_INDEXES = {
     485  : ["FX:AUTO WAH:DIRECT MIX",   "minmax", [0,100]],
     486  : ["FX:AUTO WAH:EFFECT LEVEL", "minmax", [0,100]],
     # FX:PEDAL WAH:
-    488 : ["FX:PEDAL WAH:TYPE",           "listed",[0,1,2,3,4,5]],
-    489 : ["FX:PEDAL WAH:PEDAL POSITION", "minmax",[0,100]],
-    490 : ["FX:PEDAL WAH:PEDAL MIN",      "minmax",[0,100]],
-    491 : ["FX:PEDAL WAH:PEDAL MAX",      "minmax",[0,100]],
-    492 : ["FX:PEDAL WAH:EFFECT LEVEL",   "minmax",[0,100]],
-    493 : ["FX:PEDAL WAH:DIRECT MIX",     "minmax",[0,100]],
+    488 : ["FX:PEDAL WAH:TYPE",           "listed", [0,1,2,3,4,5]],
+    489 : ["FX:PEDAL WAH:PEDAL POSITION", "minmax", [0,100]],
+    490 : ["FX:PEDAL WAH:PEDAL MIN",      "minmax", [0,100]],
+    491 : ["FX:PEDAL WAH:PEDAL MAX",      "minmax", [0,100]],
+    492 : ["FX:PEDAL WAH:EFFECT LEVEL",   "minmax", [0,100]],
+    493 : ["FX:PEDAL WAH:DIRECT MIX",     "minmax", [0,100]],
     # FX:COMP:
     495 : ["FX:COMP:TYPE",    "listed", [0,1,2,3,4,5,6]],
     496 : ["FX:COMP:SUSTAIN", "minmax", [0,100]],
@@ -342,6 +355,18 @@ KNOWN_INDEXES = {
     504 : ["FX:LIMITER:RATIO",     "listed", [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]],
     505 : ["FX:LIMITER:RELEASE",   "minmax", [0,100]],
     506 : ["FX:LIMITER:LEVEL",     "minmax", [0,100]],
+    # FX:GRAPHIC EQ:
+    508 : ["FX:GRAPHIC EQ:G31Hz",  "scaled", [20,1,0,40]], # Input: -20 -- +20
+    509 : ["FX:GRAPHIC EQ:G62Hz",  "scaled", [20,1,0,40]], # Input: -20 -- +20
+    510 : ["FX:GRAPHIC EQ:G125Hz", "scaled", [20,1,0,40]], # Input: -20 -- +20
+    511 : ["FX:GRAPHIC EQ:G250Hz", "scaled", [20,1,0,40]], # Input: -20 -- +20
+    512 : ["FX:GRAPHIC EQ:G500Hz", "scaled", [20,1,0,40]], # Input: -20 -- +20
+    513 : ["FX:GRAPHIC EQ:G1kHz",  "scaled", [20,1,0,40]], # Input: -20 -- +20
+    514 : ["FX:GRAPHIC EQ:G2kHz",  "scaled", [20,1,0,40]], # Input: -20 -- +20
+    515 : ["FX:GRAPHIC EQ:G4kHz",  "scaled", [20,1,0,40]], # Input: -20 -- +20
+    516 : ["FX:GRAPHIC EQ:G8kHz",  "scaled", [20,1,0,40]], # Input: -20 -- +20
+    517 : ["FX:GRAPHIC EQ:G16kHz", "scaled", [20,1,0,40]], # Input: -20 -- +20
+    518 : ["FX:GRAPHIC EQ:LEVEL",  "scaled", [20,1,0,40]], # Input: -20 -- +20
 }
 
 # Make a mapping of parameter names to indexes, grouped by subsystem
