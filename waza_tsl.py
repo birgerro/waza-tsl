@@ -8,6 +8,7 @@ Created: 2022-08-19
 import json
 from copy import deepcopy
 from enum import Enum, IntEnum
+from math import log10, log2
 
 # Clear patch is the default setting after CLEAR from the app's WRITE menu
 CLEAR_PATCH = "clear_patch.json" # Patch with binary data as ints
@@ -131,6 +132,14 @@ class Q_VALUE(IntEnum):
     _4  = 3 # 4
     _8  = 4 # 8
     _16 = 5 # 16
+# alternatively, use function to get closest value to a numerical frequency:
+def q_value(value):
+    if value < 0.5:
+        return 0
+    elif value > 16:
+        return 5
+    else:
+        return round(log2(value))+1
 
 class LOW_CUT(IntEnum):
     FLAT     =  0
@@ -152,6 +161,14 @@ class LOW_CUT(IntEnum):
     _500Hz   = 15 # 500 Hz
     _630Hz   = 16 # 630 Hz
     _800Hz   = 17 # 800 Hz
+# alternatively, use function to get closest value to a numerical frequency:
+def low_cut(frequency):
+    if frequency < 20:
+        return 0   # FLAT
+    elif frequency > 800:
+        return 17  # 800Hz
+    else:
+        return  round(log10(frequency)*10) - 12
 
 class MID_FREQ(IntEnum):
     _20Hz    =  0 # 20.0 Hz
@@ -182,6 +199,14 @@ class MID_FREQ(IntEnum):
     _6p30kHz = 25 # 6.30 kHz
     _8kHz    = 26 # 8.00 kHz
     _10kHz   = 27 # 10.0 kHz
+# alternatively, use function to get closest value to a numerical frequency:
+def mid_freq(frequency):
+    if frequency < 20:
+        return 0   # 20Hz
+    elif frequency > 10e3:
+        return 27  # 10kHz
+    else:
+        return  round(log10(frequency)*10) - 13
 
 class HIGH_CUT(IntEnum):
     _630Hz   =  0 # 630 Hz
@@ -200,6 +225,14 @@ class HIGH_CUT(IntEnum):
     _12p5kHz = 13 # 12.5 kHz
     _FLAT    = 14
     FLAT     = 14
+# alternatively, use function to get closest value to a numerical frequency:
+def high_cut(frequency):
+    if frequency < 630:
+        return 0   # 630Hz
+    elif frequency > 12.5e3:
+        return 14  # FLAT
+    else:
+        return  round(log10(frequency)*10) - 28
 
 
 class Patch:
