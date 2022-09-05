@@ -190,3 +190,23 @@ def make_mod_fx_graphic_eq():
                g1khz=0,g2khz=-4,g4khz=-8,g8khz=-12,g16khz=-16)
     f.append(p2)
     f.save()
+
+def make_mod_fx_parametric_eq():
+    from waza_tsl import TSLFile, Patch, Color, MOD_type, FX_type, Q_VALUE
+    from waza_tsl import LOW_CUT, MID_FREQ, HIGH_CUT
+    f = TSLFile("File with parametric eq")
+    p1 = Patch("R MOD PARAM EQ enum")
+    p1.set_mod(MOD_type.PARAMETRIC_EQ,Color.RED,level=+3,
+               low_cut=LOW_CUT._FLAT,low_gain=-1,
+               low_mid_frequency=MID_FREQ._630Hz,low_mid_gain=-4,low_mid_q=Q_VALUE._05,
+               high_mid_frequency=MID_FREQ._2p50kHz,high_mid_gain=-5,high_mid_q=Q_VALUE._4,
+               high_cut=HIGH_CUT._8kHz,high_gain=+1)
+    f.append(p1)
+    p2 = Patch("G FX PARAM EQ enum")
+    p2.set_fx(FX_type.PARAMETRIC_EQ,Color.GREEN,level=+2,
+               low_cut=LOW_CUT._100Hz,low_gain=-2,
+               low_mid_frequency=MID_FREQ._800Hz,low_mid_gain=-5,low_mid_q=Q_VALUE._2,
+               high_mid_frequency=MID_FREQ._1p60kHz,high_mid_gain=-4,high_mid_q=Q_VALUE._16,
+               high_cut=HIGH_CUT._FLAT,high_gain=+2)
+    f.append(p2)
+    f.save()

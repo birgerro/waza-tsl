@@ -78,6 +78,7 @@ class MOD_type(Enum):
     COMP          =  3
     LIMITER       =  4
     GRAPHIC_EQ    =  6
+    PARAMETRIC_EQ =  7
 
 FX_type = MOD_type # alternate name
 
@@ -122,6 +123,83 @@ class RATIO_type(IntEnum): # at least LIMITER:RATIO
     R12to1  = 15 # 12:1
     R20to1  = 16 # 20:1
     Rinfto1 = 17 # inf:1
+
+class Q_VALUE(IntEnum):
+    _05 = 0 # 0.5
+    _1  = 1 # 1
+    _2  = 2 # 2
+    _4  = 3 # 4
+    _8  = 4 # 8
+    _16 = 5 # 16
+
+class LOW_CUT(IntEnum):
+    FLAT     =  0
+    _FLAT    =  0
+    _20Hz    =  1 # 20.0 Hz
+    _25Hz    =  2 # 25.0 Hz
+    _31p5Hz  =  3 # 31.5 Hz
+    _40Hz    =  4 # 40.0 Hz
+    _50Hz    =  5 # 50.0 Hz
+    _63Hz    =  6 # 63.0 Hz
+    _80Hz    =  7 # 80.0 Hz
+    _100Hz   =  8 # 100 Hz
+    _125Hz   =  9 # 125 Hz
+    _160Hz   = 10 # 160 Hz
+    _200Hz   = 11 # 200 Hz
+    _250Hz   = 12 # 250 Hz
+    _315Hz   = 13 # 315 Hz
+    _400Hz   = 14 # 400 Hz
+    _500Hz   = 15 # 500 Hz
+    _630Hz   = 16 # 630 Hz
+    _800Hz   = 17 # 800 Hz
+
+class MID_FREQ(IntEnum):
+    _20Hz    =  0 # 20.0 Hz
+    _25Hz    =  1 # 25.0 Hz
+    _31p5Hz  =  2 # 31.5 Hz
+    _40Hz    =  3 # 40.0 Hz
+    _50Hz    =  4 # 50.0 Hz
+    _63Hz    =  5 # 63.0 Hz
+    _80Hz    =  6 # 80.0 Hz
+    _100Hz   =  7 # 100 Hz
+    _125Hz   =  8 # 125 Hz
+    _160Hz   =  9 # 160 Hz
+    _200Hz   = 10 # 200 Hz
+    _250Hz   = 11 # 250 Hz
+    _315Hz   = 12 # 315 Hz
+    _400Hz   = 13 # 400 Hz
+    _500Hz   = 14 # 500 Hz
+    _630Hz   = 15 # 630 Hz
+    _800Hz   = 16 # 800 Hz
+    _1kHz    = 17 # 1.00 kHz
+    _1p25kHz = 18 # 1.25 kHz
+    _1p60kHz = 19 # 1.60 kHz
+    _2kHz    = 20 # 2.00 kHz
+    _2p50kHz = 21 # 2.50 kHz
+    _3p15kHz = 22 # 3.15 kHz
+    _4kHz    = 23 # 4.00 kHz
+    _5kHz    = 24 # 5.00 kHz
+    _6p30kHz = 25 # 6.30 kHz
+    _8kHz    = 26 # 8.00 kHz
+    _10kHz   = 27 # 10.0 kHz
+
+class HIGH_CUT(IntEnum):
+    _630Hz   =  0 # 630 Hz
+    _800Hz   =  1 # 800 Hz
+    _1kHz    =  2 # 1.00 kHz
+    _1p25kHz =  3 # 1.25 kHz
+    _1p60kHz =  4 # 1.60 kHz
+    _2kHz    =  5 # 2.00 kHz
+    _2p50kHz =  6 # 2.50 kHz
+    _3p15kHz =  7 # 3.15 kHz
+    _4kHz    =  8 # 4.00 kHz
+    _5kHz    =  9 # 5.00 kHz
+    _6p30kHz = 10 # 6.30 kHz
+    _8kHz    = 11 # 8.00 kHz
+    _10kHz   = 12 # 10.0 kHz
+    _12p5kHz = 13 # 12.5 kHz
+    _FLAT    = 14
+    FLAT     = 14
 
 
 class Patch:
@@ -309,6 +387,18 @@ KNOWN_INDEXES = {
     248 : ["MOD:GRAPHIC EQ:G8kHz",  "scaled", [20,1,0,40]], # Input: -20 -- +20
     249 : ["MOD:GRAPHIC EQ:G16kHz", "scaled", [20,1,0,40]], # Input: -20 -- +20
     250 : ["MOD:GRAPHIC EQ:LEVEL",  "scaled", [20,1,0,40]], # Input: -20 -- +20
+    # MOD:PARAMETRIC EQ:
+    252 : ["MOD:PARAMETRIC EQ:LOW CUT",            "minmax", [0,17]],
+    253 : ["MOD:PARAMETRIC EQ:LOW GAIN",           "scaled", [20,1,0,40]], # Input: -20 -- +20
+    254 : ["MOD:PARAMETRIC EQ:LOW MID FREQUENCY",  "minmax", [0,27]],
+    255 : ["MOD:PARAMETRIC EQ:LOW MID Q",          "listed", [0,1,2,3,4,5]],
+    256 : ["MOD:PARAMETRIC EQ:LOW MID GAIN",       "scaled", [20,1,0,40]], # Input: -20 -- +20
+    257 : ["MOD:PARAMETRIC EQ:HIGH MID FREQUENCY", "minmax", [0,27]],
+    258 : ["MOD:PARAMETRIC EQ:HIGH MID Q",         "listed", [0,1,2,3,4,5]],
+    259 : ["MOD:PARAMETRIC EQ:HIGH MID GAIN",      "scaled", [20,1,0,40]], # Input: -20 -- +20
+    260 : ["MOD:PARAMETRIC EQ:HIGH GAIN",          "scaled", [20,1,0,40]], # Input: -20 -- +20
+    261 : ["MOD:PARAMETRIC EQ:HIGH CUT",           "minmax", [0,14]],
+    262 : ["MOD:PARAMETRIC EQ:LEVEL",              "scaled", [20,1,0,40]], # Input: -20 -- +20
 
     2326 : ["DELAY OR FX",    "listed", [0,1]], # 0=DELAY, 1=FX
     # FX:
@@ -367,6 +457,18 @@ KNOWN_INDEXES = {
     516 : ["FX:GRAPHIC EQ:G8kHz",  "scaled", [20,1,0,40]], # Input: -20 -- +20
     517 : ["FX:GRAPHIC EQ:G16kHz", "scaled", [20,1,0,40]], # Input: -20 -- +20
     518 : ["FX:GRAPHIC EQ:LEVEL",  "scaled", [20,1,0,40]], # Input: -20 -- +20
+    # FX:PARAMETRIC EQ:
+    520 : ["FX:PARAMETRIC EQ:LOW CUT",            "minmax", [0,17]],
+    521 : ["FX:PARAMETRIC EQ:LOW GAIN",           "scaled", [20,1,0,40]], # Input: -20 -- +20
+    522 : ["FX:PARAMETRIC EQ:LOW MID FREQUENCY",  "minmax", [0,27]],
+    523 : ["FX:PARAMETRIC EQ:LOW MID Q",          "listed", [0,1,2,3,4,5]],
+    524 : ["FX:PARAMETRIC EQ:LOW MID GAIN",       "scaled", [20,1,0,40]], # Input: -20 -- +20
+    525 : ["FX:PARAMETRIC EQ:HIGH MID FREQUENCY", "minmax", [0,27]],
+    526 : ["FX:PARAMETRIC EQ:HIGH MID Q",         "listed", [0,1,2,3,4,5]],
+    527 : ["FX:PARAMETRIC EQ:HIGH MID GAIN",      "scaled", [20,1,0,40]], # Input: -20 -- +20
+    528 : ["FX:PARAMETRIC EQ:HIGH GAIN",          "scaled", [20,1,0,40]], # Input: -20 -- +20
+    529 : ["FX:PARAMETRIC EQ:HIGH CUT",           "minmax", [0,14]],
+    530 : ["FX:PARAMETRIC EQ:LEVEL",              "scaled", [20,1,0,40]], # Input: -20 -- +20
 }
 
 # Make a mapping of parameter names to indexes, grouped by subsystem
