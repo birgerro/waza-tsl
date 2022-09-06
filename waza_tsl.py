@@ -38,7 +38,7 @@ class TSLFile:
         json.dump(filedata,open(filename,'w'),separators=(',',':') )
 
 
-class AMP_type(Enum):
+class AMP(Enum):
     ACOUSTIC =  1
     CLEAN    =  8
     CRUNCH   = 11
@@ -50,7 +50,7 @@ class Color(Enum):
     RED    = 1
     YELLOW = 2
 
-class BST_type(Enum):
+class BST(Enum):
     MID_BOOST    =  0
     CLEAN_BOOST  =  1
     TREBLE_BOOST =  2
@@ -72,7 +72,7 @@ class BST_type(Enum):
     SIXTIES_FUZZ = 19 # '60s FUZZ
     MUFF_FUZZ    = 20
 
-class MOD_type(Enum):
+class MOD(Enum):
     T_WAH         =  0 # T.WAH
     AUTO_WAH      =  1
     PEDAL_WAH     =  2
@@ -81,9 +81,9 @@ class MOD_type(Enum):
     GRAPHIC_EQ    =  6
     PARAMETRIC_EQ =  7
 
-FX_type = MOD_type # alternate name
+FX = MOD # alternate name
 
-class PEDAL_type(IntEnum):
+class PEDAL(IntEnum):
     CRY_WAH   = 0
     VO_WAH    = 1
     FAT_WAH   = 2
@@ -91,7 +91,7 @@ class PEDAL_type(IntEnum):
     SEVEN_WAH = 4 # 7STRING WAH
     RESO_WAH  = 5
 
-class COMP_type(IntEnum):
+class COMP(IntEnum):
     BOSS_COMP = 0
     HI_BAND   = 1 # HI-BAND
     LIGHT     = 2
@@ -100,12 +100,12 @@ class COMP_type(IntEnum):
     FAT       = 5
     MILD      = 6
 
-class LIMITER_type(IntEnum):
+class LIMITER(IntEnum):
     BOSS_LIMITER = 0
     RACK_160D    = 1
     VTG_RACK_U   = 2
 
-class RATIO_type(IntEnum): # at least LIMITER:RATIO
+class RATIO(IntEnum): # at least LIMITER:RATIO
     _1to1   =  0 # 1:1
     _1p2to1 =  1 # 1.2:1
     _1p4to1 =  2 # 1.4:1
@@ -294,7 +294,7 @@ class Patch:
 
     def set_amp(self,amp_type,gain=None,presence=None,volume=None,
                               bass=None,middle=None,treble=None):
-        if isinstance(amp_type, AMP_type):
+        if isinstance(amp_type, AMP):
             self[81] = amp_type.value
         else:
             raise TypeError(f"amp_type must be an AMP_type, not '{type(amp_type)}'")
@@ -307,7 +307,7 @@ class Patch:
 
     def set_bst(self,bst_type,color,drive=None,bottom=None,tone=None,
                 solo_sw=None,solo_level=None,effect_level=None,direct_mix=None):
-        if isinstance(bst_type, BST_type):
+        if isinstance(bst_type, BST):
             self[49] = bst_type.value
         else:
             raise TypeError(f"bst_type must be an BST_type, not '{type(bst_type)}'")
@@ -325,7 +325,7 @@ class Patch:
         self[2325] = 0 # BST, not MOD
 
     def set_mod(self,mod_type,color,**kw):
-        if isinstance(mod_type, MOD_type):
+        if isinstance(mod_type, MOD):
             self[193] = mod_type.value
         else:
             raise TypeError(f"mod_type must be an MOD_type, not '{type(mod_type)}'")
@@ -343,7 +343,7 @@ class Patch:
         raise NotImplementedError
 
     def set_fx(self,fx_type,color,**kw):
-        if isinstance(fx_type, FX_type):
+        if isinstance(fx_type, FX):
             self[461] = fx_type.value
         else:
             raise TypeError(f"fx_type must be an FX_type, not '{type(fx_type)}'")
