@@ -106,24 +106,48 @@ class LIMITER_type(IntEnum):
     VTG_RACK_U   = 2
 
 class RATIO_type(IntEnum): # at least LIMITER:RATIO
-    R1to1   =  0 # 1:1
-    R1p2to1 =  1 # 1.2:1
-    R1p4to1 =  2 # 1.4:1
-    R1p6to1 =  3 # 1.6:1
-    R1p8to1 =  4 # 1.8:1
-    R2to1   =  5 # 2:1
-    R2p3to1 =  6 # 2.3:1
-    R2p6to1 =  7 # 2.6:1
-    R3to1   =  8 # 3:1
-    R3p5to1 =  9 # 3.5:1
-    R4to1   = 10 # 4:1
-    R5to1   = 11 # 5:1
-    R6to1   = 12 # 6:1
-    R8to1   = 13 # 8:1
-    R10to1  = 14 # 10:1
-    R12to1  = 15 # 12:1
-    R20to1  = 16 # 20:1
-    Rinfto1 = 17 # inf:1
+    _1to1   =  0 # 1:1
+    _1p2to1 =  1 # 1.2:1
+    _1p4to1 =  2 # 1.4:1
+    _1p6to1 =  3 # 1.6:1
+    _1p8to1 =  4 # 1.8:1
+    _2to1   =  5 # 2:1
+    _2p3to1 =  6 # 2.3:1
+    _2p6to1 =  7 # 2.6:1
+    _3to1   =  8 # 3:1
+    _3p5to1 =  9 # 3.5:1
+    _4to1   = 10 # 4:1
+    _5to1   = 11 # 5:1
+    _6to1   = 12 # 6:1
+    _8to1   = 13 # 8:1
+    _10to1  = 14 # 10:1
+    _12to1  = 15 # 12:1
+    _20to1  = 16 # 20:1
+    _infto1 = 17 # inf:1
+# alternatively, use function to get closest value to a numerical frequency:
+class ratio:
+    def __getitem__(self,ratio):
+        if type(ratio) is not slice:
+            raise TypeError("Please use n:1 syntax")
+        n = ratio.start
+        d = ratio.stop
+        if d != 1:
+            n /= d
+        if n < 1:
+            return 0
+        numerators = [1,1.2,1.4,1.6,1.8,2,2.3,2.6,3,3.5,4,5,6,8,10,12,20]
+        for i in range(len(numerators)-1):
+            v1,v2 = numerators[i:i+2]
+            if v1 <= n <= v2:
+                if (n-v1)/(v2-v1) < 0.5:
+                    return i
+                else:
+                    return i+1
+        # ratio > 20:1
+        return 17
+ratio = ratio()
+inf = float("inf")
+# Usage: ratio[2.3:1]
 
 class Q_VALUE(IntEnum):
     _05 = 0 # 0.5

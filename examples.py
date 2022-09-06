@@ -148,32 +148,41 @@ def make_mod_fx_comp():
     f.save()
 
 def make_mod_fx_limiter():
-    from waza_tsl import TSLFile, Patch, Color, MOD_type, FX_type, LIMITER_type, RATIO_type
+    from waza_tsl import TSLFile, Patch, Color, MOD_type, FX_type, LIMITER_type
+    from waza_tsl import RATIO_type, ratio, inf
     f = TSLFile("File with limiter types")
     p1 = Patch("G MOD BOSS LIMITER")
     p1.set_mod(MOD_type.LIMITER,Color.GREEN,type=LIMITER_type.BOSS_LIMITER,
-               threshold=11,attack=31,release=51,level=81,ratio=RATIO_type.R10to1)
+               threshold=11,attack=31,release=51,level=81,ratio=RATIO_type._10to1)
     f.append(p1)
     p2 = Patch("R MOD RACK 160D LIMITER")
     p2.set_mod(MOD_type.LIMITER,Color.RED,type=LIMITER_type.RACK_160D,
-               threshold=12,attack=32,release=52,level=82,ratio=RATIO_type.Rinfto1)
+               threshold=12,attack=32,release=52,level=82,ratio=RATIO_type._infto1)
     f.append(p2)
     p3 = Patch("Y MOD VTG RACK U LIMITER")
     p3.set_mod(MOD_type.LIMITER,Color.YELLOW,type=LIMITER_type.VTG_RACK_U,
-               threshold=13,attack=33,release=53,level=83,ratio=RATIO_type.R1p4to1)
+               threshold=13,attack=33,release=53,level=83,ratio=RATIO_type._1p4to1)
     f.append(p3)
     p4 = Patch("G FX VTG RACK U LIMITER")
     p4.set_fx(FX_type.LIMITER,Color.GREEN,type=LIMITER_type.VTG_RACK_U,
-               threshold=14,attack=34,release=54,level=84,ratio=RATIO_type.R2p6to1)
+               threshold=14,attack=34,release=54,level=84,ratio=RATIO_type._2p6to1)
     f.append(p4)
     p5 = Patch("R FX BOSS LIMITER")
     p5.set_fx(FX_type.LIMITER,Color.RED,type=LIMITER_type.BOSS_LIMITER,
-               threshold=15,attack=35,release=55,level=85,ratio=RATIO_type.R3p5to1)
+               threshold=15,attack=35,release=55,level=85,ratio=RATIO_type._3p5to1)
     f.append(p5)
     p6 = Patch("Y FX RACK 160D LIMITER")
     p6.set_fx(FX_type.LIMITER,Color.YELLOW,type=LIMITER_type.RACK_160D,
-               threshold=16,attack=36,release=56,level=86,ratio=RATIO_type.R6to1)
+               threshold=16,attack=36,release=56,level=86,ratio=RATIO_type._6to1)
     f.append(p6)
+    p7 = Patch("R MOD func LIMITER RACK 160D") # same as p2
+    p7.set_mod(MOD_type.LIMITER,Color.RED,type=LIMITER_type.RACK_160D,
+               threshold=12,attack=32,release=52,level=82,ratio=ratio[inf:1])
+    f.append(p7)
+    p8 = Patch("R FX func BOSS LIMITER") # same as p5
+    p8.set_fx(FX_type.LIMITER,Color.RED,type=LIMITER_type.BOSS_LIMITER,
+               threshold=15,attack=35,release=55,level=85,ratio=ratio[3.5:1])
+    f.append(p8)
     f.save()
 
 def make_mod_fx_graphic_eq():
