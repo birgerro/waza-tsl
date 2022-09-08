@@ -81,6 +81,7 @@ class MOD(Enum):
     GRAPHIC_EQ    =  6
     PARAMETRIC_EQ =  7
     GUITAR_SIM    =  9
+    SLOW_GEAR     = 10
 
 FX = MOD # alternate name
 
@@ -473,6 +474,10 @@ KNOWN_INDEXES = {
     272 : ["MOD:GUITAR SIM:HIGH",  "scaled", [50,1,0,100]], # Input: -50 -- +50
     273 : ["MOD:GUITAR SIM:LEVEL", "minmax", [0,100]],
     274 : ["MOD:GUITAR SIM:BODY",  "minmax", [0,100]],
+    # MOD:SLOW GEAR:
+    276 : ["MOD:SLOW GEAR:SENS",      "minmax", [0,100]],
+    277 : ["MOD:SLOW GEAR:RISE TIME", "minmax", [0,100]],
+    278 : ["MOD:SLOW GEAR:LEVEL",     "minmax", [0,100]],
 
     2326 : ["DELAY OR FX",    "listed", [0,1]], # 0=DELAY, 1=FX
     # FX:
@@ -549,6 +554,10 @@ KNOWN_INDEXES = {
     540 : ["FX:GUITAR SIM:HIGH",  "scaled", [50,1,0,100]], # Input: -50 -- +50
     541 : ["FX:GUITAR SIM:LEVEL", "minmax", [0,100]],
     542 : ["FX:GUITAR SIM:BODY",  "minmax", [0,100]],
+    # FX:SLOW GEAR:
+    544 : ["FX:SLOW GEAR:SENS",      "minmax", [0,100]],
+    545 : ["FX:SLOW GEAR:RISE TIME", "minmax", [0,100]],
+    546 : ["FX:SLOW GEAR:LEVEL",     "minmax", [0,100]],
 }
 
 # Make a mapping of parameter names to indexes, grouped by subsystem

@@ -254,3 +254,17 @@ def make_mod_fx_guitar_sim():
                low=+44,high=-44,level=25,body=12)
     f.append(p4)
     f.save()
+
+def make_mod_fx_slow_gear():
+    from waza_tsl import TSLFile, Patch, Color, MOD, FX
+    f = TSLFile("File with slow gear")
+    p1 = Patch("R MOD SLOW GEAR")
+    p1.set_mod(MOD.SLOW_GEAR,Color.RED,sens=22,rise_time=33,level=44)
+    f.append(p1)
+    p2 = Patch("Y FX SLOW GEAR")
+    p2.set_fx(FX.SLOW_GEAR,Color.YELLOW,sens=55,rise_time=66,level=77)
+    f.append(p2)
+    p3 = Patch("G FX SLOW GEAR")
+    p3.set_fx(FX.SLOW_GEAR,Color.GREEN,sens=88,rise_time=99,level=11)
+    f.append(p3)
+    f.save()
