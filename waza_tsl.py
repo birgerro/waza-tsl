@@ -80,6 +80,7 @@ class MOD(Enum):
     LIMITER       =  4
     GRAPHIC_EQ    =  6
     PARAMETRIC_EQ =  7
+    GUITAR_SIM    =  9
 
 FX = MOD # alternate name
 
@@ -257,6 +258,16 @@ def high_cut(frequency):
         return 14  # FLAT
     else:
         return  round(log10(frequency)*10) - 28
+
+class GUITAR_SIM(IntEnum):
+    S_H      = 0 # S->H
+    H_S      = 1 # H->S
+    H_HF     = 2 # H->HF
+    S_HOLLOW = 3 # S->HOLLOW
+    H_HOLLOW = 4 # H->HOLLOW
+    S_AC     = 5 # S->AC
+    H_AC     = 6 # H->AC
+    P_AC     = 7 # P->AC
 
 
 class Patch:
@@ -456,6 +467,12 @@ KNOWN_INDEXES = {
     260 : ["MOD:PARAMETRIC EQ:HIGH GAIN",          "scaled", [20,1,0,40]], # Input: -20 -- +20
     261 : ["MOD:PARAMETRIC EQ:HIGH CUT",           "minmax", [0,14]],
     262 : ["MOD:PARAMETRIC EQ:LEVEL",              "scaled", [20,1,0,40]], # Input: -20 -- +20
+    # MOD:GUITAR SIM:
+    270 : ["MOD:GUITAR SIM:TYPE",  "listed", [0,1,2,3,4,5,6,7]],
+    271 : ["MOD:GUITAR SIM:LOW",   "scaled", [50,1,0,100]], # Input: -50 -- +50
+    272 : ["MOD:GUITAR SIM:HIGH",  "scaled", [50,1,0,100]], # Input: -50 -- +50
+    273 : ["MOD:GUITAR SIM:LEVEL", "minmax", [0,100]],
+    274 : ["MOD:GUITAR SIM:BODY",  "minmax", [0,100]],
 
     2326 : ["DELAY OR FX",    "listed", [0,1]], # 0=DELAY, 1=FX
     # FX:
@@ -526,6 +543,12 @@ KNOWN_INDEXES = {
     528 : ["FX:PARAMETRIC EQ:HIGH GAIN",          "scaled", [20,1,0,40]], # Input: -20 -- +20
     529 : ["FX:PARAMETRIC EQ:HIGH CUT",           "minmax", [0,14]],
     530 : ["FX:PARAMETRIC EQ:LEVEL",              "scaled", [20,1,0,40]], # Input: -20 -- +20
+    # FX:GUITAR SIM:
+    538 : ["FX:GUITAR SIM:TYPE",  "listed", [0,1,2,3,4,5,6,7]],
+    539 : ["FX:GUITAR SIM:LOW",   "scaled", [50,1,0,100]], # Input: -50 -- +50
+    540 : ["FX:GUITAR SIM:HIGH",  "scaled", [50,1,0,100]], # Input: -50 -- +50
+    541 : ["FX:GUITAR SIM:LEVEL", "minmax", [0,100]],
+    542 : ["FX:GUITAR SIM:BODY",  "minmax", [0,100]],
 }
 
 # Make a mapping of parameter names to indexes, grouped by subsystem

@@ -233,3 +233,24 @@ def make_mod_fx_parametric_eq():
                high_cut=high_cut(12.5e3),high_gain=0)
     f.append(p4)
     f.save()
+
+def make_mod_fx_guitar_sim():
+    from waza_tsl import TSLFile, Patch, Color, MOD, FX, GUITAR_SIM
+    f = TSLFile("File with guitar sim")
+    p1 = Patch("MOD S->H GUITAR SIM")
+    p1.set_mod(MOD.GUITAR_SIM,Color.GREEN,type=GUITAR_SIM.S_H,
+               low=-33,high=+22,level=55)
+    f.append(p1)
+    p2 = Patch("MOD H->HOLLOW GUITAR SIM")
+    p2.set_mod(MOD.GUITAR_SIM,Color.RED,type=GUITAR_SIM.H_HOLLOW,
+               low=-45,high=-35,level=44,body=66)
+    f.append(p2)
+    p3 = Patch("FX S->AC GUITAR SIM")
+    p3.set_fx(FX.GUITAR_SIM,Color.YELLOW,type=GUITAR_SIM.S_AC,
+               low=+33,high=+44,level=55,body=88)
+    f.append(p3)
+    p4 = Patch("FX P->AC GUITAR SIM")
+    p4.set_fx(FX.GUITAR_SIM,Color.GREEN,type=GUITAR_SIM.P_AC,
+               low=+44,high=-44,level=25,body=12)
+    f.append(p4)
+    f.save()
