@@ -190,13 +190,13 @@ def make_mod_fx_graphic_eq():
     f = TSLFile("File with graphic eq")
     p1 = Patch("R MOD GRAPHIC EQ")
     p1.set_mod(MOD.GRAPHIC_EQ,Color.RED,level=+20,
-               g31hz=-20,g62hz=-16,g125hz=-12,g250hz=-8,g500hz=-4,
-               g1khz=0,g2khz=+4,g4khz=+8,g8khz=+12,g16khz=+16)
+               _31hz=-20, _62hz=-16, _125hz=-12, _250hz=-8, _500hz=-4,
+               _1khz=0, _2khz=+4, _4khz=+8, _8khz=+12, _16khz=+16)
     f.append(p1)
     p2 = Patch("Y FX GRAPHIC EQ")
     p2.set_fx(FX.GRAPHIC_EQ,Color.YELLOW,level=-20,
-               g31hz=+20,g62hz=+16,g125hz=+12,g250hz=+8,g500hz=+4,
-               g1khz=0,g2khz=-4,g4khz=-8,g8khz=-12,g16khz=-16)
+               _31hz=+20, _62hz=+16, _125hz=+12, _250hz=+8, _500hz=+4,
+               _1khz=0, _2khz=-4, _4khz=-8, _8khz=-12, _16khz=-16)
     f.append(p2)
     f.save()
 

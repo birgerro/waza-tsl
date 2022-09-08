@@ -433,16 +433,16 @@ KNOWN_INDEXES = {
     237 : ["MOD:LIMITER:RELEASE",   "minmax", [0,100]],
     238 : ["MOD:LIMITER:LEVEL",     "minmax", [0,100]],
     # MOD:GRAPHIC EQ:
-    240 : ["MOD:GRAPHIC EQ:G31Hz",  "scaled", [20,1,0,40]], # Input: -20 -- +20
-    241 : ["MOD:GRAPHIC EQ:G62Hz",  "scaled", [20,1,0,40]], # Input: -20 -- +20
-    242 : ["MOD:GRAPHIC EQ:G125Hz", "scaled", [20,1,0,40]], # Input: -20 -- +20
-    243 : ["MOD:GRAPHIC EQ:G250Hz", "scaled", [20,1,0,40]], # Input: -20 -- +20
-    244 : ["MOD:GRAPHIC EQ:G500Hz", "scaled", [20,1,0,40]], # Input: -20 -- +20
-    245 : ["MOD:GRAPHIC EQ:G1kHz",  "scaled", [20,1,0,40]], # Input: -20 -- +20
-    246 : ["MOD:GRAPHIC EQ:G2kHz",  "scaled", [20,1,0,40]], # Input: -20 -- +20
-    247 : ["MOD:GRAPHIC EQ:G4kHz",  "scaled", [20,1,0,40]], # Input: -20 -- +20
-    248 : ["MOD:GRAPHIC EQ:G8kHz",  "scaled", [20,1,0,40]], # Input: -20 -- +20
-    249 : ["MOD:GRAPHIC EQ:G16kHz", "scaled", [20,1,0,40]], # Input: -20 -- +20
+    240 : ["MOD:GRAPHIC EQ:31Hz",  "scaled", [20,1,0,40]], # Input: -20 -- +20
+    241 : ["MOD:GRAPHIC EQ:62Hz",  "scaled", [20,1,0,40]], # Input: -20 -- +20
+    242 : ["MOD:GRAPHIC EQ:125Hz", "scaled", [20,1,0,40]], # Input: -20 -- +20
+    243 : ["MOD:GRAPHIC EQ:250Hz", "scaled", [20,1,0,40]], # Input: -20 -- +20
+    244 : ["MOD:GRAPHIC EQ:500Hz", "scaled", [20,1,0,40]], # Input: -20 -- +20
+    245 : ["MOD:GRAPHIC EQ:1kHz",  "scaled", [20,1,0,40]], # Input: -20 -- +20
+    246 : ["MOD:GRAPHIC EQ:2kHz",  "scaled", [20,1,0,40]], # Input: -20 -- +20
+    247 : ["MOD:GRAPHIC EQ:4kHz",  "scaled", [20,1,0,40]], # Input: -20 -- +20
+    248 : ["MOD:GRAPHIC EQ:8kHz",  "scaled", [20,1,0,40]], # Input: -20 -- +20
+    249 : ["MOD:GRAPHIC EQ:16kHz", "scaled", [20,1,0,40]], # Input: -20 -- +20
     250 : ["MOD:GRAPHIC EQ:LEVEL",  "scaled", [20,1,0,40]], # Input: -20 -- +20
     # MOD:PARAMETRIC EQ:
     252 : ["MOD:PARAMETRIC EQ:LOW CUT",            "minmax", [0,17]],
@@ -503,16 +503,16 @@ KNOWN_INDEXES = {
     505 : ["FX:LIMITER:RELEASE",   "minmax", [0,100]],
     506 : ["FX:LIMITER:LEVEL",     "minmax", [0,100]],
     # FX:GRAPHIC EQ:
-    508 : ["FX:GRAPHIC EQ:G31Hz",  "scaled", [20,1,0,40]], # Input: -20 -- +20
-    509 : ["FX:GRAPHIC EQ:G62Hz",  "scaled", [20,1,0,40]], # Input: -20 -- +20
-    510 : ["FX:GRAPHIC EQ:G125Hz", "scaled", [20,1,0,40]], # Input: -20 -- +20
-    511 : ["FX:GRAPHIC EQ:G250Hz", "scaled", [20,1,0,40]], # Input: -20 -- +20
-    512 : ["FX:GRAPHIC EQ:G500Hz", "scaled", [20,1,0,40]], # Input: -20 -- +20
-    513 : ["FX:GRAPHIC EQ:G1kHz",  "scaled", [20,1,0,40]], # Input: -20 -- +20
-    514 : ["FX:GRAPHIC EQ:G2kHz",  "scaled", [20,1,0,40]], # Input: -20 -- +20
-    515 : ["FX:GRAPHIC EQ:G4kHz",  "scaled", [20,1,0,40]], # Input: -20 -- +20
-    516 : ["FX:GRAPHIC EQ:G8kHz",  "scaled", [20,1,0,40]], # Input: -20 -- +20
-    517 : ["FX:GRAPHIC EQ:G16kHz", "scaled", [20,1,0,40]], # Input: -20 -- +20
+    508 : ["FX:GRAPHIC EQ:31Hz",  "scaled", [20,1,0,40]], # Input: -20 -- +20
+    509 : ["FX:GRAPHIC EQ:62Hz",  "scaled", [20,1,0,40]], # Input: -20 -- +20
+    510 : ["FX:GRAPHIC EQ:125Hz", "scaled", [20,1,0,40]], # Input: -20 -- +20
+    511 : ["FX:GRAPHIC EQ:250Hz", "scaled", [20,1,0,40]], # Input: -20 -- +20
+    512 : ["FX:GRAPHIC EQ:500Hz", "scaled", [20,1,0,40]], # Input: -20 -- +20
+    513 : ["FX:GRAPHIC EQ:1kHz",  "scaled", [20,1,0,40]], # Input: -20 -- +20
+    514 : ["FX:GRAPHIC EQ:2kHz",  "scaled", [20,1,0,40]], # Input: -20 -- +20
+    515 : ["FX:GRAPHIC EQ:4kHz",  "scaled", [20,1,0,40]], # Input: -20 -- +20
+    516 : ["FX:GRAPHIC EQ:8kHz",  "scaled", [20,1,0,40]], # Input: -20 -- +20
+    517 : ["FX:GRAPHIC EQ:16kHz", "scaled", [20,1,0,40]], # Input: -20 -- +20
     518 : ["FX:GRAPHIC EQ:LEVEL",  "scaled", [20,1,0,40]], # Input: -20 -- +20
     # FX:PARAMETRIC EQ:
     520 : ["FX:PARAMETRIC EQ:LOW CUT",            "minmax", [0,17]],
@@ -542,4 +542,6 @@ for index,(subsystems,_,_) in KNOWN_INDEXES.items():
         current = current[name]
     # convert the actual parameter names to lower case:
     param = subsystems[-1].lower().translate(as_identifier)
+    if param[0].isdigit(): # First character cannot be a digit
+        param = '_'+param
     current[param] = index
