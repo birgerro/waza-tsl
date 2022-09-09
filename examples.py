@@ -283,3 +283,16 @@ def make_mod_fx_wave_synth():
                synth_level=62,direct_mix=72)
     f.append(p2)
     f.save()
+
+def make_mod_fx_octave():
+    from waza_tsl import TSLFile, Patch, Color, MOD, FX, RANGE
+    f = TSLFile("File with octave")
+    p1 = Patch("R MOD OCTAVE")
+    p1.set_mod(MOD.OCTAVE,Color.RED,
+               range=RANGE._2,effect_level=33,direct_mix=4)
+    f.append(p1)
+    p2 = Patch("Y FX OCTAVE")
+    p2.set_fx(FX.OCTAVE,Color.YELLOW,
+              range=RANGE._4,effect_level=3,direct_mix=44)
+    f.append(p2)
+    f.save()

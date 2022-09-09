@@ -83,6 +83,7 @@ class MOD(Enum):
     GUITAR_SIM    =  9
     SLOW_GEAR     = 10
     WAVE_SYNTH    = 12
+    OCTAVE        = 14
 
 FX = MOD # alternate name
 
@@ -274,6 +275,12 @@ class GUITAR_SIM(IntEnum):
 class WAVE(IntEnum):
     SAW    = 0
     SQUARE = 1
+
+class RANGE(IntEnum):
+    _1 = 0
+    _2 = 1
+    _3 = 2
+    _4 = 3
 
 
 class Patch:
@@ -492,6 +499,10 @@ KNOWN_INDEXES = {
     293 : ["MOD:WAVE SYNTH:FILTER DEPTH", "minmax", [0,100]],
     294 : ["MOD:WAVE SYNTH:SYNTH LEVEL",  "minmax", [0,100]],
     295 : ["MOD:WAVE SYNTH:DIRECT MIX",   "minmax", [0,100]],
+    # MOD:OCTAVE:
+    305 : ["MOD:OCTAVE:RANGE",        "listed", [0,1,2,3]],
+    306 : ["MOD:OCTAVE:EFFECT LEVEL", "minmax", [0,100]],
+    307 : ["MOD:OCTAVE:DIRECT MIX",   "minmax", [0,100]],
 
     2326 : ["DELAY OR FX",    "listed", [0,1]], # 0=DELAY, 1=FX
     # FX:
@@ -581,6 +592,10 @@ KNOWN_INDEXES = {
     561 : ["FX:WAVE SYNTH:FILTER DEPTH", "minmax", [0,100]],
     562 : ["FX:WAVE SYNTH:SYNTH LEVEL",  "minmax", [0,100]],
     563 : ["FX:WAVE SYNTH:DIRECT MIX",   "minmax", [0,100]],
+    # FX:OCTAVE:
+    573 : ["FX:OCTAVE:RANGE",        "listed", [0,1,2,3]],
+    574 : ["FX:OCTAVE:EFFECT LEVEL", "minmax", [0,100]],
+    575 : ["FX:OCTAVE:DIRECT MIX",   "minmax", [0,100]],
 }
 
 # Make a mapping of parameter names to indexes, grouped by subsystem
