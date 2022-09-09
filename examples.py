@@ -268,3 +268,18 @@ def make_mod_fx_slow_gear():
     p3.set_fx(FX.SLOW_GEAR,Color.GREEN,sens=88,rise_time=99,level=11)
     f.append(p3)
     f.save()
+
+def make_mod_fx_wave_synth():
+    from waza_tsl import TSLFile, Patch, Color, MOD, FX, WAVE
+    f = TSLFile("File with wave synth")
+    p1 = Patch("R MOD WAVE SYNTH")
+    p1.set_mod(MOD.WAVE_SYNTH,Color.RED,wave=WAVE.SAW,cutoff=11,resonance=21,
+               filter_sens=31,filter_decay=41,filter_depth=51,
+               synth_level=61,direct_mix=71)
+    f.append(p1)
+    p2 = Patch("Y FX WAVE SYNTH")
+    p2.set_fx(FX.WAVE_SYNTH,Color.YELLOW,wave=WAVE.SQUARE,cutoff=12,resonance=22,
+               filter_sens=32,filter_decay=42,filter_depth=52,
+               synth_level=62,direct_mix=72)
+    f.append(p2)
+    f.save()

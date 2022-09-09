@@ -82,6 +82,7 @@ class MOD(Enum):
     PARAMETRIC_EQ =  7
     GUITAR_SIM    =  9
     SLOW_GEAR     = 10
+    WAVE_SYNTH    = 12
 
 FX = MOD # alternate name
 
@@ -269,6 +270,10 @@ class GUITAR_SIM(IntEnum):
     S_AC     = 5 # S->AC
     H_AC     = 6 # H->AC
     P_AC     = 7 # P->AC
+
+class WAVE(IntEnum):
+    SAW    = 0
+    SQUARE = 1
 
 
 class Patch:
@@ -478,6 +483,15 @@ KNOWN_INDEXES = {
     276 : ["MOD:SLOW GEAR:SENS",      "minmax", [0,100]],
     277 : ["MOD:SLOW GEAR:RISE TIME", "minmax", [0,100]],
     278 : ["MOD:SLOW GEAR:LEVEL",     "minmax", [0,100]],
+    # MOD:WAVE SYNTH:
+    288 : ["MOD:WAVE SYNTH:WAVE",         "listed", [0,1]],
+    289 : ["MOD:WAVE SYNTH:CUTOFF",       "minmax", [0,100]],
+    290 : ["MOD:WAVE SYNTH:RESONANCE",    "minmax", [0,100]],
+    291 : ["MOD:WAVE SYNTH:FILTER SENS",  "minmax", [0,100]],
+    292 : ["MOD:WAVE SYNTH:FILTER DECAY", "minmax", [0,100]],
+    293 : ["MOD:WAVE SYNTH:FILTER DEPTH", "minmax", [0,100]],
+    294 : ["MOD:WAVE SYNTH:SYNTH LEVEL",  "minmax", [0,100]],
+    295 : ["MOD:WAVE SYNTH:DIRECT MIX",   "minmax", [0,100]],
 
     2326 : ["DELAY OR FX",    "listed", [0,1]], # 0=DELAY, 1=FX
     # FX:
@@ -558,6 +572,15 @@ KNOWN_INDEXES = {
     544 : ["FX:SLOW GEAR:SENS",      "minmax", [0,100]],
     545 : ["FX:SLOW GEAR:RISE TIME", "minmax", [0,100]],
     546 : ["FX:SLOW GEAR:LEVEL",     "minmax", [0,100]],
+    # FX:WAVE SYNTH:
+    556 : ["FX:WAVE SYNTH:WAVE",         "listed", [0,1]],
+    557 : ["FX:WAVE SYNTH:CUTOFF",       "minmax", [0,100]],
+    558 : ["FX:WAVE SYNTH:RESONANCE",    "minmax", [0,100]],
+    559 : ["FX:WAVE SYNTH:FILTER SENS",  "minmax", [0,100]],
+    560 : ["FX:WAVE SYNTH:FILTER DECAY", "minmax", [0,100]],
+    561 : ["FX:WAVE SYNTH:FILTER DEPTH", "minmax", [0,100]],
+    562 : ["FX:WAVE SYNTH:SYNTH LEVEL",  "minmax", [0,100]],
+    563 : ["FX:WAVE SYNTH:DIRECT MIX",   "minmax", [0,100]],
 }
 
 # Make a mapping of parameter names to indexes, grouped by subsystem
