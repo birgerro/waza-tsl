@@ -121,6 +121,20 @@ KNOWN_INDEXES = {
     305 : ["MOD|OCTAVE|RANGE",        "listed", [0,1,2,3]],
     306 : ["MOD|OCTAVE|EFFECT LEVEL", "minmax", [0,100]],
     307 : ["MOD|OCTAVE|DIRECT MIX",   "minmax", [0,100]],
+    # MOD|PITCH SHIFTER:
+    309 : ["MOD|PITCH SHIFTER|VOICE",         "listed", [0,1]],
+    310 : ["MOD|PITCH SHIFTER|PS1:MODE",      "listed", [0,1,2,3]],
+    311 : ["MOD|PITCH SHIFTER|PS1:PITCH",     "scaled", [24,1,0,48]],  # Input: -24 -- +24
+    312 : ["MOD|PITCH SHIFTER|PS1:FINE",      "scaled", [50,1,0,100]], # Input: -50 -- +50
+    313 : ["MOD|PITCH SHIFTER|PS1:PRE DELAY", "2bytes", [0,300]],
+    315 : ["MOD|PITCH SHIFTER|PS1:LEVEL",     "minmax", [0,100]],
+    316 : ["MOD|PITCH SHIFTER|PS2:MODE",      "listed", [0,1,2,3]],
+    317 : ["MOD|PITCH SHIFTER|PS2:PITCH",     "scaled", [24,1,0,48]],  # Input: -24 -- +24
+    318 : ["MOD|PITCH SHIFTER|PS2:FINE",      "scaled", [50,1,0,100]], # Input: -50 -- +50
+    319 : ["MOD|PITCH SHIFTER|PS2:PRE DELAY", "2bytes", [0,300]],
+    321 : ["MOD|PITCH SHIFTER|PS2:LEVEL",     "minmax", [0,100]],
+    322 : ["MOD|PITCH SHIFTER|PS1:FEEDBACK",  "minmax", [0,100]],
+    323 : ["MOD|PITCH SHIFTER|DIRECT MIX",    "minmax", [0,100]],
 
     2326 : ["DELAY OR FX",    "listed", [0,1]], # 0=DELAY, 1=FX
     # FX:
@@ -214,11 +228,25 @@ KNOWN_INDEXES = {
     573 : ["FX|OCTAVE|RANGE",        "listed", [0,1,2,3]],
     574 : ["FX|OCTAVE|EFFECT LEVEL", "minmax", [0,100]],
     575 : ["FX|OCTAVE|DIRECT MIX",   "minmax", [0,100]],
+    # FX|PITCH SHIFTER:
+    577 : ["FX|PITCH SHIFTER|VOICE",         "listed", [0,1]],
+    578 : ["FX|PITCH SHIFTER|PS1:MODE",      "listed", [0,1,2,3]],
+    579 : ["FX|PITCH SHIFTER|PS1:PITCH",     "scaled", [24,1,0,48]],  # Input: -24 -- +24
+    580 : ["FX|PITCH SHIFTER|PS1:FINE",      "scaled", [50,1,0,100]], # Input: -50 -- +50
+    581 : ["FX|PITCH SHIFTER|PS1:PRE DELAY", "2bytes", [0,300]],
+    583 : ["FX|PITCH SHIFTER|PS1:LEVEL",     "minmax", [0,100]],
+    584 : ["FX|PITCH SHIFTER|PS2:MODE",      "listed", [0,1,2,3]],
+    585 : ["FX|PITCH SHIFTER|PS2:PITCH",     "scaled", [24,1,0,48]],  # Input: -24 -- +24
+    586 : ["FX|PITCH SHIFTER|PS2:FINE",      "scaled", [50,1,0,100]], # Input: -50 -- +50
+    587 : ["FX|PITCH SHIFTER|PS2:PRE DELAY", "2bytes", [0,300]],
+    589 : ["FX|PITCH SHIFTER|PS2:LEVEL",     "minmax", [0,100]],
+    590 : ["FX|PITCH SHIFTER|PS1:FEEDBACK",  "minmax", [0,100]],
+    591 : ["FX|PITCH SHIFTER|DIRECT MIX",    "minmax", [0,100]],
 }
 
 # Make a mapping of parameter names to indexes, grouped by subsystem
 # translate space (' '), dash ('-'), dot ('.') and '/' to underscore ('_')
-as_identifier = str.maketrans({' ':'_','-':'_','.':'_','/':'_'})
+as_identifier = str.maketrans({' ':'_','-':'_','.':'_','/':'_',':':'_'})
 PARAMETERS = dict()
 for index,(subsystems,_,_) in KNOWN_INDEXES.items():
     subsystems = subsystems.split('|')

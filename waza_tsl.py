@@ -53,14 +53,18 @@ class Patch:
     def __getitem__(self,index):
         return self.data["paramSet"]["User%Patch"][index]
     def __setitem__(self,index,value):
-        if value is None:
-            value = CLEAR_DATA[index] # if value is None, use default value
         if index in KNOWN_INDEXES:
             name,case,limits = KNOWN_INDEXES[index]
         else:
             name = "UNKNOWN PARAMETER"
             case = "minmax"
             limits = [0,255] # any byte value
+        if value is None:
+            # if value is None, use default value
+            self.data["paramSet"]["User%Patch"][index] = CLEAR_DATA[index]
+            if case == "2bytes":
+                self.data["paramSet"]["User%Patch"][index+1] = CLEAR_DATA[index+1]
+            return # do not change default value
         if case == "listed" and value not in limits:
             raise ValueError(f"Value for {name} must be one of: {limits}")
         elif case == "minmax":
@@ -69,6 +73,11 @@ class Patch:
         elif case == "scaled":
             base,slope,low,high = limits
             value = min(max(low,round(base+slope*value)),high)
+        elif case == "2bytes":
+            low,high = limits
+            split = divmod(min(max(low,value),high),128)
+            self.data["paramSet"]["User%Patch"][index:index+2] = split
+            return
         self.data["paramSet"]["User%Patch"][index] = value
 
     def set_amp(self,amp_type,gain=None,presence=None,volume=None,
@@ -189,6 +198,7 @@ class MOD(Enum):
     SLOW_GEAR     = 10
     WAVE_SYNTH    = 12
     OCTAVE        = 14
+    PITCH_SHIFTER = 15
 
 FX = MOD # alternate name
 
@@ -214,7 +224,7 @@ class LIMITER(IntEnum):
     RACK_160D    = 1
     VTG_RACK_U   = 2
 
-class RATIO(IntEnum): # at least LIMITER:RATIO
+class RATIO(IntEnum): # For LIMITER
     _1to1   =  0 # 1:1
     _1p2to1 =  1 # 1.2:1
     _1p4to1 =  2 # 1.4:1
@@ -258,7 +268,7 @@ ratio = ratio()
 inf = float("inf")
 # Usage: ratio[2.3:1]
 
-class Q_VALUE(IntEnum):
+class Q_VALUE(IntEnum): # For PARAMETRIC EQ
     _05 = 0 # 0.5
     _1  = 1 # 1
     _2  = 2 # 2
@@ -274,7 +284,7 @@ def q_value(value):
     else:
         return round(log2(value))+1
 
-class LOW_CUT(IntEnum):
+class LOW_CUT(IntEnum): # For PARAMETRIC EQ
     FLAT     =  0
     _FLAT    =  0
     _20Hz    =  1 # 20.0 Hz
@@ -303,7 +313,7 @@ def low_cut(frequency):
     else:
         return  round(log10(frequency)*10) - 12
 
-class MID_FREQ(IntEnum):
+class MID_FREQ(IntEnum): # For PARAMETRIC EQ
     _20Hz    =  0 # 20.0 Hz
     _25Hz    =  1 # 25.0 Hz
     _31p5Hz  =  2 # 31.5 Hz
@@ -341,7 +351,7 @@ def mid_freq(frequency):
     else:
         return  round(log10(frequency)*10) - 13
 
-class HIGH_CUT(IntEnum):
+class HIGH_CUT(IntEnum): # For PARAMETRIC EQ
     _630Hz   =  0 # 630 Hz
     _800Hz   =  1 # 800 Hz
     _1kHz    =  2 # 1.00 kHz
@@ -377,12 +387,22 @@ class GUITAR_SIM(IntEnum):
     H_AC     = 6 # H->AC
     P_AC     = 7 # P->AC
 
-class WAVE(IntEnum):
+class WAVE(IntEnum): # For WAVE SYNTH
     SAW    = 0
     SQUARE = 1
 
-class RANGE(IntEnum):
+class RANGE(IntEnum): # For OCTAVE
     _1 = 0
     _2 = 1
     _3 = 2
     _4 = 3
+
+class VOICE(IntEnum): # For PITCH SHIFTER
+    _1 = 0
+    _2 = 1
+
+class MODE(IntEnum): # For PITCH SHIFTER
+    FAST   = 0
+    MEDIUM = 1
+    SLOW   = 2
+    MONO   = 3
