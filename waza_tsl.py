@@ -468,3 +468,34 @@ class MASTER_KEY(IntEnum): # For HARMONIST
     G_minor       = 10 # Bb (Gm)
     G_sharp_minor = 11 # B  (G#m)
 
+def user_harmony(master_key,hr="hr1",
+                 C=0,D_flat=0,D=0,E_flat=0,E=0,F=0,
+                 F_sharp=0,G=0,A_flat=0,A=0,B_flat=0,B=0):
+    parameters = [
+        "_perfect_unison",
+        "_minor_second",
+        "_major_second",
+        "_minor_third",
+        "_major_third",
+        "_perfect_fourth",
+        "_tritone",
+        "_perfect_fifth",
+        "_minor_sixth",
+        "_major_sixth",
+        "_minor_seventh",
+        "_major_seventh",
+        ]
+    output = {"master_key" : master_key}
+    output[hr+parameters[( 0-master_key)%12]] = C
+    output[hr+parameters[( 1-master_key)%12]] = D_flat
+    output[hr+parameters[( 2-master_key)%12]] = D
+    output[hr+parameters[( 3-master_key)%12]] = E_flat
+    output[hr+parameters[( 4-master_key)%12]] = E
+    output[hr+parameters[( 5-master_key)%12]] = F
+    output[hr+parameters[( 6-master_key)%12]] = F_sharp
+    output[hr+parameters[( 7-master_key)%12]] = G
+    output[hr+parameters[( 8-master_key)%12]] = A_flat
+    output[hr+parameters[( 9-master_key)%12]] = A
+    output[hr+parameters[(10-master_key)%12]] = B_flat
+    output[hr+parameters[(11-master_key)%12]] = B
+    return output

@@ -316,7 +316,7 @@ def make_mod_fx_pitch_shifter():
 
 def make_mod_fx_harmonist():
     from waza_tsl import TSLFile, Patch, Color, MOD, FX
-    from waza_tsl import VOICE, HARMONY, MASTER_KEY
+    from waza_tsl import VOICE, HARMONY, MASTER_KEY, user_harmony
     f = TSLFile("File with harmonist")
     p1 = Patch("R MOD HARMONIST")
     p1.set_mod(MOD.HARMONIST,Color.RED,voice=VOICE._2,
@@ -338,6 +338,15 @@ def make_mod_fx_harmonist():
                hr2_major_seventh  = +24, # G
                )
     f.append(p1)
+    p1f = Patch("G MOD func HARMONIST")
+    p1f.set_mod(MOD.HARMONIST,Color.GREEN,voice=VOICE._2,direct_mix=33,
+               hr1_harmony=HARMONY.minus_11_th,hr1_pre_delay=100,
+               hr1_level=88,hr1_feedback=55,
+               hr2_harmony=HARMONY.USER,hr2_level=33,hr2_pre_delay=200,
+               **user_harmony(MASTER_KEY.A_flat_major,"hr2",
+                              A_flat=-24,A=-20,B_flat=-16,B=-12,C=-8,D_flat=-4,
+                              D=+4,E_flat=+8,E=+12,F=+16,F_sharp=+20,G=+24))
+    f.append(p1f)
     p2 = Patch("Y FX HARMONIST")
     p2.set_fx(FX.HARMONIST,Color.YELLOW,voice=VOICE._1,
                master_key=MASTER_KEY.C_sharp_minor,direct_mix=33,
@@ -356,4 +365,15 @@ def make_mod_fx_harmonist():
                hr1_major_seventh  = +24, # E_flat
                hr1_feedback=77)
     f.append(p2)
+    p2f = Patch("G FX func HARMONIST")
+    p2f.set_fx(FX.HARMONIST,Color.GREEN,voice=VOICE._1,direct_mix=33,
+              hr1_harmony=HARMONY.USER,hr1_level=44,hr1_pre_delay=299,
+              **user_harmony(MASTER_KEY.C_sharp_minor,"hr1",
+                             E=-24,F=-20,F_sharp=-16,G=-12,A_flat=-8,A=-4,
+                             B_flat=+4,B=+8,C=+12,D_flat=+16,D=+20,E_flat=+24),
+              hr1_feedback=77)
+    f.append(p2f)
+    # if HARMONY.USER is needed for both voices, this pattern can be used:
+    #    **{**user_harmony(key,"hr1",...),**user_harmony(key,"hr2",...)}
+    # with same value of key in both function calls.
     f.save()
