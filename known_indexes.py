@@ -135,6 +135,44 @@ KNOWN_INDEXES = {
     321 : ["MOD|PITCH SHIFTER|PS2:LEVEL",     "minmax", [0,100]],
     322 : ["MOD|PITCH SHIFTER|PS1:FEEDBACK",  "minmax", [0,100]],
     323 : ["MOD|PITCH SHIFTER|DIRECT MIX",    "minmax", [0,100]],
+    # MOD|HARMONIST:
+    325 : ["MOD|HARMONIST|VOICE",              "listed", [0,1]],
+    326 : ["MOD|HARMONIST|HR1:HARMONY",        "listed", [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,
+                                                          17,18,19,20,21,22,23,24,25,26,27,28,29]],
+    327 : ["MOD|HARMONIST|HR1:PRE DELAY",      "2bytes", [0,300]],
+    329 : ["MOD|HARMONIST|HR1:LEVEL",          "minmax", [0,100]],
+    330 : ["MOD|HARMONIST|HR2:HARMONY",        "listed", [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,
+                                                          17,18,19,20,21,22,23,24,25,26,27,28,29]],
+    331 : ["MOD|HARMONIST|HR2:PRE DELAY",      "2bytes", [0,300]],
+    333 : ["MOD|HARMONIST|HR2:LEVEL",          "minmax", [0,100]],
+    334 : ["MOD|HARMONIST|HR1:FEEDBACK",       "minmax", [0,100]],
+    335 : ["MOD|HARMONIST|DIRECT MIX",         "minmax", [0,100]],
+    336 : ["MOD|HARMONIST|HR1:MAJOR SIXTH",    "scaled", [24,1,0,48]],  # Input: -24 -- +24
+    337 : ["MOD|HARMONIST|HR1:MINOR SEVENTH",  "scaled", [24,1,0,48]],  # Input: -24 -- +24
+    338 : ["MOD|HARMONIST|HR1:MAJOR SEVENTH",  "scaled", [24,1,0,48]],  # Input: -24 -- +24
+    339 : ["MOD|HARMONIST|HR1:PERFECT UNISON", "scaled", [24,1,0,48]],  # Input: -24 -- +24
+    340 : ["MOD|HARMONIST|HR1:MINOR SECOND",   "scaled", [24,1,0,48]],  # Input: -24 -- +24
+    341 : ["MOD|HARMONIST|HR1:MAJOR SECOND",   "scaled", [24,1,0,48]],  # Input: -24 -- +24
+    342 : ["MOD|HARMONIST|HR1:MINOR THIRD",    "scaled", [24,1,0,48]],  # Input: -24 -- +24
+    343 : ["MOD|HARMONIST|HR1:MAJOR THIRD",    "scaled", [24,1,0,48]],  # Input: -24 -- +24
+    344 : ["MOD|HARMONIST|HR1:PERFECT FOURTH", "scaled", [24,1,0,48]],  # Input: -24 -- +24
+    345 : ["MOD|HARMONIST|HR1:TRITONE",        "scaled", [24,1,0,48]],  # Input: -24 -- +24
+    346 : ["MOD|HARMONIST|HR1:PERFECT FIFTH",  "scaled", [24,1,0,48]],  # Input: -24 -- +24
+    347 : ["MOD|HARMONIST|HR1:MINOR SIXTH",    "scaled", [24,1,0,48]],  # Input: -24 -- +24
+    348 : ["MOD|HARMONIST|HR2:MAJOR SIXTH",    "scaled", [24,1,0,48]],  # Input: -24 -- +24
+    349 : ["MOD|HARMONIST|HR2:MINOR SEVENTH",  "scaled", [24,1,0,48]],  # Input: -24 -- +24
+    350 : ["MOD|HARMONIST|HR2:MAJOR SEVENTH",  "scaled", [24,1,0,48]],  # Input: -24 -- +24
+    351 : ["MOD|HARMONIST|HR2:PERFECT UNISON", "scaled", [24,1,0,48]],  # Input: -24 -- +24
+    352 : ["MOD|HARMONIST|HR2:MINOR SECOND",   "scaled", [24,1,0,48]],  # Input: -24 -- +24
+    353 : ["MOD|HARMONIST|HR2:MAJOR SECOND",   "scaled", [24,1,0,48]],  # Input: -24 -- +24
+    354 : ["MOD|HARMONIST|HR2:MINOR THIRD",    "scaled", [24,1,0,48]],  # Input: -24 -- +24
+    355 : ["MOD|HARMONIST|HR2:MAJOR THIRD",    "scaled", [24,1,0,48]],  # Input: -24 -- +24
+    356 : ["MOD|HARMONIST|HR2:PERFECT FOURTH", "scaled", [24,1,0,48]],  # Input: -24 -- +24
+    357 : ["MOD|HARMONIST|HR2:TRITONE",        "scaled", [24,1,0,48]],  # Input: -24 -- +24
+    358 : ["MOD|HARMONIST|HR2:PERFECT FIFTH",  "scaled", [24,1,0,48]],  # Input: -24 -- +24
+    359 : ["MOD|HARMONIST|HR2:MINOR SIXTH",    "scaled", [24,1,0,48]],  # Input: -24 -- +24
+    # MASTER KEY is a global parameter (?)
+    920 : ["MASTER KEY",                  "listed", [0,1,2,3,4,5,6,7,8,9,10,11]],
 
     2326 : ["DELAY OR FX",    "listed", [0,1]], # 0=DELAY, 1=FX
     # FX:
@@ -242,6 +280,43 @@ KNOWN_INDEXES = {
     589 : ["FX|PITCH SHIFTER|PS2:LEVEL",     "minmax", [0,100]],
     590 : ["FX|PITCH SHIFTER|PS1:FEEDBACK",  "minmax", [0,100]],
     591 : ["FX|PITCH SHIFTER|DIRECT MIX",    "minmax", [0,100]],
+    # FX|HARMONIST:
+    593 : ["FX|HARMONIST|VOICE",              "listed", [0,1]],
+    594 : ["FX|HARMONIST|HR1:HARMONY",        "listed", [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,
+                                                         17,18,19,20,21,22,23,24,25,26,27,28,29]],
+    595 : ["FX|HARMONIST|HR1:PRE DELAY",      "2bytes", [0,300]],
+    597 : ["FX|HARMONIST|HR1:LEVEL",          "minmax", [0,100]],
+    598 : ["FX|HARMONIST|HR2:HARMONY",        "listed", [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,
+                                                         17,18,19,20,21,22,23,24,25,26,27,28,29]],
+    599 : ["FX|HARMONIST|HR2:PRE DELAY",      "2bytes", [0,300]],
+    601 : ["FX|HARMONIST|HR2:LEVEL",          "minmax", [0,100]],
+    602 : ["FX|HARMONIST|HR1:FEEDBACK",       "minmax", [0,100]],
+    603 : ["FX|HARMONIST|DIRECT MIX",         "minmax", [0,100]],
+    604 : ["FX|HARMONIST|HR1:MAJOR SIXTH",    "scaled", [24,1,0,48]],  # Input: -24 -- +24
+    605 : ["FX|HARMONIST|HR1:MINOR SEVENTH",  "scaled", [24,1,0,48]],  # Input: -24 -- +24
+    606 : ["FX|HARMONIST|HR1:MAJOR SEVENTH",  "scaled", [24,1,0,48]],  # Input: -24 -- +24
+    607 : ["FX|HARMONIST|HR1:PERFECT UNISON", "scaled", [24,1,0,48]],  # Input: -24 -- +24
+    608 : ["FX|HARMONIST|HR1:MINOR SECOND",   "scaled", [24,1,0,48]],  # Input: -24 -- +24
+    609 : ["FX|HARMONIST|HR1:MAJOR SECOND",   "scaled", [24,1,0,48]],  # Input: -24 -- +24
+    610 : ["FX|HARMONIST|HR1:MINOR THIRD",    "scaled", [24,1,0,48]],  # Input: -24 -- +24
+    611 : ["FX|HARMONIST|HR1:MAJOR THIRD",    "scaled", [24,1,0,48]],  # Input: -24 -- +24
+    612 : ["FX|HARMONIST|HR1:PERFECT FOURTH", "scaled", [24,1,0,48]],  # Input: -24 -- +24
+    613 : ["FX|HARMONIST|HR1:TRITONE",        "scaled", [24,1,0,48]],  # Input: -24 -- +24
+    614 : ["FX|HARMONIST|HR1:PERFECT FIFTH",  "scaled", [24,1,0,48]],  # Input: -24 -- +24
+    615 : ["FX|HARMONIST|HR1:MINOR SIXTH",    "scaled", [24,1,0,48]],  # Input: -24 -- +24
+    616 : ["FX|HARMONIST|HR2:MAJOR SIXTH",    "scaled", [24,1,0,48]],  # Input: -24 -- +24
+    617 : ["FX|HARMONIST|HR2:MINOR SEVENTH",  "scaled", [24,1,0,48]],  # Input: -24 -- +24
+    618 : ["FX|HARMONIST|HR2:MAJOR SEVENTH",  "scaled", [24,1,0,48]],  # Input: -24 -- +24
+    619 : ["FX|HARMONIST|HR2:PERFECT UNISON", "scaled", [24,1,0,48]],  # Input: -24 -- +24
+    620 : ["FX|HARMONIST|HR2:MINOR SECOND",   "scaled", [24,1,0,48]],  # Input: -24 -- +24
+    621 : ["FX|HARMONIST|HR2:MAJOR SECOND",   "scaled", [24,1,0,48]],  # Input: -24 -- +24
+    622 : ["FX|HARMONIST|HR2:MINOR THIRD",    "scaled", [24,1,0,48]],  # Input: -24 -- +24
+    623 : ["FX|HARMONIST|HR2:MAJOR THIRD",    "scaled", [24,1,0,48]],  # Input: -24 -- +24
+    624 : ["FX|HARMONIST|HR2:PERFECT FOURTH", "scaled", [24,1,0,48]],  # Input: -24 -- +24
+    625 : ["FX|HARMONIST|HR2:TRITONE",        "scaled", [24,1,0,48]],  # Input: -24 -- +24
+    626 : ["FX|HARMONIST|HR2:PERFECT FIFTH",  "scaled", [24,1,0,48]],  # Input: -24 -- +24
+    627 : ["FX|HARMONIST|HR2:MINOR SIXTH",    "scaled", [24,1,0,48]],  # Input: -24 -- +24
+    # 920 MASTER KEY is located under MOD|HARMONIST
 }
 
 # Make a mapping of parameter names to indexes, grouped by subsystem
@@ -261,3 +336,6 @@ for index,(subsystems,_,_) in KNOWN_INDEXES.items():
     if param[0].isdigit(): # First character cannot be a digit
         param = '_'+param
     current[param] = index
+# MASTER KEY needs to have same index with HARMONIST for both MOD and FX:
+PARAMETERS["MOD"]["HARMONIST"]["master_key"] = 920
+PARAMETERS["FX"]["HARMONIST"]["master_key"]  = 920

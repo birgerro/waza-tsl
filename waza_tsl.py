@@ -199,6 +199,7 @@ class MOD(Enum):
     WAVE_SYNTH    = 12
     OCTAVE        = 14
     PITCH_SHIFTER = 15
+    HARMONIST     = 16
 
 FX = MOD # alternate name
 
@@ -397,7 +398,7 @@ class RANGE(IntEnum): # For OCTAVE
     _3 = 2
     _4 = 3
 
-class VOICE(IntEnum): # For PITCH SHIFTER
+class VOICE(IntEnum): # For PITCH SHIFTER and HARMONIST
     _1 = 0
     _2 = 1
 
@@ -406,3 +407,64 @@ class MODE(IntEnum): # For PITCH SHIFTER
     MEDIUM = 1
     SLOW   = 2
     MONO   = 3
+
+class HARMONY(IntEnum): # For HARMONIST
+    minus_2_oct =  0 # -2oct
+    minus_14_th =  1 # -14th
+    minus_13_th =  2 # -13th
+    minus_12_th =  3 # -12th
+    minus_11_th =  4 # -11th
+    minus_10_th =  5 # -10th
+    minus_9_th  =  6 # -9th
+    minus_1_oct =  7 # -1oct
+    minus_7_th  =  8 # -7th
+    minus_6_th  =  9 # -6th
+    minus_5_th  = 10 # -5th
+    minus_4_th  = 11 # -4th
+    minus_3_rd  = 12 # -3rd
+    minus_2_nd  = 13 # -2nd
+    UNISON      = 14
+    plus_2_nd   = 15 # +2nd
+    plus_3_rd   = 16 # +3rd
+    plus_4_th   = 17 # +4th
+    plus_5_th   = 18 # +5th
+    plus_6_th   = 19 # +6th
+    plus_7_th   = 20 # +7th
+    plus_1_oct  = 21 # +1oct
+    plus_9_th   = 22 # +9th
+    plus_10_th  = 23 # +10th
+    plus_11_th  = 24 # +11th
+    plus_12_th  = 25 # +12th
+    plus_13_th  = 26 # +13th
+    plus_14_th  = 27 # +14th
+    plus_2_oct  = 28 # +2oct
+    USER        = 29
+
+class MASTER_KEY(IntEnum): # For HARMONIST
+    # Major keys:
+    C_major       =  0 # C  (Am)
+    D_flat_major  =  1 # Db (Bbm)
+    D_major       =  2 # D  (Bm)
+    E_flat_major  =  3 # Eb (Cm)
+    E_major       =  4 # E  (C#m)
+    F_major       =  5 # F  (Dm)
+    F_sharp_major =  6 # F# (D#m)
+    G_major       =  7 # G  (Em)
+    A_flat_major  =  8 # Ab (Fm)
+    A_major       =  9 # A  (F#m)
+    B_flat_major  = 10 # Bb (Gm)
+    B_major       = 11 # B  (G#m)
+    # Minor keys:
+    A_minor       =  0 # C  (Am)
+    B_flat_minor  =  1 # Db (Bbm)
+    B_minor       =  2 # D  (Bm)
+    C_minor       =  3 # Eb (Cm)
+    C_sharp_minor =  4 # E  (C#m)
+    D_minor       =  5 # F  (Dm)
+    D_sharp_minor =  6 # F# (D#m)
+    E_minor       =  7 # G  (Em)
+    F_minor       =  8 # Ab (Fm)
+    F_sharp_minor =  9 # A  (F#m)
+    G_minor       = 10 # Bb (Gm)
+    G_sharp_minor = 11 # B  (G#m)
+

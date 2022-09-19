@@ -313,3 +313,47 @@ def make_mod_fx_pitch_shifter():
                ps1_pre_delay=100,ps1_level=78,ps1_feedback=99)
     f.append(p2)
     f.save()
+
+def make_mod_fx_harmonist():
+    from waza_tsl import TSLFile, Patch, Color, MOD, FX
+    from waza_tsl import VOICE, HARMONY, MASTER_KEY
+    f = TSLFile("File with harmonist")
+    p1 = Patch("R MOD HARMONIST")
+    p1.set_mod(MOD.HARMONIST,Color.RED,voice=VOICE._2,
+               master_key=MASTER_KEY.A_flat_major,direct_mix=33,
+               hr1_harmony=HARMONY.minus_11_th,hr1_pre_delay=100,
+               hr1_level=88,hr1_feedback=55,
+               hr2_harmony=HARMONY.USER,hr2_level=33,hr2_pre_delay=200,
+               hr2_perfect_unison = -24, # A_flat
+               hr2_minor_second   = -20, # A
+               hr2_major_second   = -16, # B_flat
+               hr2_minor_third    = -12, # B
+               hr2_major_third    =  -8, # C
+               hr2_perfect_fourth =  -4, # D_flat
+               hr2_tritone        =  +4, # D
+               hr2_perfect_fifth  =  +8, # E_flat
+               hr2_minor_sixth    = +12, # E
+               hr2_major_sixth    = +16, # F
+               hr2_minor_seventh  = +20, # F_sharp
+               hr2_major_seventh  = +24, # G
+               )
+    f.append(p1)
+    p2 = Patch("Y FX HARMONIST")
+    p2.set_fx(FX.HARMONIST,Color.YELLOW,voice=VOICE._1,
+               master_key=MASTER_KEY.C_sharp_minor,direct_mix=33,
+               hr1_harmony=HARMONY.USER,hr1_level=44,hr1_pre_delay=299,
+               hr1_perfect_unison = -24, # E
+               hr1_minor_second   = -20, # F
+               hr1_major_second   = -16, # F_sharp
+               hr1_minor_third    = -12, # G
+               hr1_major_third    =  -8, # A_flat
+               hr1_perfect_fourth =  -4, # A
+               hr1_tritone        =  +4, # B_flat
+               hr1_perfect_fifth  =  +8, # B
+               hr1_minor_sixth    = +12, # C
+               hr1_major_sixth    = +16, # D_flat
+               hr1_minor_seventh  = +20, # D
+               hr1_major_seventh  = +24, # E_flat
+               hr1_feedback=77)
+    f.append(p2)
+    f.save()
