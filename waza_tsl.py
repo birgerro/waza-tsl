@@ -200,6 +200,7 @@ class MOD(Enum):
     OCTAVE        = 14
     PITCH_SHIFTER = 15
     HARMONIST     = 16
+    AC_PROCESSOR  = 18
 
 FX = MOD # alternate name
 
@@ -499,3 +500,9 @@ def user_harmony(master_key,hr="hr1",
     output[hr+parameters[(10-master_key)%12]] = B_flat
     output[hr+parameters[(11-master_key)%12]] = B
     return output
+
+class AC_PROCESSOR(IntEnum):
+    SMALL  = 0
+    MEDIUM = 1
+    BRIGHT = 2
+    POWER  = 3

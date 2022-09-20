@@ -173,6 +173,14 @@ KNOWN_INDEXES = {
     359 : ["MOD|HARMONIST|HR2:MINOR SIXTH",    "scaled", [24,1,0,48]],  # Input: -24 -- +24
     # MASTER KEY is a global parameter (?)
     920 : ["MASTER KEY",                  "listed", [0,1,2,3,4,5,6,7,8,9,10,11]],
+    # MOD|AC.PROCESSOR:
+    365 : ["MOD|AC.PROCESSOR|TYPE",             "listed", [0,1,2,3]],
+    366 : ["MOD|AC.PROCESSOR|BASS",             "scaled", [50,1,0,100]], # Input: -50 -- +50
+    367 : ["MOD|AC.PROCESSOR|MIDDLE",           "scaled", [50,1,0,100]], # Input: -50 -- +50
+    368 : ["MOD|AC.PROCESSOR|MIDDLE FREQUENCY", "minmax", [0,27]],
+    369 : ["MOD|AC.PROCESSOR|TREBLE",           "scaled", [50,1,0,100]], # Input: -50 -- +50
+    370 : ["MOD|AC.PROCESSOR|PRESENCE",         "scaled", [50,1,0,100]], # Input: -50 -- +50
+    371 : ["MOD|AC.PROCESSOR|LEVEL",            "minmax", [0,100]],
 
     2326 : ["DELAY OR FX",    "listed", [0,1]], # 0=DELAY, 1=FX
     # FX:
@@ -317,6 +325,14 @@ KNOWN_INDEXES = {
     626 : ["FX|HARMONIST|HR2:PERFECT FIFTH",  "scaled", [24,1,0,48]],  # Input: -24 -- +24
     627 : ["FX|HARMONIST|HR2:MINOR SIXTH",    "scaled", [24,1,0,48]],  # Input: -24 -- +24
     # 920 MASTER KEY is located under MOD|HARMONIST
+    # FX|AC.PROCESSOR:
+    633 : ["FX|AC.PROCESSOR|TYPE",             "listed", [0,1,2,3]],
+    634 : ["FX|AC.PROCESSOR|BASS",             "scaled", [50,1,0,100]], # Input: -50 -- +50
+    635 : ["FX|AC.PROCESSOR|MIDDLE",           "scaled", [50,1,0,100]], # Input: -50 -- +50
+    636 : ["FX|AC.PROCESSOR|MIDDLE FREQUENCY", "minmax", [0,27]],
+    637 : ["FX|AC.PROCESSOR|TREBLE",           "scaled", [50,1,0,100]], # Input: -50 -- +50
+    638 : ["FX|AC.PROCESSOR|PRESENCE",         "scaled", [50,1,0,100]], # Input: -50 -- +50
+    639 : ["FX|AC.PROCESSOR|LEVEL",            "minmax", [0,100]],
 }
 
 # Make a mapping of parameter names to indexes, grouped by subsystem

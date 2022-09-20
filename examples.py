@@ -377,3 +377,29 @@ def make_mod_fx_harmonist():
     #    **{**user_harmony(key,"hr1",...),**user_harmony(key,"hr2",...)}
     # with same value of key in both function calls.
     f.save()
+
+def make_mod_fx_ac_processor():
+    from waza_tsl import TSLFile, Patch, Color, MOD, FX
+    from waza_tsl import AC_PROCESSOR, MID_FREQ, mid_freq
+    f = TSLFile("File with ac.processor")
+    p1 = Patch("R MOD AC.PROCESSOR")
+    p1.set_mod(MOD.AC_PROCESSOR,Color.RED,type=AC_PROCESSOR.BRIGHT,
+              bass=11,middle=21,treble=31,presence=41,level=51,
+              middle_frequency=MID_FREQ._2kHz)
+    f.append(p1)
+    p1f = Patch("G MOD func AC.PROCESSOR")
+    p1f.set_mod(MOD.AC_PROCESSOR,Color.GREEN,type=AC_PROCESSOR.POWER,
+              bass=12,middle=22,treble=32,presence=42,level=52,
+              middle_frequency=mid_freq(100))
+    f.append(p1f)
+    p2 = Patch("Y FX AC.PROCESSOR")
+    p2.set_fx(FX.AC_PROCESSOR,Color.YELLOW,type=AC_PROCESSOR.MEDIUM,
+              bass=13,middle=23,treble=33,presence=43,level=53,
+              middle_frequency=MID_FREQ._40Hz)
+    f.append(p2)
+    p2f = Patch("G FX func AC.PROCESSOR")
+    p2f.set_fx(FX.AC_PROCESSOR,Color.GREEN,type=AC_PROCESSOR.SMALL,
+              bass=14,middle=24,treble=34,presence=44,level=54,
+              middle_frequency=mid_freq(8e3))
+    f.append(p2f)
+    f.save()
