@@ -201,6 +201,7 @@ class MOD(Enum):
     PITCH_SHIFTER = 15
     HARMONIST     = 16
     AC_PROCESSOR  = 18
+    PHASER        = 19
 
 FX = MOD # alternate name
 
@@ -506,3 +507,18 @@ class AC_PROCESSOR(IntEnum):
     MEDIUM = 1
     BRIGHT = 2
     POWER  = 3
+
+class PHASER(IntEnum):
+    _4STAGE  = 0
+    _8STAGE  = 1
+    _12STAGE = 2
+    BiPHASE  = 3
+
+def step_rate(value):
+    if isinstance(value,int):
+        return value+1
+    if isinstance(value,str) and value.upper() == "OFF":
+        return 0
+    if value is False:
+        return 0
+    raise ValueError("step_rate must be 0--100 or the string \"OFF\"")

@@ -403,3 +403,30 @@ def make_mod_fx_ac_processor():
               middle_frequency=mid_freq(8e3))
     f.append(p2f)
     f.save()
+
+def make_mod_fx_phaser():
+    from waza_tsl import TSLFile, Patch, Color, MOD, FX
+    from waza_tsl import PHASER, step_rate
+    f = TSLFile("File with phaser")
+    p1 = Patch("R MOD PHASER")
+    p1.set_mod(MOD.PHASER,Color.RED,type=PHASER._4STAGE,
+               rate=11,depth=21,resonance=31,manual=41,effect_level=51,
+               step_rate=step_rate(61),direct_mix=71)
+    f.append(p1)
+    p2 = Patch("G MOD PHASER")
+    # This one can actually not be saved from the Wasa-Air!
+    p2.set_mod(MOD.PHASER,Color.GREEN,type=PHASER._8STAGE,
+               rate=12,depth=22,resonance=32,manual=42,effect_level=52,
+               step_rate=step_rate(62),direct_mix=72)
+    f.append(p2)
+    p3 = Patch("Y FX PHASER")
+    p3.set_fx(FX.PHASER,Color.YELLOW,type=PHASER._12STAGE,
+               rate=13,depth=23,resonance=33,manual=43,effect_level=53,
+               step_rate=step_rate(63),direct_mix=73)
+    f.append(p3)
+    p4 = Patch("R FX PHASER")
+    p4.set_fx(FX.PHASER,Color.RED,type=PHASER.BiPHASE,
+               rate=14,depth=24,resonance=34,manual=44,effect_level=54,
+               step_rate=step_rate("off"),direct_mix=74)
+    f.append(p4)
+    f.save()

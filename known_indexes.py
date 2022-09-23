@@ -181,6 +181,15 @@ KNOWN_INDEXES = {
     369 : ["MOD|AC.PROCESSOR|TREBLE",           "scaled", [50,1,0,100]], # Input: -50 -- +50
     370 : ["MOD|AC.PROCESSOR|PRESENCE",         "scaled", [50,1,0,100]], # Input: -50 -- +50
     371 : ["MOD|AC.PROCESSOR|LEVEL",            "minmax", [0,100]],
+    # MOD|PHASER:
+    373 : ["MOD|PHASER|TYPE",         "listed", [0,1,2,3]],
+    374 : ["MOD|PHASER|RATE",         "minmax", [0,100]],
+    375 : ["MOD|PHASER|DEPTH",        "minmax", [0,100]],
+    376 : ["MOD|PHASER|MANUAL",       "minmax", [0,100]],
+    377 : ["MOD|PHASER|RESONANCE",    "minmax", [0,100]],
+    378 : ["MOD|PHASER|STEP RATE",    "minmax", [0,101]],
+    379 : ["MOD|PHASER|EFFECT LEVEL", "minmax", [0,100]],
+    380 : ["MOD|PHASER|DIRECT MIX",   "minmax", [0,100]],
 
     2326 : ["DELAY OR FX",    "listed", [0,1]], # 0=DELAY, 1=FX
     # FX:
@@ -333,6 +342,15 @@ KNOWN_INDEXES = {
     637 : ["FX|AC.PROCESSOR|TREBLE",           "scaled", [50,1,0,100]], # Input: -50 -- +50
     638 : ["FX|AC.PROCESSOR|PRESENCE",         "scaled", [50,1,0,100]], # Input: -50 -- +50
     639 : ["FX|AC.PROCESSOR|LEVEL",            "minmax", [0,100]],
+    # FX|PHASER:
+    641 : ["FX|PHASER|TYPE",         "listed", [0,1,2,3]],
+    642 : ["FX|PHASER|RATE",         "minmax", [0,100]],
+    643 : ["FX|PHASER|DEPTH",        "minmax", [0,100]],
+    644 : ["FX|PHASER|MANUAL",       "minmax", [0,100]],
+    645 : ["FX|PHASER|RESONANCE",    "minmax", [0,100]],
+    646 : ["FX|PHASER|STEP RATE",    "minmax", [0,101]],
+    647 : ["FX|PHASER|EFFECT LEVEL", "minmax", [0,100]],
+    648 : ["FX|PHASER|DIRECT MIX",   "minmax", [0,100]],
 }
 
 # Make a mapping of parameter names to indexes, grouped by subsystem
