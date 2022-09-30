@@ -202,6 +202,7 @@ class MOD(Enum):
     HARMONIST     = 16
     AC_PROCESSOR  = 18
     PHASER        = 19
+    FLANGER       = 20
 
 FX = MOD # alternate name
 
@@ -522,3 +523,16 @@ def step_rate(value):
     if value is False:
         return 0
     raise ValueError("step_rate must be 0--100 or the string \"OFF\"")
+
+class FL_LOW_CUT(IntEnum):
+    FLAT = 0
+    _55Hz = 1
+    _110Hz = 2
+    _165Hz = 3
+    _200Hz = 4
+    _280Hz = 5
+    _340Hz = 6
+    _400Hz = 7
+    _500Hz = 8
+    _630Hz = 9
+    _800Hz = 10

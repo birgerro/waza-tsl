@@ -430,3 +430,19 @@ def make_mod_fx_phaser():
                step_rate=step_rate("off"),direct_mix=74)
     f.append(p4)
     f.save()
+
+def make_mod_fx_flanger():
+    from waza_tsl import TSLFile, Patch, Color, MOD, FX
+    from waza_tsl import FL_LOW_CUT as LOW_CUT
+    f = TSLFile("File with flanger")
+    p1 = Patch("R MOD FLANGER")
+    p1.set_mod(MOD.FLANGER,Color.RED,
+               rate=11,depth=21,resonance=31,manual=41,effect_level=51,
+               low_cut=LOW_CUT._280Hz,direct_mix=61)
+    f.append(p1)
+    p2 = Patch("Y FX FLANGER")
+    p2.set_fx(FX.FLANGER,Color.YELLOW,
+              rate=12,depth=22,resonance=32,manual=42,effect_level=52,
+              low_cut=LOW_CUT._630Hz,direct_mix=62)
+    f.append(p2)
+    f.save()

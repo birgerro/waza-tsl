@@ -190,6 +190,14 @@ KNOWN_INDEXES = {
     378 : ["MOD|PHASER|STEP RATE",    "minmax", [0,101]],
     379 : ["MOD|PHASER|EFFECT LEVEL", "minmax", [0,100]],
     380 : ["MOD|PHASER|DIRECT MIX",   "minmax", [0,100]],
+    # MOD|FLANGER:
+    382 : ["MOD|FLANGER|RATE",         "minmax", [0,100]],
+    383 : ["MOD|FLANGER|DEPTH",        "minmax", [0,100]],
+    384 : ["MOD|FLANGER|MANUAL",       "minmax", [0,100]],
+    385 : ["MOD|FLANGER|RESONANCE",    "minmax", [0,100]],
+    387 : ["MOD|FLANGER|LOW CUT",      "listed", [0,1,2,3,4,5,6,7,8,9,10]],
+    388 : ["MOD|FLANGER|EFFECT LEVEL", "minmax", [0,100]],
+    389 : ["MOD|FLANGER|DIRECT MIX",   "minmax", [0,100]],
 
     2326 : ["DELAY OR FX",    "listed", [0,1]], # 0=DELAY, 1=FX
     # FX:
@@ -351,6 +359,14 @@ KNOWN_INDEXES = {
     646 : ["FX|PHASER|STEP RATE",    "minmax", [0,101]],
     647 : ["FX|PHASER|EFFECT LEVEL", "minmax", [0,100]],
     648 : ["FX|PHASER|DIRECT MIX",   "minmax", [0,100]],
+    # FX|FLANGER:
+    650 : ["FX|FLANGER|RATE",         "minmax", [0,100]],
+    651 : ["FX|FLANGER|DEPTH",        "minmax", [0,100]],
+    652 : ["FX|FLANGER|MANUAL",       "minmax", [0,100]],
+    653 : ["FX|FLANGER|RESONANCE",    "minmax", [0,100]],
+    655 : ["FX|FLANGER|LOW CUT",      "listed", [0,1,2,3,4,5,6,7,8,9,10]],
+    656 : ["FX|FLANGER|EFFECT LEVEL", "minmax", [0,100]],
+    657 : ["FX|FLANGER|DIRECT MIX",   "minmax", [0,100]],
 }
 
 # Make a mapping of parameter names to indexes, grouped by subsystem
