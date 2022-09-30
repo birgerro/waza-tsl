@@ -204,6 +204,7 @@ class MOD(Enum):
     PHASER        = 19
     FLANGER       = 20
     TREMOLO       = 21
+    ROTARY        = 22
 
 FX = MOD # alternate name
 

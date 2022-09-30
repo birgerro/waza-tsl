@@ -203,6 +203,10 @@ KNOWN_INDEXES = {
     392 : ["MOD|TREMOLO|RATE",       "minmax", [0,100]],
     393 : ["MOD|TREMOLO|DEPTH",      "minmax", [0,100]],
     394 : ["MOD|TREMOLO|LEVEL",      "minmax", [0,100]],
+    # MOD|ROTARY:
+    398 : ["MOD|ROTARY|RATE",  "minmax", [0,100]],
+    401 : ["MOD|ROTARY|DEPTH", "minmax", [0,100]],
+    402 : ["MOD|ROTARY|LEVEL", "minmax", [0,100]],
 
     2326 : ["DELAY OR FX",    "listed", [0,1]], # 0=DELAY, 1=FX
     # FX:
@@ -377,6 +381,10 @@ KNOWN_INDEXES = {
     660 : ["FX|TREMOLO|RATE",       "minmax", [0,100]],
     661 : ["FX|TREMOLO|DEPTH",      "minmax", [0,100]],
     662 : ["FX|TREMOLO|LEVEL",      "minmax", [0,100]],
+    # FX|ROTARY:
+    666 : ["FX|ROTARY|RATE",  "minmax", [0,100]],
+    669 : ["FX|ROTARY|DEPTH", "minmax", [0,100]],
+    670 : ["FX|ROTARY|LEVEL", "minmax", [0,100]],
 }
 
 # Make a mapping of parameter names to indexes, grouped by subsystem

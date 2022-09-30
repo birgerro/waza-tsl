@@ -459,3 +459,16 @@ def make_mod_fx_tremolo():
               wave_shape=92,rate=12,depth=22,level=52)
     f.append(p2)
     f.save()
+
+def make_mod_fx_rotary():
+    from waza_tsl import TSLFile, Patch, Color, MOD, FX
+    f = TSLFile("File with rotary")
+    p1 = Patch("R MOD ROTARY")
+    p1.set_mod(MOD.ROTARY,Color.RED,
+               rate=11,depth=21,level=51)
+    f.append(p1)
+    p2 = Patch("Y FX ROTARY")
+    p2.set_fx(FX.ROTARY,Color.YELLOW,
+              rate=12,depth=22,level=52)
+    f.append(p2)
+    f.save()
