@@ -203,6 +203,7 @@ class MOD(Enum):
     AC_PROCESSOR  = 18
     PHASER        = 19
     FLANGER       = 20
+    TREMOLO       = 21
 
 FX = MOD # alternate name
 

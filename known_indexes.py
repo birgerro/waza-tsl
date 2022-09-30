@@ -198,6 +198,11 @@ KNOWN_INDEXES = {
     387 : ["MOD|FLANGER|LOW CUT",      "listed", [0,1,2,3,4,5,6,7,8,9,10]],
     388 : ["MOD|FLANGER|EFFECT LEVEL", "minmax", [0,100]],
     389 : ["MOD|FLANGER|DIRECT MIX",   "minmax", [0,100]],
+    # MOD|TREMOLO:
+    391 : ["MOD|TREMOLO|WAVE SHAPE", "minmax", [0,100]],
+    392 : ["MOD|TREMOLO|RATE",       "minmax", [0,100]],
+    393 : ["MOD|TREMOLO|DEPTH",      "minmax", [0,100]],
+    394 : ["MOD|TREMOLO|LEVEL",      "minmax", [0,100]],
 
     2326 : ["DELAY OR FX",    "listed", [0,1]], # 0=DELAY, 1=FX
     # FX:
@@ -367,6 +372,11 @@ KNOWN_INDEXES = {
     655 : ["FX|FLANGER|LOW CUT",      "listed", [0,1,2,3,4,5,6,7,8,9,10]],
     656 : ["FX|FLANGER|EFFECT LEVEL", "minmax", [0,100]],
     657 : ["FX|FLANGER|DIRECT MIX",   "minmax", [0,100]],
+    # FX|TREMOLO:
+    659 : ["FX|TREMOLO|WAVE SHAPE", "minmax", [0,100]],
+    660 : ["FX|TREMOLO|RATE",       "minmax", [0,100]],
+    661 : ["FX|TREMOLO|DEPTH",      "minmax", [0,100]],
+    662 : ["FX|TREMOLO|LEVEL",      "minmax", [0,100]],
 }
 
 # Make a mapping of parameter names to indexes, grouped by subsystem

@@ -446,3 +446,16 @@ def make_mod_fx_flanger():
               low_cut=LOW_CUT._630Hz,direct_mix=62)
     f.append(p2)
     f.save()
+
+def make_mod_fx_tremolo():
+    from waza_tsl import TSLFile, Patch, Color, MOD, FX
+    f = TSLFile("File with tremolo")
+    p1 = Patch("R MOD TREMOLO")
+    p1.set_mod(MOD.TREMOLO,Color.RED,
+               wave_shape=91,rate=11,depth=21,level=51)
+    f.append(p1)
+    p2 = Patch("Y FX TREMOLO")
+    p2.set_fx(FX.TREMOLO,Color.YELLOW,
+              wave_shape=92,rate=12,depth=22,level=52)
+    f.append(p2)
+    f.save()
