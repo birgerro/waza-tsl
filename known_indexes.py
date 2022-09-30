@@ -207,6 +207,10 @@ KNOWN_INDEXES = {
     398 : ["MOD|ROTARY|RATE",  "minmax", [0,100]],
     401 : ["MOD|ROTARY|DEPTH", "minmax", [0,100]],
     402 : ["MOD|ROTARY|LEVEL", "minmax", [0,100]],
+    # MOD|UNI-V:
+    404 : ["MOD|UNI-V|RATE",  "minmax", [0,100]],
+    405 : ["MOD|UNI-V|DEPTH", "minmax", [0,100]],
+    406 : ["MOD|UNI-V|LEVEL", "minmax", [0,100]],
 
     2326 : ["DELAY OR FX",    "listed", [0,1]], # 0=DELAY, 1=FX
     # FX:
@@ -385,6 +389,10 @@ KNOWN_INDEXES = {
     666 : ["FX|ROTARY|RATE",  "minmax", [0,100]],
     669 : ["FX|ROTARY|DEPTH", "minmax", [0,100]],
     670 : ["FX|ROTARY|LEVEL", "minmax", [0,100]],
+    # FX|UNI-V:
+    672 : ["FX|UNI-V|RATE",  "minmax", [0,100]],
+    673 : ["FX|UNI-V|DEPTH", "minmax", [0,100]],
+    674 : ["FX|UNI-V|LEVEL", "minmax", [0,100]],
 }
 
 # Make a mapping of parameter names to indexes, grouped by subsystem

@@ -205,6 +205,7 @@ class MOD(Enum):
     FLANGER       = 20
     TREMOLO       = 21
     ROTARY        = 22
+    UNI_V         = 23
 
 FX = MOD # alternate name
 

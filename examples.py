@@ -472,3 +472,16 @@ def make_mod_fx_rotary():
               rate=12,depth=22,level=52)
     f.append(p2)
     f.save()
+
+def make_mod_fx_uni_v():
+    from waza_tsl import TSLFile, Patch, Color, MOD, FX
+    f = TSLFile("File with uni-v")
+    p1 = Patch("R MOD UNI-V")
+    p1.set_mod(MOD.UNI_V,Color.RED,
+               rate=11,depth=21,level=51)
+    f.append(p1)
+    p2 = Patch("Y FX UNI-V")
+    p2.set_fx(FX.UNI_V,Color.YELLOW,
+              rate=12,depth=22,level=52)
+    f.append(p2)
+    f.save()
