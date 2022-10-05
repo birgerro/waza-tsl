@@ -211,6 +211,12 @@ KNOWN_INDEXES = {
     404 : ["MOD|UNI-V|RATE",  "minmax", [0,100]],
     405 : ["MOD|UNI-V|DEPTH", "minmax", [0,100]],
     406 : ["MOD|UNI-V|LEVEL", "minmax", [0,100]],
+    # MOD|SLICER:
+    415 : ["MOD|SLICER|PATTERN",      "listed", [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]],
+    416 : ["MOD|SLICER|RATE",         "minmax", [0,100]],
+    417 : ["MOD|SLICER|TRIGGER SENS", "minmax", [0,100]],
+    418 : ["MOD|SLICER|EFFECT LEVEL", "minmax", [0,100]],
+    419 : ["MOD|SLICER|DIRECT MIX",   "minmax", [0,100]],
 
     2326 : ["DELAY OR FX",    "listed", [0,1]], # 0=DELAY, 1=FX
     # FX:
@@ -393,6 +399,12 @@ KNOWN_INDEXES = {
     672 : ["FX|UNI-V|RATE",  "minmax", [0,100]],
     673 : ["FX|UNI-V|DEPTH", "minmax", [0,100]],
     674 : ["FX|UNI-V|LEVEL", "minmax", [0,100]],
+    # FX|SLICER:
+    683 : ["FX|SLICER|PATTERN",      "listed", [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]],
+    684 : ["FX|SLICER|RATE",         "minmax", [0,100]],
+    685 : ["FX|SLICER|TRIGGER SENS", "minmax", [0,100]],
+    686 : ["FX|SLICER|EFFECT LEVEL", "minmax", [0,100]],
+    687 : ["FX|SLICER|DIRECT MIX",   "minmax", [0,100]],
 }
 
 # Make a mapping of parameter names to indexes, grouped by subsystem

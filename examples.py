@@ -485,3 +485,16 @@ def make_mod_fx_uni_v():
               rate=12,depth=22,level=52)
     f.append(p2)
     f.save()
+
+def make_mod_fx_slicer():
+    from waza_tsl import TSLFile, Patch, Color, MOD, FX, PATTERN
+    f = TSLFile("File with slicer")
+    p1 = Patch("R MOD SLICER")
+    p1.set_mod(MOD.SLICER,Color.RED,pattern=PATTERN.P8,
+               rate=11,trigger_sens=21,effect_level=31,direct_mix=41)
+    f.append(p1)
+    p2 = Patch("Y FX SLICER")
+    p2.set_fx(FX.SLICER,Color.YELLOW,pattern=PATTERN.P13,
+               rate=12,trigger_sens=22,effect_level=32,direct_mix=42)
+    f.append(p2)
+    f.save()
