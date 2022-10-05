@@ -298,18 +298,18 @@ def make_mod_fx_octave():
     f.save()
 
 def make_mod_fx_pitch_shifter():
-    from waza_tsl import TSLFile, Patch, Color, MOD, FX, VOICE, MODE
+    from waza_tsl import TSLFile, Patch, Color, MOD, FX, VOICE, PITCH_SHIFTER
     f = TSLFile("File with pitch shifter")
     p1 = Patch("R MOD PITCH SHIFTER")
     p1.set_mod(MOD.PITCH_SHIFTER,Color.RED,voice=VOICE._2,direct_mix=33,
-               ps1_mode=MODE.FAST,ps1_pitch=-22,ps1_fine=-44,
+               ps1_mode=PITCH_SHIFTER.FAST,ps1_pitch=-22,ps1_fine=-44,
                ps1_pre_delay=300,ps1_level=24,ps1_feedback=55,
-               ps2_mode=MODE.SLOW,ps2_pitch=+22,ps2_fine=+33,
+               ps2_mode=PITCH_SHIFTER.SLOW,ps2_pitch=+22,ps2_fine=+33,
                ps2_pre_delay=200,ps2_level=43)
     f.append(p1)
     p2 = Patch("Y FX PITCH SHIFTER")
     p2.set_fx(FX.PITCH_SHIFTER,Color.YELLOW,voice=VOICE._1,direct_mix=66,
-               ps1_mode=MODE.MONO,ps1_pitch=-12,ps1_fine=+23,
+               ps1_mode=PITCH_SHIFTER.MONO,ps1_pitch=-12,ps1_fine=+23,
                ps1_pre_delay=100,ps1_level=78,ps1_feedback=99)
     f.append(p2)
     f.save()

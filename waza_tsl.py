@@ -408,7 +408,7 @@ class VOICE(IntEnum): # For PITCH SHIFTER and HARMONIST
     _1 = 0
     _2 = 1
 
-class MODE(IntEnum): # For PITCH SHIFTER
+class PITCH_SHIFTER(IntEnum):
     FAST   = 0
     MEDIUM = 1
     SLOW   = 2
@@ -518,7 +518,7 @@ class PHASER(IntEnum):
     _12STAGE = 2
     BiPHASE  = 3
 
-def step_rate(value):
+def step_rate(value): # For PHASER
     if isinstance(value,int):
         return value+1
     if isinstance(value,str) and value.upper() == "OFF":
@@ -527,15 +527,15 @@ def step_rate(value):
         return 0
     raise ValueError("step_rate must be 0--100 or the string \"OFF\"")
 
-class FL_LOW_CUT(IntEnum):
-    FLAT = 0
-    _55Hz = 1
-    _110Hz = 2
-    _165Hz = 3
-    _200Hz = 4
-    _280Hz = 5
-    _340Hz = 6
-    _400Hz = 7
-    _500Hz = 8
-    _630Hz = 9
+class FL_LOW_CUT(IntEnum): # For FLANGER
+    FLAT   =  0
+    _55Hz  =  1
+    _110Hz =  2
+    _165Hz =  3
+    _200Hz =  4
+    _280Hz =  5
+    _340Hz =  6
+    _400Hz =  7
+    _500Hz =  8
+    _630Hz =  9
     _800Hz = 10
