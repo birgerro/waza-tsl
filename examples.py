@@ -498,3 +498,16 @@ def make_mod_fx_slicer():
                rate=12,trigger_sens=22,effect_level=32,direct_mix=42)
     f.append(p2)
     f.save()
+
+def make_mod_fx_vibrato():
+    from waza_tsl import TSLFile, Patch, Color, MOD, FX
+    f = TSLFile("File with vibrato")
+    p1 = Patch("R MOD VIBRATO")
+    p1.set_mod(MOD.VIBRATO,Color.RED,
+               rate=11,depth=21,level=31)
+    f.append(p1)
+    p2 = Patch("Y FX VIBRATO")
+    p2.set_fx(FX.VIBRATO,Color.YELLOW,
+               rate=12,depth=22,level=32)
+    f.append(p2)
+    f.save()

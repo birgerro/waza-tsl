@@ -217,6 +217,10 @@ KNOWN_INDEXES = {
     417 : ["MOD|SLICER|TRIGGER SENS", "minmax", [0,100]],
     418 : ["MOD|SLICER|EFFECT LEVEL", "minmax", [0,100]],
     419 : ["MOD|SLICER|DIRECT MIX",   "minmax", [0,100]],
+    # MOD|VIBRATO:
+    421 : ["MOD|VIBRATO|RATE",  "minmax", [0,100]],
+    422 : ["MOD|VIBRATO|DEPTH", "minmax", [0,100]],
+    425 : ["MOD|VIBRATO|LEVEL", "minmax", [0,100]],
 
     2326 : ["DELAY OR FX",    "listed", [0,1]], # 0=DELAY, 1=FX
     # FX:
@@ -405,6 +409,10 @@ KNOWN_INDEXES = {
     685 : ["FX|SLICER|TRIGGER SENS", "minmax", [0,100]],
     686 : ["FX|SLICER|EFFECT LEVEL", "minmax", [0,100]],
     687 : ["FX|SLICER|DIRECT MIX",   "minmax", [0,100]],
+    # FX|VIBRATO:
+    689 : ["FX|VIBRATO|RATE",  "minmax", [0,100]],
+    690 : ["FX|VIBRATO|DEPTH", "minmax", [0,100]],
+    693 : ["FX|VIBRATO|LEVEL", "minmax", [0,100]],
 }
 
 # Make a mapping of parameter names to indexes, grouped by subsystem

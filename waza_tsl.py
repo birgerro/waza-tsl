@@ -207,6 +207,7 @@ class MOD(Enum):
     ROTARY        = 22
     UNI_V         = 23
     SLICER        = 25
+    VIBRATO       = 26
 
 FX = MOD # alternate name
 
