@@ -208,6 +208,7 @@ class MOD(Enum):
     UNI_V         = 23
     SLICER        = 25
     VIBRATO       = 26
+    RING_MOD      = 27
 
 FX = MOD # alternate name
 
@@ -563,3 +564,7 @@ class PATTERN(IntEnum): # For SLICER
     P18 = 17
     P19 = 18
     P20 = 19
+
+class RING_MOD(IntEnum):
+    NORMAL      = 0
+    INTELLIGENT = 1

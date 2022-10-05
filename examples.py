@@ -511,3 +511,16 @@ def make_mod_fx_vibrato():
                rate=12,depth=22,level=32)
     f.append(p2)
     f.save()
+
+def make_mod_fx_ring_mod():
+    from waza_tsl import TSLFile, Patch, Color, MOD, FX, RING_MOD
+    f = TSLFile("File with ring mod")
+    p1 = Patch("R MOD RING MOD")
+    p1.set_mod(MOD.RING_MOD,Color.RED,mode=RING_MOD.NORMAL,
+               frequency=11,effect_level=21,direct_mix=31)
+    f.append(p1)
+    p2 = Patch("Y FX RING MOD")
+    p2.set_fx(FX.RING_MOD,Color.YELLOW,mode=RING_MOD.INTELLIGENT,
+               frequency=12,effect_level=22,direct_mix=32)
+    f.append(p2)
+    f.save()

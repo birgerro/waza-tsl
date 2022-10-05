@@ -221,6 +221,11 @@ KNOWN_INDEXES = {
     421 : ["MOD|VIBRATO|RATE",  "minmax", [0,100]],
     422 : ["MOD|VIBRATO|DEPTH", "minmax", [0,100]],
     425 : ["MOD|VIBRATO|LEVEL", "minmax", [0,100]],
+    # MOD|RING MOD:
+    427 : ["MOD|RING MOD|MODE",         "listed", [0,1]],
+    428 : ["MOD|RING MOD|FREQUENCY",    "minmax", [0,100]],
+    429 : ["MOD|RING MOD|EFFECT LEVEL", "minmax", [0,100]],
+    430 : ["MOD|RING MOD|DIRECT MIX",   "minmax", [0,100]],
 
     2326 : ["DELAY OR FX",    "listed", [0,1]], # 0=DELAY, 1=FX
     # FX:
@@ -413,6 +418,11 @@ KNOWN_INDEXES = {
     689 : ["FX|VIBRATO|RATE",  "minmax", [0,100]],
     690 : ["FX|VIBRATO|DEPTH", "minmax", [0,100]],
     693 : ["FX|VIBRATO|LEVEL", "minmax", [0,100]],
+    # FX|RING MOD:
+    695 : ["FX|RING MOD|MODE",         "listed", [0,1]],
+    696 : ["FX|RING MOD|FREQUENCY",    "minmax", [0,100]],
+    697 : ["FX|RING MOD|EFFECT LEVEL", "minmax", [0,100]],
+    698 : ["FX|RING MOD|DIRECT MIX",   "minmax", [0,100]],
 }
 
 # Make a mapping of parameter names to indexes, grouped by subsystem
