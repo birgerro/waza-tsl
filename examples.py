@@ -524,3 +524,18 @@ def make_mod_fx_ring_mod():
                frequency=12,effect_level=22,direct_mix=32)
     f.append(p2)
     f.save()
+
+def make_mod_fx_humanizer():
+    from waza_tsl import TSLFile, Patch, Color, MOD, FX, HUMANIZER, VOWEL
+    f = TSLFile("File with humanizer")
+    p1 = Patch("R MOD HUMANIZER")
+    p1.set_mod(MOD.HUMANIZER,Color.RED,
+               mode=HUMANIZER.AUTO,vowel1=VOWEL.o,vowel2=VOWEL.e,
+               rate=11,depth=21,level=31,sens=41,manual=51)
+    f.append(p1)
+    p2 = Patch("Y FX HUMANIZER")
+    p2.set_fx(FX.HUMANIZER,Color.YELLOW,
+              mode=HUMANIZER.PICKING,vowel1=VOWEL.u,vowel2=VOWEL.a,
+              rate=12,depth=22,level=32,sens=42,manual=52)
+    f.append(p2)
+    f.save()

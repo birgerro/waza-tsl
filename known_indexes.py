@@ -226,6 +226,15 @@ KNOWN_INDEXES = {
     428 : ["MOD|RING MOD|FREQUENCY",    "minmax", [0,100]],
     429 : ["MOD|RING MOD|EFFECT LEVEL", "minmax", [0,100]],
     430 : ["MOD|RING MOD|DIRECT MIX",   "minmax", [0,100]],
+    # MOD|HUMANIZER:
+    432 : ["MOD|HUMANIZER|MODE",   "listed", [0,1]],
+    433 : ["MOD|HUMANIZER|VOWEL1", "listed", [0,1,2,3,4]],
+    434 : ["MOD|HUMANIZER|VOWEL2", "listed", [0,1,2,3,4]],
+    435 : ["MOD|HUMANIZER|SENS",   "minmax", [0,100]],
+    436 : ["MOD|HUMANIZER|RATE",   "minmax", [0,100]],
+    437 : ["MOD|HUMANIZER|DEPTH",  "minmax", [0,100]],
+    438 : ["MOD|HUMANIZER|MANUAL", "minmax", [0,100]],
+    439 : ["MOD|HUMANIZER|LEVEL",  "minmax", [0,100]],
 
     2326 : ["DELAY OR FX",    "listed", [0,1]], # 0=DELAY, 1=FX
     # FX:
@@ -423,6 +432,15 @@ KNOWN_INDEXES = {
     696 : ["FX|RING MOD|FREQUENCY",    "minmax", [0,100]],
     697 : ["FX|RING MOD|EFFECT LEVEL", "minmax", [0,100]],
     698 : ["FX|RING MOD|DIRECT MIX",   "minmax", [0,100]],
+    # FX|HUMANIZER:
+    700 : ["FX|HUMANIZER|MODE",   "listed", [0,1]],
+    701 : ["FX|HUMANIZER|VOWEL1", "listed", [0,1,2,3,4]],
+    702 : ["FX|HUMANIZER|VOWEL2", "listed", [0,1,2,3,4]],
+    703 : ["FX|HUMANIZER|SENS",   "minmax", [0,100]],
+    704 : ["FX|HUMANIZER|RATE",   "minmax", [0,100]],
+    705 : ["FX|HUMANIZER|DEPTH",  "minmax", [0,100]],
+    706 : ["FX|HUMANIZER|MANUAL", "minmax", [0,100]],
+    707 : ["FX|HUMANIZER|LEVEL",  "minmax", [0,100]],
 }
 
 # Make a mapping of parameter names to indexes, grouped by subsystem

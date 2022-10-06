@@ -121,6 +121,9 @@ class Patch:
         for param,index in params.items():
             value = kw.get(param) # params not listed in kw get set to default (value=None)
             self[index] = value
+        for name in kw: # check for wrongly named parameters
+            if name not in params:
+                print(f"Unknown parameter name: {name}")
         self[192] = 1 # MOD on
         index = 2308 + color.value
         self[index] = mod_type.value
@@ -139,6 +142,9 @@ class Patch:
         for param,index in params.items():
             value = kw.get(param) # params not listed in kw get set to default (value=None)
             self[index] = value
+        for name in kw: # check for wrongly named parameters
+            if name not in params:
+                print(f"Unknown parameter name: {name}")
         self[460] = 1 # FX on
         index = 2314 + color.value
         self[index] = fx_type.value
@@ -209,6 +215,7 @@ class MOD(Enum):
     SLICER        = 25
     VIBRATO       = 26
     RING_MOD      = 27
+    HUMANIZER     = 28
 
 FX = MOD # alternate name
 
@@ -568,3 +575,14 @@ class PATTERN(IntEnum): # For SLICER
 class RING_MOD(IntEnum):
     NORMAL      = 0
     INTELLIGENT = 1
+
+class HUMANIZER(IntEnum):
+    AUTO    = 0
+    PICKING = 1
+
+class VOWEL(IntEnum):
+    a = 0
+    e = 1
+    i = 2
+    o = 3
+    u = 4
