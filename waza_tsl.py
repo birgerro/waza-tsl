@@ -216,6 +216,7 @@ class MOD(Enum):
     VIBRATO       = 26
     RING_MOD      = 27
     HUMANIZER     = 28
+    CHORUS        = 29
 
 FX = MOD # alternate name
 
@@ -580,9 +581,36 @@ class HUMANIZER(IntEnum):
     AUTO    = 0
     PICKING = 1
 
-class VOWEL(IntEnum):
+class VOWEL(IntEnum): # For HUMANIZER
     a = 0
     e = 1
     i = 2
     o = 3
     u = 4
+
+class XOVER_FREQ(IntEnum): # For CHORUS
+    _100Hz   =  0 # 100 Hz
+    _125Hz   =  1 # 125 Hz
+    _160Hz   =  2 # 160 Hz
+    _200Hz   =  3 # 200 Hz
+    _250Hz   =  4 # 250 Hz
+    _315Hz   =  5 # 315 Hz
+    _400Hz   =  6 # 400 Hz
+    _500Hz   =  7 # 500 Hz
+    _630Hz   =  8 # 630 Hz
+    _800Hz   =  9 # 800 Hz
+    _1kHz    = 10 # 1.00 kHz
+    _1p25kHz = 11 # 1.25 kHz
+    _1p60kHz = 12 # 1.60 kHz
+    _2kHz    = 13 # 2.00 kHz
+    _2p50kHz = 14 # 2.50 kHz
+    _3p15kHz = 15 # 3.15 kHz
+    _4kHz    = 16 # 4.00 kHz
+# alternatively, use function to get closest value to a numerical frequency:
+def xover_freq(frequency):
+    if frequency < 100:
+        return 0   # 100Hz
+    elif frequency > 4e3:
+        return 16  # 4.00kHz
+    else:
+        return  round(log10(frequency)*10) - 20

@@ -235,6 +235,17 @@ KNOWN_INDEXES = {
     437 : ["MOD|HUMANIZER|DEPTH",  "minmax", [0,100]],
     438 : ["MOD|HUMANIZER|MANUAL", "minmax", [0,100]],
     439 : ["MOD|HUMANIZER|LEVEL",  "minmax", [0,100]],
+    # MOD|CHORUS:
+    441 : ["MOD|CHORUS|XOVER FREQUENCY", "listed", [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]],
+    442 : ["MOD|CHORUS|LOW RATE",        "minmax", [0,100]],
+    443 : ["MOD|CHORUS|LOW DEPTH",       "minmax", [0,100]],
+    444 : ["MOD|CHORUS|LOW PRE DELAY",   "scaled", [0,2,0,80]],
+    445 : ["MOD|CHORUS|LOW LEVEL",       "minmax", [0,100]],
+    446 : ["MOD|CHORUS|HIGH RATE",       "minmax", [0,100]],
+    447 : ["MOD|CHORUS|HIGH DEPTH",      "minmax", [0,100]],
+    448 : ["MOD|CHORUS|HIGH PRE DELAY",  "scaled", [0,2,0,80]],
+    449 : ["MOD|CHORUS|HIGH LEVEL",      "minmax", [0,100]],
+    450 : ["MOD|CHORUS|DIRECT MIX",      "minmax", [0,100]],
 
     2326 : ["DELAY OR FX",    "listed", [0,1]], # 0=DELAY, 1=FX
     # FX:
@@ -441,6 +452,17 @@ KNOWN_INDEXES = {
     705 : ["FX|HUMANIZER|DEPTH",  "minmax", [0,100]],
     706 : ["FX|HUMANIZER|MANUAL", "minmax", [0,100]],
     707 : ["FX|HUMANIZER|LEVEL",  "minmax", [0,100]],
+    # FX|CHORUS:
+    709 : ["FX|CHORUS|XOVER FREQUENCY", "listed", [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]],
+    710 : ["FX|CHORUS|LOW RATE",        "minmax", [0,100]],
+    711 : ["FX|CHORUS|LOW DEPTH",       "minmax", [0,100]],
+    712 : ["FX|CHORUS|LOW PRE DELAY",   "scaled", [0,2,0,80]],
+    713 : ["FX|CHORUS|LOW LEVEL",       "minmax", [0,100]],
+    714 : ["FX|CHORUS|HIGH RATE",       "minmax", [0,100]],
+    715 : ["FX|CHORUS|HIGH DEPTH",      "minmax", [0,100]],
+    716 : ["FX|CHORUS|HIGH PRE DELAY",  "scaled", [0,2,0,80]],
+    717 : ["FX|CHORUS|HIGH LEVEL",      "minmax", [0,100]],
+    718 : ["FX|CHORUS|DIRECT MIX",      "minmax", [0,100]],
 }
 
 # Make a mapping of parameter names to indexes, grouped by subsystem

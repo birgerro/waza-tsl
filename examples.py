@@ -539,3 +539,32 @@ def make_mod_fx_humanizer():
               rate=12,depth=22,level=32,sens=42,manual=52)
     f.append(p2)
     f.save()
+
+def make_mod_fx_chorus():
+    from waza_tsl import TSLFile, Patch, Color, MOD, FX, XOVER_FREQ, xover_freq
+    f = TSLFile("File with chorus")
+    p1 = Patch("R MOD CHORUS")
+    p1.set_mod(MOD.CHORUS,Color.RED,direct_mix=51,
+               low_rate=11,low_depth=21,low_pre_delay=31.5,low_level=41,
+               high_rate=61,high_depth=71,high_pre_delay=11.5,high_level=91,
+               xover_frequency=XOVER_FREQ._500Hz)
+    f.append(p1)
+    p1f = Patch("G MOD func CHORUS")
+    p1f.set_mod(MOD.CHORUS,Color.GREEN,direct_mix=52,
+               low_rate=12,low_depth=22,low_pre_delay=2.5,low_level=42,
+               high_rate=62,high_depth=72,high_pre_delay=22.5,high_level=92,
+               xover_frequency=xover_freq(125))
+    f.append(p1f)
+    p2 = Patch("Y FX CHORUS")
+    p2.set_fx(FX.CHORUS,Color.YELLOW,direct_mix=53,
+               low_rate=13,low_depth=23,low_pre_delay=33.5,low_level=43,
+               high_rate=63,high_depth=73,high_pre_delay=13.5,high_level=93,
+               xover_frequency=XOVER_FREQ._3p15kHz)
+    f.append(p2)
+    p2f = Patch("G FX func CHORUS")
+    p2f.set_fx(FX.CHORUS,Color.GREEN,direct_mix=54,
+               low_rate=14,low_depth=24,low_pre_delay=34.5,low_level=44,
+               high_rate=64,high_depth=74,high_pre_delay=24.5,high_level=94,
+               xover_frequency=xover_freq(1.25e3))
+    f.append(p2f)
+    f.save()
