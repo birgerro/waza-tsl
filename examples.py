@@ -568,3 +568,16 @@ def make_mod_fx_chorus():
                xover_frequency=xover_freq(1.25e3))
     f.append(p2f)
     f.save()
+
+def make_mod_fx_ac_guitar_sim():
+    from waza_tsl import TSLFile, Patch, Color, MOD, FX
+    f = TSLFile("File with ac.guitar sim")
+    p1 = Patch("R MOD AC.GUITAR SIM")
+    p1.set_mod(MOD.AC_GUITAR_SIM,Color.RED,
+               body=11,low=-21,high=-31,level=41)
+    f.append(p1)
+    p2 = Patch("Y FX AC.GUITAR SIM")
+    p2.set_fx(FX.AC_GUITAR_SIM,Color.YELLOW,
+               body=12,low=-22,high=-32,level=42)
+    f.append(p2)
+    f.save()

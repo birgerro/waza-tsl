@@ -217,6 +217,7 @@ class MOD(Enum):
     RING_MOD      = 27
     HUMANIZER     = 28
     CHORUS        = 29
+    AC_GUITAR_SIM = 31
 
 FX = MOD # alternate name
 

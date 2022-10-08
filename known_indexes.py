@@ -239,13 +239,18 @@ KNOWN_INDEXES = {
     441 : ["MOD|CHORUS|XOVER FREQUENCY", "listed", [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]],
     442 : ["MOD|CHORUS|LOW RATE",        "minmax", [0,100]],
     443 : ["MOD|CHORUS|LOW DEPTH",       "minmax", [0,100]],
-    444 : ["MOD|CHORUS|LOW PRE DELAY",   "scaled", [0,2,0,80]],
+    444 : ["MOD|CHORUS|LOW PRE DELAY",   "scaled", [0,2,0,80]], # Input: 0.0 -- 40.0 (half steps)
     445 : ["MOD|CHORUS|LOW LEVEL",       "minmax", [0,100]],
     446 : ["MOD|CHORUS|HIGH RATE",       "minmax", [0,100]],
     447 : ["MOD|CHORUS|HIGH DEPTH",      "minmax", [0,100]],
-    448 : ["MOD|CHORUS|HIGH PRE DELAY",  "scaled", [0,2,0,80]],
+    448 : ["MOD|CHORUS|HIGH PRE DELAY",  "scaled", [0,2,0,80]], # Input: 0.0 -- 40.0 (half steps)
     449 : ["MOD|CHORUS|HIGH LEVEL",      "minmax", [0,100]],
     450 : ["MOD|CHORUS|DIRECT MIX",      "minmax", [0,100]],
+    # MOD|AC.GUITAR SIM:
+    2064 : ["MOD|AC.GUITAR SIM|HIGH",  "scaled", [50,1,0,100]], # Input: -50 -- +50
+    2065 : ["MOD|AC.GUITAR SIM|BODY",  "minmax", [0,100]],
+    2066 : ["MOD|AC.GUITAR SIM|LOW",   "scaled", [50,1,0,100]], # Input: -50 -- +50
+    2068 : ["MOD|AC.GUITAR SIM|LEVEL", "minmax", [0,100]],
 
     2326 : ["DELAY OR FX",    "listed", [0,1]], # 0=DELAY, 1=FX
     # FX:
@@ -456,13 +461,18 @@ KNOWN_INDEXES = {
     709 : ["FX|CHORUS|XOVER FREQUENCY", "listed", [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]],
     710 : ["FX|CHORUS|LOW RATE",        "minmax", [0,100]],
     711 : ["FX|CHORUS|LOW DEPTH",       "minmax", [0,100]],
-    712 : ["FX|CHORUS|LOW PRE DELAY",   "scaled", [0,2,0,80]],
+    712 : ["FX|CHORUS|LOW PRE DELAY",   "scaled", [0,2,0,80]], # Input: 0.0 -- 40.0 (half steps)
     713 : ["FX|CHORUS|LOW LEVEL",       "minmax", [0,100]],
     714 : ["FX|CHORUS|HIGH RATE",       "minmax", [0,100]],
     715 : ["FX|CHORUS|HIGH DEPTH",      "minmax", [0,100]],
-    716 : ["FX|CHORUS|HIGH PRE DELAY",  "scaled", [0,2,0,80]],
+    716 : ["FX|CHORUS|HIGH PRE DELAY",  "scaled", [0,2,0,80]], # Input: 0.0 -- 40.0 (half steps)
     717 : ["FX|CHORUS|HIGH LEVEL",      "minmax", [0,100]],
     718 : ["FX|CHORUS|DIRECT MIX",      "minmax", [0,100]],
+    # FX|AC.GUITAR SIM:
+    2079 : ["FX|AC.GUITAR SIM|HIGH",  "scaled", [50,1,0,100]], # Input: -50 -- +50
+    2080 : ["FX|AC.GUITAR SIM|BODY",  "minmax", [0,100]],
+    2081 : ["FX|AC.GUITAR SIM|LOW",   "scaled", [50,1,0,100]], # Input: -50 -- +50
+    2083 : ["FX|AC.GUITAR SIM|LEVEL", "minmax", [0,100]],
 }
 
 # Make a mapping of parameter names to indexes, grouped by subsystem
