@@ -594,3 +594,16 @@ def make_mod_fx_phaser_90E():
               script=OFF,speed=66)
     f.append(p2)
     f.save()
+
+def make_mod_fx_flanger_117E():
+    from waza_tsl import TSLFile, Patch, Color, MOD, FX
+    f = TSLFile("File with flanger 117E")
+    p1 = Patch("R MOD FLANGER 117E")
+    p1.set_mod(MOD.FLANGER_117E,Color.RED,
+               manual=11,width=21,speed=31,regen=41)
+    f.append(p1)
+    p2 = Patch("Y FX FLANGER 117E")
+    p2.set_fx(FX.FLANGER_117E,Color.YELLOW,
+              manual=12,width=22,speed=32,regen=42)
+    f.append(p2)
+    f.save()

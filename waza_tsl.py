@@ -219,6 +219,7 @@ class MOD(Enum):
     CHORUS        = 29
     AC_GUITAR_SIM = 31
     PHASER_90E    = 35
+    FLANGER_117E  = 36
 
 FX = MOD # alternate name
 

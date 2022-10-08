@@ -254,6 +254,11 @@ KNOWN_INDEXES = {
     # MOD|PHASER 90E:
     2109 : ["MOD|PHASER 90E|SCRIPT", "listed", [0,1]], # 0=OFF, 1=ON
     2110 : ["MOD|PHASER 90E|SPEED",  "minmax", [0,100]],
+    # MOD|FLANGER 117E:
+    2111 : ["MOD|FLANGER 117E|MANUAL", "minmax", [0,100]],
+    2112 : ["MOD|FLANGER 117E|WIDTH",  "minmax", [0,100]],
+    2113 : ["MOD|FLANGER 117E|SPEED",  "minmax", [0,100]],
+    2114 : ["MOD|FLANGER 117E|REGEN",  "minmax", [0,100]],
 
     2326 : ["DELAY OR FX",    "listed", [0,1]], # 0=DELAY, 1=FX
     # FX:
@@ -479,6 +484,11 @@ KNOWN_INDEXES = {
     # FX|PHASER 90E:
     2115 : ["FX|PHASER 90E|SCRIPT", "listed", [0,1]], # 0=OFF, 1=ON
     2116 : ["FX|PHASER 90E|SPEED",  "minmax", [0,100]],
+    # FX|FLANGER 117E:
+    2117 : ["FX|FLANGER 117E|MANUAL", "minmax", [0,100]],
+    2118 : ["FX|FLANGER 117E|WIDTH",  "minmax", [0,100]],
+    2119 : ["FX|FLANGER 117E|SPEED",  "minmax", [0,100]],
+    2120 : ["FX|FLANGER 117E|REGEN",  "minmax", [0,100]],
 }
 
 # Make a mapping of parameter names to indexes, grouped by subsystem
