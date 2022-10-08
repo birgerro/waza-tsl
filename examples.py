@@ -98,11 +98,11 @@ def make_mod_fx_pedal_wah():
     f = TSLFile("File with pedal wah")
     p1 = Patch("G MOD VO VAH")
     p1.set_mod(MOD.PEDAL_WAH,Color.GREEN,type=PEDAL.VO_WAH,pedal_min=11,
-              pedal_position=21,pedal_max=31,effect_level=61,direct_mix=81)
+               pedal_position=21,pedal_max=31,effect_level=61,direct_mix=81)
     f.append(p1)
     p2 = Patch("R MOD LIGHT WAH")
     p2.set_mod(MOD.PEDAL_WAH,Color.RED,type=PEDAL.LIGHT_WAH,pedal_min=12,
-              pedal_position=22,pedal_max=32,effect_level=62,direct_mix=82)
+               pedal_position=22,pedal_max=32,effect_level=62,direct_mix=82)
     f.append(p2)
     p3 = Patch("Y FX 7STRING WAH")
     p3.set_fx(FX.PEDAL_WAH,Color.YELLOW,type=PEDAL.SEVEN_WAH,pedal_min=13,
@@ -131,19 +131,19 @@ def make_mod_fx_comp():
     f.append(p3)
     p4 = Patch("G FX D-COMP")
     p4.set_fx(FX.COMP,Color.GREEN,type=COMP.D_COMP,
-               sustain=14,attack=34,level=64,tone=+15)
+              sustain=14,attack=34,level=64,tone=+15)
     f.append(p4)
     p5 = Patch("R FX ORANGE COMP")
     p5.set_fx(FX.COMP,Color.RED,type=COMP.ORANGE,
-               sustain=15,attack=35,level=65,tone=+25)
+              sustain=15,attack=35,level=65,tone=+25)
     f.append(p5)
     p6 = Patch("Y FX FAT COMP")
     p6.set_fx(FX.COMP,Color.YELLOW,type=COMP.FAT,
-               sustain=16,attack=36,level=66,tone=+35)
+              sustain=16,attack=36,level=66,tone=+35)
     f.append(p6)
     p7 = Patch("G FX MILD COMP")
     p7.set_fx(FX.COMP,Color.GREEN,type=COMP.MILD,
-               sustain=17,attack=37,level=67,tone=+45)
+              sustain=17,attack=37,level=67,tone=+45)
     f.append(p7)
     f.save()
 
@@ -165,15 +165,15 @@ def make_mod_fx_limiter():
     f.append(p3)
     p4 = Patch("G FX VTG RACK U LIMITER")
     p4.set_fx(FX.LIMITER,Color.GREEN,type=LIMITER.VTG_RACK_U,
-               threshold=14,attack=34,release=54,level=84,ratio=RATIO._2p6to1)
+              threshold=14,attack=34,release=54,level=84,ratio=RATIO._2p6to1)
     f.append(p4)
     p5 = Patch("R FX BOSS LIMITER")
     p5.set_fx(FX.LIMITER,Color.RED,type=LIMITER.BOSS_LIMITER,
-               threshold=15,attack=35,release=55,level=85,ratio=RATIO._3p5to1)
+              threshold=15,attack=35,release=55,level=85,ratio=RATIO._3p5to1)
     f.append(p5)
     p6 = Patch("Y FX RACK 160D LIMITER")
     p6.set_fx(FX.LIMITER,Color.YELLOW,type=LIMITER.RACK_160D,
-               threshold=16,attack=36,release=56,level=86,ratio=RATIO._6to1)
+              threshold=16,attack=36,release=56,level=86,ratio=RATIO._6to1)
     f.append(p6)
     p7 = Patch("R MOD func LIMITER RACK 160D") # same as p2
     p7.set_mod(MOD.LIMITER,Color.RED,type=LIMITER.RACK_160D,
@@ -181,7 +181,7 @@ def make_mod_fx_limiter():
     f.append(p7)
     p8 = Patch("R FX func BOSS LIMITER") # same as p5
     p8.set_fx(FX.LIMITER,Color.RED,type=LIMITER.BOSS_LIMITER,
-               threshold=15,attack=35,release=55,level=85,ratio=ratio[3.5:1])
+              threshold=15,attack=35,release=55,level=85,ratio=ratio[3.5:1])
     f.append(p8)
     f.save()
 
@@ -195,8 +195,8 @@ def make_mod_fx_graphic_eq():
     f.append(p1)
     p2 = Patch("Y FX GRAPHIC EQ")
     p2.set_fx(FX.GRAPHIC_EQ,Color.YELLOW,level=-20,
-               _31hz=+20, _62hz=+16, _125hz=+12, _250hz=+8, _500hz=+4,
-               _1khz=0, _2khz=-4, _4khz=-8, _8khz=-12, _16khz=-16)
+              _31hz=+20, _62hz=+16, _125hz=+12, _250hz=+8, _500hz=+4,
+              _1khz=0, _2khz=-4, _4khz=-8, _8khz=-12, _16khz=-16)
     f.append(p2)
     f.save()
 
@@ -213,10 +213,10 @@ def make_mod_fx_parametric_eq():
     f.append(p1)
     p2 = Patch("G FX PARAM EQ enum")
     p2.set_fx(FX.PARAMETRIC_EQ,Color.GREEN,level=+2,
-               low_cut=LOW_CUT._100Hz,low_gain=-2,
-               low_mid_frequency=MID_FREQ._800Hz,low_mid_gain=-5,low_mid_q=Q_VALUE._2,
-               high_mid_frequency=MID_FREQ._1p60kHz,high_mid_gain=-4,high_mid_q=Q_VALUE._16,
-               high_cut=HIGH_CUT._FLAT,high_gain=+2)
+              low_cut=LOW_CUT._100Hz,low_gain=-2,
+              low_mid_frequency=MID_FREQ._800Hz,low_mid_gain=-5,low_mid_q=Q_VALUE._2,
+              high_mid_frequency=MID_FREQ._1p60kHz,high_mid_gain=-4,high_mid_q=Q_VALUE._16,
+              high_cut=HIGH_CUT._FLAT,high_gain=+2)
     f.append(p2)
     p3 = Patch("Y MOD PARAM EQ func")
     p3.set_mod(MOD.PARAMETRIC_EQ,Color.YELLOW,level=-3,
@@ -227,10 +227,10 @@ def make_mod_fx_parametric_eq():
     f.append(p3)
     p4 = Patch("R FX PARAM EQ func")
     p4.set_fx(FX.PARAMETRIC_EQ,Color.RED,level=-2,
-               low_cut=low_cut(200),low_gain=+2,
-               low_mid_frequency=mid_freq(1e3),low_mid_gain=+3,low_mid_q=q_value(1),
-               high_mid_frequency=mid_freq(3.15e3),high_mid_gain=+4,high_mid_q=q_value(8),
-               high_cut=high_cut(12.5e3),high_gain=0)
+              low_cut=low_cut(200),low_gain=+2,
+              low_mid_frequency=mid_freq(1e3),low_mid_gain=+3,low_mid_q=q_value(1),
+              high_mid_frequency=mid_freq(3.15e3),high_mid_gain=+4,high_mid_q=q_value(8),
+              high_cut=high_cut(12.5e3),high_gain=0)
     f.append(p4)
     f.save()
 
@@ -247,11 +247,11 @@ def make_mod_fx_guitar_sim():
     f.append(p2)
     p3 = Patch("FX S->AC GUITAR SIM")
     p3.set_fx(FX.GUITAR_SIM,Color.YELLOW,type=GUITAR_SIM.S_AC,
-               low=+33,high=+44,level=55,body=88)
+              low=+33,high=+44,level=55,body=88)
     f.append(p3)
     p4 = Patch("FX P->AC GUITAR SIM")
     p4.set_fx(FX.GUITAR_SIM,Color.GREEN,type=GUITAR_SIM.P_AC,
-               low=+44,high=-44,level=25,body=12)
+              low=+44,high=-44,level=25,body=12)
     f.append(p4)
     f.save()
 
@@ -279,8 +279,8 @@ def make_mod_fx_wave_synth():
     f.append(p1)
     p2 = Patch("Y FX WAVE SYNTH")
     p2.set_fx(FX.WAVE_SYNTH,Color.YELLOW,wave=WAVE.SQUARE,cutoff=12,resonance=22,
-               filter_sens=32,filter_decay=42,filter_depth=52,
-               synth_level=62,direct_mix=72)
+              filter_sens=32,filter_decay=42,filter_depth=52,
+              synth_level=62,direct_mix=72)
     f.append(p2)
     f.save()
 
@@ -309,8 +309,8 @@ def make_mod_fx_pitch_shifter():
     f.append(p1)
     p2 = Patch("Y FX PITCH SHIFTER")
     p2.set_fx(FX.PITCH_SHIFTER,Color.YELLOW,voice=VOICE._1,direct_mix=66,
-               ps1_mode=PITCH_SHIFTER.MONO,ps1_pitch=-12,ps1_fine=+23,
-               ps1_pre_delay=100,ps1_level=78,ps1_feedback=99)
+              ps1_mode=PITCH_SHIFTER.MONO,ps1_pitch=-12,ps1_fine=+23,
+              ps1_pre_delay=100,ps1_level=78,ps1_feedback=99)
     f.append(p2)
     f.save()
 
@@ -340,38 +340,38 @@ def make_mod_fx_harmonist():
     f.append(p1)
     p1f = Patch("G MOD func HARMONIST")
     p1f.set_mod(MOD.HARMONIST,Color.GREEN,voice=VOICE._2,direct_mix=33,
-               hr1_harmony=HARMONY.minus_11_th,hr1_pre_delay=100,
-               hr1_level=88,hr1_feedback=55,
-               hr2_harmony=HARMONY.USER,hr2_level=33,hr2_pre_delay=200,
-               **user_harmony(MASTER_KEY.A_flat_major,"hr2",
-                              A_flat=-24,A=-20,B_flat=-16,B=-12,C=-8,D_flat=-4,
-                              D=+4,E_flat=+8,E=+12,F=+16,F_sharp=+20,G=+24))
+                hr1_harmony=HARMONY.minus_11_th,hr1_pre_delay=100,
+                hr1_level=88,hr1_feedback=55,
+                hr2_harmony=HARMONY.USER,hr2_level=33,hr2_pre_delay=200,
+                **user_harmony(MASTER_KEY.A_flat_major,"hr2",
+                               A_flat=-24,A=-20,B_flat=-16,B=-12,C=-8,D_flat=-4,
+                               D=+4,E_flat=+8,E=+12,F=+16,F_sharp=+20,G=+24))
     f.append(p1f)
     p2 = Patch("Y FX HARMONIST")
     p2.set_fx(FX.HARMONIST,Color.YELLOW,voice=VOICE._1,
-               master_key=MASTER_KEY.C_sharp_minor,direct_mix=33,
-               hr1_harmony=HARMONY.USER,hr1_level=44,hr1_pre_delay=299,
-               hr1_perfect_unison = -24, # E
-               hr1_minor_second   = -20, # F
-               hr1_major_second   = -16, # F_sharp
-               hr1_minor_third    = -12, # G
-               hr1_major_third    =  -8, # A_flat
-               hr1_perfect_fourth =  -4, # A
-               hr1_tritone        =  +4, # B_flat
-               hr1_perfect_fifth  =  +8, # B
-               hr1_minor_sixth    = +12, # C
-               hr1_major_sixth    = +16, # D_flat
-               hr1_minor_seventh  = +20, # D
-               hr1_major_seventh  = +24, # E_flat
-               hr1_feedback=77)
+              master_key=MASTER_KEY.C_sharp_minor,direct_mix=33,
+              hr1_harmony=HARMONY.USER,hr1_level=44,hr1_pre_delay=299,
+              hr1_perfect_unison = -24, # E
+              hr1_minor_second   = -20, # F
+              hr1_major_second   = -16, # F_sharp
+              hr1_minor_third    = -12, # G
+              hr1_major_third    =  -8, # A_flat
+              hr1_perfect_fourth =  -4, # A
+              hr1_tritone        =  +4, # B_flat
+              hr1_perfect_fifth  =  +8, # B
+              hr1_minor_sixth    = +12, # C
+              hr1_major_sixth    = +16, # D_flat
+              hr1_minor_seventh  = +20, # D
+              hr1_major_seventh  = +24, # E_flat
+              hr1_feedback=77)
     f.append(p2)
     p2f = Patch("G FX func HARMONIST")
     p2f.set_fx(FX.HARMONIST,Color.GREEN,voice=VOICE._1,direct_mix=33,
-              hr1_harmony=HARMONY.USER,hr1_level=44,hr1_pre_delay=299,
-              **user_harmony(MASTER_KEY.C_sharp_minor,"hr1",
-                             E=-24,F=-20,F_sharp=-16,G=-12,A_flat=-8,A=-4,
-                             B_flat=+4,B=+8,C=+12,D_flat=+16,D=+20,E_flat=+24),
-              hr1_feedback=77)
+               hr1_harmony=HARMONY.USER,hr1_level=44,hr1_pre_delay=299,
+               **user_harmony(MASTER_KEY.C_sharp_minor,"hr1",
+                              E=-24,F=-20,F_sharp=-16,G=-12,A_flat=-8,A=-4,
+                              B_flat=+4,B=+8,C=+12,D_flat=+16,D=+20,E_flat=+24),
+               hr1_feedback=77)
     f.append(p2f)
     # if HARMONY.USER is needed for both voices, this pattern can be used:
     #    **{**user_harmony(key,"hr1",...),**user_harmony(key,"hr2",...)}
@@ -384,13 +384,13 @@ def make_mod_fx_ac_processor():
     f = TSLFile("File with ac.processor")
     p1 = Patch("R MOD AC.PROCESSOR")
     p1.set_mod(MOD.AC_PROCESSOR,Color.RED,type=AC_PROCESSOR.BRIGHT,
-              bass=11,middle=21,treble=31,presence=41,level=51,
-              middle_frequency=MID_FREQ._2kHz)
+               bass=11,middle=21,treble=31,presence=41,level=51,
+               middle_frequency=MID_FREQ._2kHz)
     f.append(p1)
     p1f = Patch("G MOD func AC.PROCESSOR")
     p1f.set_mod(MOD.AC_PROCESSOR,Color.GREEN,type=AC_PROCESSOR.POWER,
-              bass=12,middle=22,treble=32,presence=42,level=52,
-              middle_frequency=mid_freq(100))
+                bass=12,middle=22,treble=32,presence=42,level=52,
+                middle_frequency=mid_freq(100))
     f.append(p1f)
     p2 = Patch("Y FX AC.PROCESSOR")
     p2.set_fx(FX.AC_PROCESSOR,Color.YELLOW,type=AC_PROCESSOR.MEDIUM,
@@ -399,8 +399,8 @@ def make_mod_fx_ac_processor():
     f.append(p2)
     p2f = Patch("G FX func AC.PROCESSOR")
     p2f.set_fx(FX.AC_PROCESSOR,Color.GREEN,type=AC_PROCESSOR.SMALL,
-              bass=14,middle=24,treble=34,presence=44,level=54,
-              middle_frequency=mid_freq(8e3))
+               bass=14,middle=24,treble=34,presence=44,level=54,
+               middle_frequency=mid_freq(8e3))
     f.append(p2f)
     f.save()
 
@@ -421,13 +421,13 @@ def make_mod_fx_phaser():
     f.append(p2)
     p3 = Patch("Y FX PHASER")
     p3.set_fx(FX.PHASER,Color.YELLOW,type=PHASER._12STAGE,
-               rate=13,depth=23,resonance=33,manual=43,effect_level=53,
-               step_rate=step_rate(63),direct_mix=73)
+              rate=13,depth=23,resonance=33,manual=43,effect_level=53,
+              step_rate=step_rate(63),direct_mix=73)
     f.append(p3)
     p4 = Patch("R FX PHASER")
     p4.set_fx(FX.PHASER,Color.RED,type=PHASER.BiPHASE,
-               rate=14,depth=24,resonance=34,manual=44,effect_level=54,
-               step_rate=step_rate("off"),direct_mix=74)
+              rate=14,depth=24,resonance=34,manual=44,effect_level=54,
+              step_rate=step_rate("off"),direct_mix=74)
     f.append(p4)
     f.save()
 
@@ -495,7 +495,7 @@ def make_mod_fx_slicer():
     f.append(p1)
     p2 = Patch("Y FX SLICER")
     p2.set_fx(FX.SLICER,Color.YELLOW,pattern=PATTERN.P13,
-               rate=12,trigger_sens=22,effect_level=32,direct_mix=42)
+              rate=12,trigger_sens=22,effect_level=32,direct_mix=42)
     f.append(p2)
     f.save()
 
@@ -508,7 +508,7 @@ def make_mod_fx_vibrato():
     f.append(p1)
     p2 = Patch("Y FX VIBRATO")
     p2.set_fx(FX.VIBRATO,Color.YELLOW,
-               rate=12,depth=22,level=32)
+              rate=12,depth=22,level=32)
     f.append(p2)
     f.save()
 
@@ -521,7 +521,7 @@ def make_mod_fx_ring_mod():
     f.append(p1)
     p2 = Patch("Y FX RING MOD")
     p2.set_fx(FX.RING_MOD,Color.YELLOW,mode=RING_MOD.INTELLIGENT,
-               frequency=12,effect_level=22,direct_mix=32)
+              frequency=12,effect_level=22,direct_mix=32)
     f.append(p2)
     f.save()
 
@@ -578,7 +578,7 @@ def make_mod_fx_ac_guitar_sim():
     f.append(p1)
     p2 = Patch("Y FX AC.GUITAR SIM")
     p2.set_fx(FX.AC_GUITAR_SIM,Color.YELLOW,
-               body=12,low=-22,high=-32,level=42)
+              body=12,low=-22,high=-32,level=42)
     f.append(p2)
     f.save()
 
