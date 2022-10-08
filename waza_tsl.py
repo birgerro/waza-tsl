@@ -223,9 +223,17 @@ class MOD(Enum):
 
 FX = MOD # alternate name
 
+# For T.WAH:
+DOWN = 0
+UP   = 1
+
 # For PHASER 90E:
 OFF = 0
 ON  = 1
+
+class FILTER(IntEnum): # For T.WAH and AUTO WAH
+    LPF = 0
+    BPF = 1
 
 class PEDAL(IntEnum):
     CRY_WAH   = 0
