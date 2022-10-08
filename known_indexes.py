@@ -251,6 +251,9 @@ KNOWN_INDEXES = {
     2065 : ["MOD|AC.GUITAR SIM|BODY",  "minmax", [0,100]],
     2066 : ["MOD|AC.GUITAR SIM|LOW",   "scaled", [50,1,0,100]], # Input: -50 -- +50
     2068 : ["MOD|AC.GUITAR SIM|LEVEL", "minmax", [0,100]],
+    # MOD|PHASER 90E:
+    2109 : ["MOD|PHASER 90E|SCRIPT", "listed", [0,1]], # 0=OFF, 1=ON
+    2110 : ["MOD|PHASER 90E|SPEED",  "minmax", [0,100]],
 
     2326 : ["DELAY OR FX",    "listed", [0,1]], # 0=DELAY, 1=FX
     # FX:
@@ -473,6 +476,9 @@ KNOWN_INDEXES = {
     2080 : ["FX|AC.GUITAR SIM|BODY",  "minmax", [0,100]],
     2081 : ["FX|AC.GUITAR SIM|LOW",   "scaled", [50,1,0,100]], # Input: -50 -- +50
     2083 : ["FX|AC.GUITAR SIM|LEVEL", "minmax", [0,100]],
+    # FX|PHASER 90E:
+    2115 : ["FX|PHASER 90E|SCRIPT", "listed", [0,1]], # 0=OFF, 1=ON
+    2116 : ["FX|PHASER 90E|SPEED",  "minmax", [0,100]],
 }
 
 # Make a mapping of parameter names to indexes, grouped by subsystem

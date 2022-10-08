@@ -581,3 +581,16 @@ def make_mod_fx_ac_guitar_sim():
                body=12,low=-22,high=-32,level=42)
     f.append(p2)
     f.save()
+
+def make_mod_fx_phaser_90E():
+    from waza_tsl import TSLFile, Patch, Color, MOD, FX, ON, OFF
+    f = TSLFile("File with phaser 90E")
+    p1 = Patch("R MOD PHASER 90E")
+    p1.set_mod(MOD.PHASER_90E,Color.RED,
+               script=ON,speed=33)
+    f.append(p1)
+    p2 = Patch("Y FX PHASER 90E")
+    p2.set_fx(FX.PHASER_90E,Color.YELLOW,
+              script=OFF,speed=66)
+    f.append(p2)
+    f.save()

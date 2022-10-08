@@ -218,8 +218,13 @@ class MOD(Enum):
     HUMANIZER     = 28
     CHORUS        = 29
     AC_GUITAR_SIM = 31
+    PHASER_90E    = 35
 
 FX = MOD # alternate name
+
+# For PHASER 90E:
+OFF = 0
+ON  = 1
 
 class PEDAL(IntEnum):
     CRY_WAH   = 0
