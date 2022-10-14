@@ -85,7 +85,7 @@ class Patch:
         if isinstance(amp_type, AMP):
             self[81] = amp_type.value
         else:
-            raise TypeError(f"amp_type must be an AMP_type, not '{type(amp_type)}'")
+            raise TypeError(f"amp_type must be an AMP, not '{type(amp_type)}'")
         self[82] = gain
         self[84] = bass
         self[85] = middle
@@ -98,7 +98,7 @@ class Patch:
         if isinstance(bst_type, BST):
             self[49] = bst_type.value
         else:
-            raise TypeError(f"bst_type must be an BST_type, not '{type(bst_type)}'")
+            raise TypeError(f"bst_type must be an BST, not '{type(bst_type)}'")
         self[48] = 1 # BST on
         self[50] = drive
         self[51] = bottom
@@ -116,7 +116,7 @@ class Patch:
         if isinstance(mod_type, MOD):
             self[193] = mod_type.value
         else:
-            raise TypeError(f"mod_type must be an MOD_type, not '{type(mod_type)}'")
+            raise TypeError(f"mod_type must be an MOD, not '{type(mod_type)}'")
         params = PARAMETERS["MOD"][mod_type.name]
         for param,index in params.items():
             value = kw.get(param) # params not listed in kw get set to default (value=None)
@@ -130,14 +130,39 @@ class Patch:
         self[2321] = color.value
         self[2325] = 1 # MOD, not BST
 
-    def set_delay(self,delay_type,**kw):
-        raise NotImplementedError
+    def set_delay(self,delay_type,color,delay_time=None,feedback=None,
+                  high_cut=None,effect_level=None,direct_mix=None,
+                  modulation_rate=None,modulation_depth=None,modulation_sw=None,
+                  range=None,filter=None,delay_phase=None,feedback_phase=None):
+        if isinstance(delay_type, DELAY):
+            self[737] = delay_type.value
+        else:
+            raise TypeError(f"delay_type must be an DELAY, not '{type(delay_type)}'")
+        self[736]  = 1 # DELAY on
+        self[738]  = delay_time
+        self[740]  = feedback
+        self[741]  = high_cut         # not used for SDE-3000
+        self[742]  = effect_level
+        self[743]  = direct_mix
+        self[755]  = modulation_rate  # not used for DIGITAL, REVERSE, ANALOG, TAPE ECHO
+        self[756]  = modulation_depth # not used for DIGITAL, REVERSE, ANALOG, TAPE ECHO
+        self[2125] = modulation_sw    # not used for DIGITAL, REVERSE, ANALOG, TAPE ECHO, MODULATE
+        self[2121] = range            # not used for DIGITAL, REVERSE, ANALOG, TAPE ECHO, MODULATE
+        self[2122] = filter           # not used for DIGITAL, REVERSE, ANALOG, TAPE ECHO, MODULATE
+        self[2124] = delay_phase      # not used for DIGITAL, REVERSE, ANALOG, TAPE ECHO, MODULATE
+        self[2123] = feedback_phase   # not used for DIGITAL, REVERSE, ANALOG, TAPE ECHO, MODULATE
+        index = 2311 + color.value
+        self[index] = delay_type.value
+        self[2322] = color.value
+        self[2326] = 0 # DELAY, not FX
+
+    set_delay1 = set_delay
 
     def set_fx(self,fx_type,color,**kw):
         if isinstance(fx_type, FX):
             self[461] = fx_type.value
         else:
-            raise TypeError(f"fx_type must be an FX_type, not '{type(fx_type)}'")
+            raise TypeError(f"fx_type must be an FX, not '{type(fx_type)}'")
         params = PARAMETERS["FX"][fx_type.name]
         for param,index in params.items():
             value = kw.get(param) # params not listed in kw get set to default (value=None)
@@ -149,12 +174,12 @@ class Patch:
         index = 2314 + color.value
         self[index] = fx_type.value
         self[2323] = color.value
-        self[2326] = 1 # FX, not DELAY1
+        self[2326] = 1 # FX, not DELAY
 
-    def set_reverb(self,reverb_type,**kw):
+    def set_reverb(self,reverb_type,color,**kw):
         raise NotImplementedError
 
-    def set_delay2(self,delay_type,**kw):
+    def set_delay2(self,delay_type,color,**kw):
         raise NotImplementedError
 
 
@@ -223,13 +248,23 @@ class MOD(Enum):
 
 FX = MOD # alternate name
 
+class DELAY(Enum):
+    DIGITAL   =  0
+    REVERSE   =  6
+    ANALOG    =  7
+    TAPE_ECHO =  8
+    MODULATE  =  9
+    SDE_3000  = 10
+
+
 # For T.WAH:
 DOWN = 0
 UP   = 1
 
-# For PHASER 90E:
+# For PHASER 90E and DELAY:
 OFF = 0
 ON  = 1
+
 
 class FILTER(IntEnum): # For T.WAH and AUTO WAH
     LPF = 0
@@ -629,3 +664,11 @@ def xover_freq(frequency):
         return 16  # 4.00kHz
     else:
         return  round(log10(frequency)*10) - 20
+
+class SDE_3000(IntEnum): # For DELAY type SDE-3000
+    # For RANGE:
+    _8kHz  = 0
+    _17kHz = 1
+    # For DELAY PHASE and FEEDBACK PHASE:
+    NORMAL  = 0
+    INVERSE = 1

@@ -607,3 +607,37 @@ def make_mod_fx_flanger_117E():
               manual=12,width=22,speed=32,regen=42)
     f.append(p2)
     f.save()
+
+def make_delay_types():
+    from waza_tsl import TSLFile, Patch, Color, DELAY, ON, OFF
+    from waza_tsl import HIGH_CUT, high_cut, SDE_3000
+    f = TSLFile("File with delay")
+    p1 = Patch("R DIGITAL DELAY")
+    p1.set_delay(DELAY.DIGITAL,Color.RED,delay_time=1234,feedback=11,
+                 high_cut=HIGH_CUT._4kHz,effect_level=21,direct_mix=31)
+    f.append(p1)
+    p2f = Patch("Y func REVERSE DELAY")
+    p2f.set_delay(DELAY.REVERSE,Color.YELLOW,delay_time=1999,feedback=12,
+                  high_cut=high_cut(1e3),effect_level=22,direct_mix=32)
+    f.append(p2f)
+    p3 = Patch("G ANALOG DELAY")
+    p3.set_delay(DELAY.ANALOG,Color.GREEN,delay_time=888,feedback=13,
+                 high_cut=HIGH_CUT._800Hz,effect_level=23,direct_mix=33)
+    f.append(p3)
+    p4f = Patch("Y func TAPE ECHO DELAY")
+    p4f.set_delay(DELAY.TAPE_ECHO,Color.YELLOW,delay_time=1,feedback=14,
+                  high_cut=high_cut(10e3),effect_level=24,direct_mix=34)
+    f.append(p4f)
+    p5 = Patch("R MODULATE DELAY")
+    p5.set_delay(DELAY.MODULATE,Color.RED,delay_time=500,feedback=15,
+                 high_cut=HIGH_CUT._12p5kHz,effect_level=25,direct_mix=35,
+                 modulation_rate=45,modulation_depth=55)
+    f.append(p5)
+    p6 = Patch("G SDE-3000 DELAY")
+    p6.set_delay(DELAY.SDE_3000,Color.GREEN,delay_time=1500,feedback=16,
+                 effect_level=26,direct_mix=36,modulation_rate=46,
+                 modulation_depth=56,modulation_sw=ON,
+                 filter=OFF,range=SDE_3000._17kHz,
+                 delay_phase=SDE_3000.NORMAL,feedback_phase=SDE_3000.INVERSE)
+    f.append(p6)
+    f.save()

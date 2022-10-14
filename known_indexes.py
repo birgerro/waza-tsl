@@ -19,7 +19,7 @@ KNOWN_INDEXES = {
     2305 : ["BST|GREEN TYPE",   "listed", [0,1,2,3,4,5,6,8,9,10,11,12,13,14,15,16,17,18,19,20]],
     2306 : ["BST|RED TYPE",     "listed", [0,1,2,3,4,5,6,8,9,10,11,12,13,14,15,16,17,18,19,20]],
     2307 : ["BST|YELLOW TYPE",  "listed", [0,1,2,3,4,5,6,8,9,10,11,12,13,14,15,16,17,18,19,20]],
-    2320 : ["BST|COLOR",        "listed", [0,1,2]],
+    2320 : ["BST|COLOR",        "listed", [0,1,2]], # 0=GREEN, 1=RED, 2=YELLOW
     2325 : ["BST OR MOD",       "listed", [0,1]],
     48   : ["BST|ON/OFF",       "listed", [0,1]],
     49   : ["BST|TYPE",         "listed", [0,1,2,3,4,5,6,8,9,10,11,12,13,14,15,16,17,18,19,20]],
@@ -31,13 +31,13 @@ KNOWN_INDEXES = {
     55   : ["BST|EFFECT LEVEL", "minmax", [0,100]],
     56   : ["BST|DIRECT MIX",   "minmax", [0,100]],
     # MOD:
+    # 2325 "BST OR MOD" is located under BST
     2308 : ["MOD|GREEN TYPE",  "listed", [0,1,2,3,4,6,7,9,10,12,14,15,16,18,19,20,21,22,23,25,26,27,28,29,31,35,36]],
     2309 : ["MOD|RED TYPE",    "listed", [0,1,2,3,4,6,7,9,10,12,14,15,16,18,19,20,21,22,23,25,26,27,28,29,31,35,36]],
     2310 : ["MOD|YELLOW TYPE", "listed", [0,1,2,3,4,6,7,9,10,12,14,15,16,18,19,20,21,22,23,25,26,27,28,29,31,35,36]],
-    2321 : ["MOD|COLOR",       "listed", [0,1,2]],
+    2321 : ["MOD|COLOR",       "listed", [0,1,2]], # 0=GREEN, 1=RED, 2=YELLOW
     192  : ["MOD|ON/OFF",      "listed", [0,1]],
     193  : ["MOD|TYPE",        "listed", [0,1,2,3,4,6,7,9,10,12,14,15,16,18,19,20,21,22,23,25,26,27,28,29,31,35,36]],
-    # 2325 "BST OR MOD" is located under BST
     # MOD|T.WAH:
     204  : ["MOD|T.WAH|MODE",         "listed", [0,1]], # 0=LPF, 1=BPF
     205  : ["MOD|T.WAH|POLARITY",     "listed", [0,1]], # 0=DOWN, 1=UP
@@ -259,16 +259,34 @@ KNOWN_INDEXES = {
     2112 : ["MOD|FLANGER 117E|WIDTH",  "minmax", [0,100]],
     2113 : ["MOD|FLANGER 117E|SPEED",  "minmax", [0,100]],
     2114 : ["MOD|FLANGER 117E|REGEN",  "minmax", [0,100]],
-
-    2326 : ["DELAY OR FX",    "listed", [0,1]], # 0=DELAY, 1=FX
+    # DELAY:
+    2311 : ["DELAY|GREEN TYPE",       "listed", [0,6,7,8,9,10]],
+    2312 : ["DELAY|RED TYPE",         "listed", [0,6,7,8,9,10]],
+    2313 : ["DELAY|YELLOW TYPE",      "listed", [0,6,7,8,9,10]],
+    2322 : ["DELAY|COLOR",            "listed", [0,1,2]], # 0=GREEN, 1=RED, 2=YELLOW
+    2326 : ["DELAY OR FX",            "listed", [0,1]], # 0=DELAY, 1=FX
+    736  : ["DELAY|ON/OFF",           "listed", [0,1]], # 0=OFF, 1=ON
+    737  : ["DELAY|TYPE",             "listed", [0,6,7,8,9,10]],
+    738  : ["DELAY|DELAY TIME",       "2bytes", [1,2000]],
+    740  : ["DELAY|FEEDBACK",         "minmax", [0,100]],
+    741  : ["DELAY|HIGH CUT",         "listed", [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14]],
+    742  : ["DELAY|EFFECT LEVEL",     "minmax", [0,120]],
+    743  : ["DELAY|DIRECT MIX",       "minmax", [0,100]],
+    755  : ["DELAY|MODULATION RATE",  "minmax", [0,100]],
+    756  : ["DELAY|MODULATION DEPTH", "minmax", [0,100]],
+    2121 : ["DELAY|RANGE",            "listed", [0,1]], # 0=8KhZ, 1=17KhZ
+    2122 : ["DELAY|FILTER",           "listed", [0,1]], # 0=OFF, 1=ON
+    2123 : ["DELAY|FEEDBACK PHASE",   "listed", [0,1]], # 0=NORMAL, 1=INVERSE
+    2124 : ["DELAY|DELAY PHASE",      "listed", [0,1]], # 0=NORMAL, 1=INVERSE
+    2125 : ["DELAY|MODULATION SW",    "listed", [0,1]], # 0=OFF, 1=ON
     # FX:
+    # 2326 "DELAY OR FX" is located under DELAY
     2314 : ["FX|GREEN TYPE",  "listed", [0,1,2,3,4,6,7,9,10,12,14,15,16,18,19,20,21,22,23,25,26,27,28,29,31,35,36]],
     2315 : ["FX|RED TYPE",    "listed", [0,1,2,3,4,6,7,9,10,12,14,15,16,18,19,20,21,22,23,25,26,27,28,29,31,35,36]],
     2316 : ["FX|YELLOW TYPE", "listed", [0,1,2,3,4,6,7,9,10,12,14,15,16,18,19,20,21,22,23,25,26,27,28,29,31,35,36]],
-    2323 : ["FX|COLOR",       "listed", [0,1,2]],
+    2323 : ["FX|COLOR",       "listed", [0,1,2]], # 0=GREEN, 1=RED, 2=YELLOW
     460  : ["FX|ON/OFF",      "listed", [0,1]],
     461  : ["FX|TYPE",        "listed", [0,1,2,3,4,6,7,9,10,12,14,15,16,18,19,20,21,22,23,25,26,27,28,29,31,35,36]],
-    # 2326 "DELAY OR FX" is located under DELAY
     # FX|T.WAH:
     472  : ["FX|T.WAH|MODE",         "listed", [0,1]], # 0=LPF, 1=BPF
     473  : ["FX|T.WAH|POLARITY",     "listed", [0,1]], # 0=DOWN, 1=UP
