@@ -198,8 +198,32 @@ class Patch:
         index = 2332 + color.value
         self[index] = 2 # REVERB (for now)
 
-    def set_delay2(self,delay_type,color,**kw):
-        raise NotImplementedError
+    def set_delay2(self,delay_type,color,delay_time=None,feedback=None,
+                  high_cut=None,effect_level=None,direct_mix=None,
+                  modulation_rate=None,modulation_depth=None,modulation_sw=None,
+                  range=None,filter=None,delay_phase=None,feedback_phase=None):
+        if isinstance(delay_type, DELAY):
+            self[2127] = delay_type.value
+        else:
+            raise TypeError(f"delay_type must be an DELAY, not '{type(delay_type)}'")
+        self[2126] = 1 # DELAY2 on
+        self[2128] = delay_time
+        self[2130] = feedback
+        self[2131] = high_cut         # not used for SDE-3000
+        self[2132] = effect_level
+        self[2133] = direct_mix
+        self[2145] = modulation_rate  # not used for DIGITAL, REVERSE, ANALOG, TAPE ECHO
+        self[2146] = modulation_depth # not used for DIGITAL, REVERSE, ANALOG, TAPE ECHO
+        self[2151] = modulation_sw    # not used for DIGITAL, REVERSE, ANALOG, TAPE ECHO, MODULATE
+        self[2147] = range            # not used for DIGITAL, REVERSE, ANALOG, TAPE ECHO, MODULATE
+        self[2148] = filter           # not used for DIGITAL, REVERSE, ANALOG, TAPE ECHO, MODULATE
+        self[2150] = delay_phase      # not used for DIGITAL, REVERSE, ANALOG, TAPE ECHO, MODULATE
+        self[2149] = feedback_phase   # not used for DIGITAL, REVERSE, ANALOG, TAPE ECHO, MODULATE
+        index = 2329 + color.value
+        self[index] = delay_type.value
+        self[2324] = color.value
+        index = 2332 + color.value
+        self[index] = 0 # DELAY (for now)
 
 
 class AMP(Enum):

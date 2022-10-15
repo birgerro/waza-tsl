@@ -525,6 +525,28 @@ KNOWN_INDEXES = {
     792  : ["REVERB|EFFECT LEVEL", "minmax", [0,100]],
     793  : ["REVERB|DIRECT MIX",   "minmax", [0,100]],
     794  : ["REVERB|SPRING SENS",  "minmax", [0,100]],
+    # DELAY2:
+    # 2324 REVERB COLOR is located under REVERB
+    # 2332 GREEN REVERB MODE is located under REVERB
+    # 2333 RED REVERB MODE is located under REVERB
+    # 2334 YELLOW REVERB MODE is located under REVERB
+    2329 : ["DELAY2|GREEN TYPE",       "listed", [0,6,7,8,9,10]],
+    2330 : ["DELAY2|RED TYPE",         "listed", [0,6,7,8,9,10]],
+    2331 : ["DELAY2|YELLOW TYPE",      "listed", [0,6,7,8,9,10]],
+    2126 : ["DELAY2|ON/OFF",           "listed", [0,1]], # 0=OFF, 1=ON
+    2127 : ["DELAY2|TYPE",             "listed", [0,6,7,8,9,10]],
+    2128 : ["DELAY2|DELAY TIME",       "2bytes", [1,2000]],
+    2130 : ["DELAY2|FEEDBACK",         "minmax", [0,100]],
+    2131 : ["DELAY2|HIGH CUT",         "listed", [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14]],
+    2132 : ["DELAY2|EFFECT LEVEL",     "minmax", [0,120]],
+    2133 : ["DELAY2|DIRECT MIX",       "minmax", [0,100]],
+    2145 : ["DELAY2|MODULATION RATE",  "minmax", [0,100]],
+    2146 : ["DELAY2|MODULATION DEPTH", "minmax", [0,100]],
+    2147 : ["DELAY2|RANGE",            "listed", [0,1]], # 0=8KhZ, 1=17KhZ
+    2148 : ["DELAY2|FILTER",           "listed", [0,1]], # 0=OFF, 1=ON
+    2149 : ["DELAY2|FEEDBACK PHASE",   "listed", [0,1]], # 0=NORMAL, 1=INVERSE
+    2150 : ["DELAY2|DELAY PHASE",      "listed", [0,1]], # 0=NORMAL, 1=INVERSE
+    2151 : ["DELAY2|MODULATION SW",    "listed", [0,1]], # 0=OFF, 1=ON
 }
 
 # Make a mapping of parameter names to indexes, grouped by subsystem
