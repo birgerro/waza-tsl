@@ -507,6 +507,24 @@ KNOWN_INDEXES = {
     2118 : ["FX|FLANGER 117E|WIDTH",  "minmax", [0,100]],
     2119 : ["FX|FLANGER 117E|SPEED",  "minmax", [0,100]],
     2120 : ["FX|FLANGER 117E|REGEN",  "minmax", [0,100]],
+    # REVERB:
+    2317 : ["REVERB|GREEN TYPE",   "listed", [1,3,4,5,6]],
+    2318 : ["REVERB|RED TYPE",     "listed", [1,3,4,5,6]],
+    2319 : ["REVERB|YELLOW TYPE",  "listed", [1,3,4,5,6]],
+    2332 : ["REVERB|GREEN MODE",   "listed", [0,1,2]], # 0=DELAY, 1=DLY+REB, 2=REVERB
+    2333 : ["REVERB|RED MODE",     "listed", [0,1,2]], # 0=DELAY, 1=DLY+REB, 2=REVERB
+    2334 : ["REVERB|YELLOW MODE",  "listed", [0,1,2]], # 0=DELAY, 1=DLY+REB, 2=REVERB
+    2324 : ["REVERB|COLOR",        "listed", [0,1,2]], # 0=GREEN, 1=RED, 2=YELLOW
+    784  : ["REVERB|ON/OFF",       "listed", [0,1]], # 0=OFF, 1=ON
+    785  : ["REVERB|TYPE",         "listed", [1,3,4,5,6]],
+    786  : ["REVERB|REVERB TIME",  "scaled", [-1,10,0,99]], # Input: 0.1 -- 10.0 (step: 0.1)
+    787  : ["REVERB|PRE DELAY",    "2bytes", [0,500]],
+    789  : ["REVERB|LOW CUT",      "listed", [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]],
+    790  : ["REVERB|HIGH CUT",     "listed", [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14]],
+    791  : ["REVERB|DENSITY",      "minmax", [0,10]],
+    792  : ["REVERB|EFFECT LEVEL", "minmax", [0,100]],
+    793  : ["REVERB|DIRECT MIX",   "minmax", [0,100]],
+    794  : ["REVERB|SPRING SENS",  "minmax", [0,100]],
 }
 
 # Make a mapping of parameter names to indexes, grouped by subsystem

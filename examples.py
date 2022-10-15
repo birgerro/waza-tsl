@@ -641,3 +641,25 @@ def make_delay_types():
                  delay_phase=SDE_3000.NORMAL,feedback_phase=SDE_3000.INVERSE)
     f.append(p6)
     f.save()
+
+def make_reverb_only():
+    from waza_tsl import TSLFile, Patch, Color, REVERB
+    from waza_tsl import LOW_CUT, low_cut, HIGH_CUT, high_cut
+    f = TSLFile("File with reverb")
+    p1 = Patch("R ROOM REVERB")
+    p1.set_reverb(REVERB.ROOM,Color.RED,
+                  reverb_time=1.2,pre_delay=300,effect_level=11,direct_mix=22,
+                  low_cut=LOW_CUT.FLAT,high_cut=HIGH_CUT.FLAT,density=3)
+    f.append(p1)
+    p2 = Patch("Y SPRING REVERB")
+    p2.set_reverb(REVERB.SPRING,Color.YELLOW,
+                  reverb_time=3.4,pre_delay=400,effect_level=33,direct_mix=44,
+                  low_cut=LOW_CUT._250Hz,high_cut=HIGH_CUT._1p25kHz,
+                  density=4,spring_sens=99)
+    f.append(p2)
+    p3f = Patch("G func PLATE REVERB")
+    p3f.set_reverb(REVERB.PLATE,Color.GREEN,
+                   reverb_time=5.6,pre_delay=500,effect_level=55,direct_mix=66,
+                   low_cut=low_cut(125),high_cut=high_cut(4e3),density=5)
+    f.append(p3f)
+    f.save()

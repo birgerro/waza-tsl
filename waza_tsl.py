@@ -176,8 +176,27 @@ class Patch:
         self[2323] = color.value
         self[2326] = 1 # FX, not DELAY
 
-    def set_reverb(self,reverb_type,color,**kw):
-        raise NotImplementedError
+    def set_reverb(self,reverb_type,color,reverb_time=None,pre_delay=None,
+                   effect_level=None,direct_mix=None,low_cut=None,
+                   high_cut=None,density=None,spring_sens=None):
+        if isinstance(reverb_type, REVERB):
+            self[785] = reverb_type.value
+        else:
+            raise TypeError(f"delay_type must be an DELAY, not '{type(reverb_type)}'")
+        self[784] = 1 # REVERB on
+        self[786] = reverb_time
+        self[787] = pre_delay
+        self[789] = low_cut
+        self[790] = high_cut
+        self[791] = density
+        self[792] = effect_level
+        self[793] = direct_mix
+        self[794] = spring_sens  # only used for STRING
+        index = 2317 + color.value
+        self[index] = reverb_type.value
+        self[2324] = color.value
+        index = 2332 + color.value
+        self[index] = 2 # REVERB (for now)
 
     def set_delay2(self,delay_type,color,**kw):
         raise NotImplementedError
@@ -255,6 +274,13 @@ class DELAY(Enum):
     TAPE_ECHO =  8
     MODULATE  =  9
     SDE_3000  = 10
+
+class REVERB(Enum):
+    ROOM     = 1
+    HALL     = 3
+    PLATE    = 4
+    SPRING   = 5
+    MODULATE = 6
 
 
 # For T.WAH:
