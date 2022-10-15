@@ -194,9 +194,13 @@ class Patch:
         self[794] = spring_sens  # only used for STRING
         index = 2317 + color.value
         self[index] = reverb_type.value
-        self[2324] = color.value
         index = 2332 + color.value
-        self[index] = 2 # REVERB (for now)
+        if self[2324] == color.value and self[2126] == 1:
+            # DELAY2 is already set
+            self[index] = 1 # DLY+REB
+        else:
+            self[2324] = color.value
+            self[index] = 2 # REVERB
 
     def set_delay2(self,delay_type,color,delay_time=None,feedback=None,
                   high_cut=None,effect_level=None,direct_mix=None,
@@ -221,9 +225,13 @@ class Patch:
         self[2149] = feedback_phase   # not used for DIGITAL, REVERSE, ANALOG, TAPE ECHO, MODULATE
         index = 2329 + color.value
         self[index] = delay_type.value
-        self[2324] = color.value
         index = 2332 + color.value
-        self[index] = 0 # DELAY (for now)
+        if self[2324] == color.value and self[784] == 1:
+            # REVERB is already set
+            self[index] = 1 # DLY+REB
+        else:
+            self[2324] = color.value
+            self[index] = 0 # DELAY
 
 
 class AMP(Enum):

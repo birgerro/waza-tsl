@@ -697,3 +697,35 @@ def make_delay2_only():
                   delay_phase=SDE_3000.NORMAL,feedback_phase=SDE_3000.INVERSE)
     f.append(p6)
     f.save()
+
+def make_reverb_and_delay2():
+    from waza_tsl import TSLFile, Patch, Color, REVERB, DELAY, ON, OFF
+    from waza_tsl import LOW_CUT, low_cut, HIGH_CUT, high_cut, SDE_3000
+    f = TSLFile("File with dly+reb")
+    p1 = Patch("R DLY+REB")
+    p1.set_reverb(REVERB.ROOM,Color.RED,
+                  reverb_time=1.2,pre_delay=300,effect_level=11,direct_mix=22,
+                  low_cut=LOW_CUT.FLAT,high_cut=HIGH_CUT.FLAT,density=3)
+    p1.set_delay2(DELAY.DIGITAL,Color.RED,delay_time=1234,feedback=11,
+                  high_cut=HIGH_CUT._4kHz,effect_level=21,direct_mix=31)
+    f.append(p1)
+    p2f = Patch("Y func DLY+REB")
+    p2f.set_reverb(REVERB.SPRING,Color.YELLOW,
+                   reverb_time=3.4,pre_delay=400,effect_level=33,direct_mix=44,
+                   low_cut=low_cut(250),high_cut=high_cut(1.25e3),
+                   density=4,spring_sens=99)
+    p2f.set_delay2(DELAY.MODULATE,Color.YELLOW,delay_time=500,feedback=15,
+                   high_cut=high_cut(12.5e3),effect_level=25,direct_mix=35,
+                   modulation_rate=45,modulation_depth=55)
+    f.append(p2f)
+    p3 = Patch("G DLY+REB")
+    p3.set_reverb(REVERB.PLATE,Color.GREEN,
+                  reverb_time=5.6,pre_delay=500,effect_level=55,direct_mix=66,
+                  low_cut=LOW_CUT._125Hz,high_cut=HIGH_CUT._4kHz,density=5)
+    p3.set_delay2(DELAY.SDE_3000,Color.GREEN,delay_time=1500,feedback=16,
+                  effect_level=26,direct_mix=36,modulation_rate=46,
+                  modulation_depth=56,modulation_sw=ON,
+                  filter=OFF,range=SDE_3000._17kHz,
+                  delay_phase=SDE_3000.NORMAL,feedback_phase=SDE_3000.INVERSE)
+    f.append(p3)
+    f.save()
