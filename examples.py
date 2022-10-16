@@ -731,7 +731,7 @@ def make_reverb_and_delay2():
     f.save()
 
 def make_eq():
-    from waza_tsl import TSLFile, Patch, EQ, Q_VALUE, q_value
+    from waza_tsl import TSLFile, Patch, EQ, Q_VALUE, q_value, OFF
     from waza_tsl import LOW_CUT, low_cut, MID_FREQ, mid_freq, HIGH_CUT, high_cut
     f = TSLFile("File with eq")
     p1 = Patch("EQ enum AMP IN")
@@ -758,4 +758,8 @@ def make_eq():
               high_mid_frequency=mid_freq(3.15e3),high_mid_gain=+4,high_mid_q=q_value(8),
               high_cut=high_cut(12.5e3),high_gain=0,level=-2,position=EQ.AMP_OUT)
     f.append(p4)
+    p5 = Patch("EQ OFF")
+    p5.set_eq(enable=OFF)
+    f.append(p5)
+    f.save()
     f.save()

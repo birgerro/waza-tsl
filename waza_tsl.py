@@ -233,11 +233,11 @@ class Patch:
             self[2324] = color.value
             self[index] = 0 # DELAY
 
-    def set_eq(self,low_cut=None,low_gain=None,low_mid_frequency=None,
+    def set_eq(self,enable=1,low_cut=None,low_gain=None,low_mid_frequency=None,
                low_mid_q=None,low_mid_gain=None,high_mid_frequency=None,
                high_mid_q=None,high_mid_gain=None,high_gain=None,
                high_cut=None,level=None,position=None):
-        self[176] = 1 # EQUALIZER on
+        self[176] = enable # EQUALIZER on or off
         self[177] = low_cut
         self[178] = low_gain
         self[179] = low_mid_frequency
