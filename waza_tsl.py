@@ -233,6 +233,24 @@ class Patch:
             self[2324] = color.value
             self[index] = 0 # DELAY
 
+    def set_eq(self,low_cut=None,low_gain=None,low_mid_frequency=None,
+               low_mid_q=None,low_mid_gain=None,high_mid_frequency=None,
+               high_mid_q=None,high_mid_gain=None,high_gain=None,
+               high_cut=None,level=None,position=None):
+        self[176] = 1 # EQUALIZER on
+        self[177] = low_cut
+        self[178] = low_gain
+        self[179] = low_mid_frequency
+        self[180] = low_mid_q
+        self[181] = low_mid_gain
+        self[182] = high_mid_frequency
+        self[183] = high_mid_q
+        self[184] = high_mid_gain
+        self[185] = high_gain
+        self[186] = high_cut
+        self[187] = level
+        self[2328] = position
+
 
 class AMP(Enum):
     ACOUSTIC =  1
@@ -313,6 +331,10 @@ class REVERB(Enum):
     PLATE    = 4
     SPRING   = 5
     MODULATE = 6
+
+class EQ:
+    AMP_IN  = 0
+    AMP_OUT = 1
 
 
 # For T.WAH:

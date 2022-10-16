@@ -729,3 +729,33 @@ def make_reverb_and_delay2():
                   delay_phase=SDE_3000.NORMAL,feedback_phase=SDE_3000.INVERSE)
     f.append(p3)
     f.save()
+
+def make_eq():
+    from waza_tsl import TSLFile, Patch, EQ, Q_VALUE, q_value
+    from waza_tsl import LOW_CUT, low_cut, MID_FREQ, mid_freq, HIGH_CUT, high_cut
+    f = TSLFile("File with eq")
+    p1 = Patch("EQ enum AMP IN")
+    p1.set_eq(low_cut=LOW_CUT._FLAT,low_gain=-1,
+              low_mid_frequency=MID_FREQ._630Hz,low_mid_gain=-4,low_mid_q=Q_VALUE._05,
+              high_mid_frequency=MID_FREQ._2p50kHz,high_mid_gain=-5,high_mid_q=Q_VALUE._4,
+              high_cut=HIGH_CUT._8kHz,high_gain=+1,level=+3,position=EQ.AMP_IN)
+    f.append(p1)
+    p2 = Patch("EQ enum AMP OUT")
+    p2.set_eq(low_cut=LOW_CUT._100Hz,low_gain=-2,
+              low_mid_frequency=MID_FREQ._800Hz,low_mid_gain=-5,low_mid_q=Q_VALUE._2,
+              high_mid_frequency=MID_FREQ._1p60kHz,high_mid_gain=-4,high_mid_q=Q_VALUE._16,
+              high_cut=HIGH_CUT._FLAT,high_gain=+2,level=+2,position=EQ.AMP_OUT)
+    f.append(p2)
+    p3 = Patch("EQ func AMP IN")
+    p3.set_eq(low_cut=low_cut(160),low_gain=+1,
+              low_mid_frequency=mid_freq(500),low_mid_gain=+4,low_mid_q=q_value(1),
+              high_mid_frequency=mid_freq(2.50e3),high_mid_gain=+5,high_mid_q=q_value(8),
+              high_cut=high_cut(8e3),high_gain=-1,level=-3,position=EQ.AMP_IN)
+    f.append(p3)
+    p4 = Patch("EQ func AMP OUT")
+    p4.set_eq(low_cut=low_cut(200),low_gain=+2,
+              low_mid_frequency=mid_freq(1e3),low_mid_gain=+3,low_mid_q=q_value(1),
+              high_mid_frequency=mid_freq(3.15e3),high_mid_gain=+4,high_mid_q=q_value(8),
+              high_cut=high_cut(12.5e3),high_gain=0,level=-2,position=EQ.AMP_OUT)
+    f.append(p4)
+    f.save()

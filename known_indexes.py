@@ -547,6 +547,20 @@ KNOWN_INDEXES = {
     2149 : ["DELAY2|FEEDBACK PHASE",   "listed", [0,1]], # 0=NORMAL, 1=INVERSE
     2150 : ["DELAY2|DELAY PHASE",      "listed", [0,1]], # 0=NORMAL, 1=INVERSE
     2151 : ["DELAY2|MODULATION SW",    "listed", [0,1]], # 0=OFF, 1=ON
+    # EQ:
+    176  : ["EQ|EQUALIZER ON/OFF",   "listed", [0,1]],
+    177  : ["EQ|LOW CUT",            "minmax", [0,17]],
+    178  : ["EQ|LOW GAIN",           "scaled", [20,1,0,40]], # Input: -20 -- +20
+    179  : ["EQ|LOW-MID FREQUENCY",  "minmax", [0,27]],
+    180  : ["EQ|LOW-MID Q",          "listed", [0,1,2,3,4,5]],
+    181  : ["EQ|LOW-MID GAIN",       "scaled", [20,1,0,40]], # Input: -20 -- +20
+    182  : ["EQ|HIGH-MID FREQUENCY", "minmax", [0,27]],
+    183  : ["EQ|HIGH-MID Q",         "listed", [0,1,2,3,4,5]],
+    184  : ["EQ|HIGH-MID GAIN",      "scaled", [20,1,0,40]], # Input: -20 -- +20
+    185  : ["EQ|HIGH GAIN",          "scaled", [20,1,0,40]], # Input: -20 -- +20
+    186  : ["EQ|HIGH CUT",           "minmax", [0,14]],
+    187  : ["EQ|LEVEL",              "scaled", [20,1,0,40]], # Input: -20 -- +20
+    2328 : ["EQ|POSITION",           "listed", [0,1]],
 }
 
 # Make a mapping of parameter names to indexes, grouped by subsystem
