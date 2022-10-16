@@ -762,4 +762,14 @@ def make_eq():
     p5.set_eq(enable=OFF)
     f.append(p5)
     f.save()
+
+def make_ns():
+    from waza_tsl import TSLFile, Patch, OFF
+    f = TSLFile("File with ns")
+    p1 = Patch("THR=34,REL=78")
+    p1.set_ns(threshold=34,release=78)
+    f.append(p1)
+    p2 = Patch("NS OFF")
+    p2.set_ns(enable=OFF)
+    f.append(p2)
     f.save()

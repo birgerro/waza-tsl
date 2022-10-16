@@ -561,6 +561,10 @@ KNOWN_INDEXES = {
     186  : ["EQ|HIGH CUT",           "minmax", [0,14]],
     187  : ["EQ|LEVEL",              "scaled", [20,1,0,40]], # Input: -20 -- +20
     2328 : ["EQ|POSITION",           "listed", [0,1]],
+    # NS:
+    867 : ["NS|NOISE SUPPRESSION ON/OFF", "listed", [0,1]],
+    868 : ["NS|THRESHOLD",                "minmax", [0,100]],
+    869 : ["NS|RELEASE",                  "minmax", [0,100]],
 }
 
 # Make a mapping of parameter names to indexes, grouped by subsystem

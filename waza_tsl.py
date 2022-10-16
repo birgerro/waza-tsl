@@ -251,6 +251,11 @@ class Patch:
         self[187] = level
         self[2328] = position
 
+    def set_ns(self,enable=1,threshold=None,release=None):
+        self[867] = enable # NOISE SUPPRESSION on or off
+        self[868] = threshold
+        self[869] = release
+
 
 class AMP(Enum):
     ACOUSTIC =  1
