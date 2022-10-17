@@ -7,6 +7,11 @@ Split out on 2022-09-09
 """
 
 KNOWN_INDEXES = {
+    # GYRO AMBIENCE:
+    854 : ["GYRO|TYPE",            "listed", [0,1,2,3]],
+    855 : ["GYRO|GUITAR POSITION", "scaled", [60,1/3,0,120]], # Input -180 -- +180
+    853 : ["AMB|TYPE",             "listed", [0,1]],
+    856 : ["AMB|LEVEL",            "minmax", [0,100]],
     # AMP:
     81 : ["AMP|TYPE",     "listed", [1,8,11,23,24]],
     82 : ["AMP|GAIN",     "scaled", [20,0.8,20,100]],

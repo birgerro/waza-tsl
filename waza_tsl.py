@@ -80,6 +80,23 @@ class Patch:
             return
         self.data["paramSet"]["User%Patch"][index] = value
 
+    def set_gyro(self,gyro_type,guitar_position=None,
+                 ambience_type=None,level=None):
+        # POSITION:
+        if isinstance(gyro_type, GYRO):
+            self[854] = gyro_type.value
+        else:
+            raise TypeError(f"gyro_type must be an GYRO, not '{type(gyro_type)}'")
+        self[855] = guitar_position # Only used for SURROUND
+        # AMBIENCE: # Not used when gyro is OFF
+        if isinstance(ambience_type, AMBIENCE):
+            self[853] = ambience_type.value
+        elif ambience_type is None:
+            self[853] = None
+        else:
+            raise TypeError(f"ambience_type must be an AMBIENCE, not '{type(ambience_type)}'")
+        self[856] = level
+
     def set_amp(self,amp_type,gain=None,presence=None,volume=None,
                               bass=None,middle=None,treble=None):
         if isinstance(amp_type, AMP):
@@ -256,6 +273,16 @@ class Patch:
         self[868] = threshold
         self[869] = release
 
+
+class GYRO(Enum):
+    OFF      = 0
+    SURROUND = 1
+    STATIC   = 2
+    STAGE    = 3
+
+class AMBIENCE(Enum):
+    STUDIO = 0
+    STAGE  = 1
 
 class AMP(Enum):
     ACOUSTIC =  1

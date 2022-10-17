@@ -759,7 +759,7 @@ def make_eq():
               high_cut=high_cut(12.5e3),high_gain=0,level=-2,position=EQ.AMP_OUT)
     f.append(p4)
     p5 = Patch("EQ OFF")
-    p5.set_eq(enable=OFF)
+    p5.set_eq(OFF)
     f.append(p5)
     f.save()
 
@@ -770,6 +770,24 @@ def make_ns():
     p1.set_ns(threshold=34,release=78)
     f.append(p1)
     p2 = Patch("NS OFF")
-    p2.set_ns(enable=OFF)
+    p2.set_ns(OFF)
     f.append(p2)
+    f.save()
+
+def make_gyro():
+    from waza_tsl import TSLFile, Patch, GYRO, AMBIENCE
+    f = TSLFile("File with gyro ambience")
+    p1 = Patch("STAGE GYRO")
+    p1.set_gyro(gyro_type=GYRO.STAGE,ambience_type=AMBIENCE.STAGE,level=33)
+    f.append(p1)
+    p1 = Patch("STATIC GYRO")
+    p1.set_gyro(gyro_type=GYRO.STATIC,ambience_type=AMBIENCE.STUDIO,level=55)
+    f.append(p1)
+    p1 = Patch("SURROUND GYRO")
+    p1.set_gyro(gyro_type=GYRO.SURROUND,guitar_position=+123,
+                ambience_type=AMBIENCE.STAGE,level=77)
+    f.append(p1)
+    p4 = Patch("GYRO OFF")
+    p4.set_gyro(gyro_type=GYRO.OFF)
+    f.append(p4)
     f.save()
